@@ -8,9 +8,7 @@
 
 #include <LEDA/core/string.h>
 #include <LEDA/graph/ugraph.h>
-#include <LEDA/graph/graph.h>
 #include "functions.h"
-#include <iostream>
 
 using namespace leda;
 

@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(LEDALIBINCLDIR "/home/benedikt/bachelor/LEDA-6.4/incl")
 
 
-set(SOURCE_FILES main.cpp functions.h functions.cpp)
+set(SOURCE_FILES main.cpp functions.h)
 
 add_executable(bachelor ${SOURCE_FILES})
 
