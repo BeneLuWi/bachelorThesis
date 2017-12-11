@@ -100,8 +100,7 @@ static void rec_vertex_cover(ugraph& g, list<node>& vc, int& k, node_array<int>&
                     // CASE 4: Knoten hat Grad == 3: verwende degree_three_vertex
 
                     else if(degree(node1) == 3){
-                        //return degree_three_vertex(g, vc, k, nodeDegree, allVCs, coverCheck, edgeCovered, node1);
-                        return;
+                        return degree_three_vertex(g, vc, k, nodeDegree, allVCs, coverCheck, edgeCovered, node1);
                     }
 
                 }
@@ -226,7 +225,8 @@ static void degree_two_vertex(ugraph& g, list<node>& vc, int& k, node_array<int>
 
 static void degree_three_vertex(ugraph& g, list<node>& vc, int& k, node_array<int>& nodeDegree,list<list<node>>& allVCs, int& coverCheck, edge_array<bool>& edgeCovered, node& node1){
 
-    node n;
+    node n, n1;
+
 
     // Hilfsvariablen für Branches. Müssen zurerst init werden, ansonsten "ID- Fehler"
     node_array<int> nodeDegreeBranch1 = nodeDegree, nodeDegreeBranch2 = nodeDegree;
@@ -238,7 +238,7 @@ static void degree_three_vertex(ugraph& g, list<node>& vc, int& k, node_array<in
     node& nAdj2 = g.adj_nodes(node1)[g.adj_nodes(node1)[1]];
     node& nAdj3 = g.adj_nodes(node1)[g.adj_nodes(node1)[2]];
 
-    // CASE 1: Dreieck mit node1 und 2 der Nachbarn {a, b} : Branch mit N(node1) und N(c) (N(node1) = {a, b, c})
+    // CASE 1: Dreieck mit node1 und 2 der Nachbarn {a, b} : Branch mit N(node1) und N(c) _____(N(node1) = {a, b, c})
 
     if(adjacent(g, nAdj1, nAdj2)){
         // Branch für N(node1)
@@ -251,7 +251,7 @@ static void degree_three_vertex(ugraph& g, list<node>& vc, int& k, node_array<in
 
         nodeDegree[node1] = -1;
 
-        std::cout << "three degree vertex CASE 3 branch 1 \n";
+        std::cout << "three degree vertex CASE 1 branch 1 \n";
         rec_vertex_cover(g, vc, k, nodeDegree, allVCs, coverCheck, edgeCovered);
 
         // Branch für N(nAdj3)
@@ -264,8 +264,8 @@ static void degree_three_vertex(ugraph& g, list<node>& vc, int& k, node_array<in
 
         nodeDegree[nAdj3] = -1;
 
-        std::cout << "three degree vertex CASE 3 branch 2 \n";
-        return rec_vertex_cover(g, vc, k, nodeDegree, allVCs, coverCheck, edgeCovered);
+        std::cout << "three degree vertex CASE 1 branch 2 \n";
+        return rec_vertex_cover(g, vc, k, nodeDegreeBranch1, allVCs, coverCheckBranch1, edgeCoveredBranch1);
 
 
     } else if(adjacent(g, nAdj1, nAdj3)){
@@ -280,7 +280,7 @@ static void degree_three_vertex(ugraph& g, list<node>& vc, int& k, node_array<in
 
         nodeDegree[node1] = -1;
 
-        std::cout << "three degree vertex CASE 3 branch 1 \n";
+        std::cout << "three degree vertex CASE 1 branch 1 \n";
         rec_vertex_cover(g, vc, k, nodeDegree, allVCs, coverCheck, edgeCovered);
 
         // Branch für N(nAdj2)
@@ -293,8 +293,8 @@ static void degree_three_vertex(ugraph& g, list<node>& vc, int& k, node_array<in
 
         nodeDegree[nAdj2] = -1;
 
-        std::cout << "three degree vertex CASE 3 branch 2 \n";
-        return rec_vertex_cover(g, vc, k, nodeDegree, allVCs, coverCheck, edgeCovered);
+        std::cout << "three degree vertex CASE 1 branch 2 \n";
+        return rec_vertex_cover(g, vc, k, nodeDegreeBranch1, allVCs, coverCheckBranch1, edgeCoveredBranch1);
 
     } else if(adjacent(g,nAdj2, nAdj3)){
 
@@ -308,7 +308,7 @@ static void degree_three_vertex(ugraph& g, list<node>& vc, int& k, node_array<in
 
         nodeDegree[node1] = -1;
 
-        std::cout << "three degree vertex CASE 3 branch 1 \n";
+        std::cout << "three degree vertex CASE 1 branch 1 \n";
         rec_vertex_cover(g, vc, k, nodeDegree, allVCs, coverCheck, edgeCovered);
 
         // Branch für N(nAdj1)
@@ -321,11 +321,244 @@ static void degree_three_vertex(ugraph& g, list<node>& vc, int& k, node_array<in
 
         nodeDegree[nAdj1] = -1;
 
-        std::cout << "three degree vertex CASE 3 branch 2 \n";
-        return rec_vertex_cover(g, vc, k, nodeDegree, allVCs, coverCheck, edgeCovered);
-
+        std::cout << "three degree vertex CASE 1 branch 2 \n";
+        return rec_vertex_cover(g, vc, k, nodeDegreeBranch1, allVCs, coverCheckBranch1, edgeCoveredBranch1);
 
     }
+    // CASE 2: Kreis mit {node1, a, b, n1} (n1 ist bel Element von g) : Branch mit N(node1) und {node1, n1}
+
+    //finde Nachbar-Knoten d, der nicht node1 oder in N(node1) ist
+    if(degree(nAdj1)> 1 && degree(nAdj2) > 1){
+        forall_adj_nodes(n, nAdj1){
+                if(adjacent(g, n, nAdj2) && n != nAdj3 && n != node1){
+
+                    // Branch für N(node1)
+                    forall_adj_nodes(n1, node1) {
+                            vc.append(n1);
+                            nodeDegree[n1] = -1;
+
+                            incCoverCheck(g, coverCheck, edgeCovered, n1);
+                        }
+
+                    nodeDegree[node1] = -1;
+
+                    std::cout << "three degree vertex CASE 2 branch 1 \n";
+                    rec_vertex_cover(g, vc, k, nodeDegree, allVCs, coverCheck, edgeCovered);
+
+
+                    //Branch für {node1 ,n1}
+                    vcBranch1.append(n);
+                    vcBranch1.append(node1);
+                    nodeDegreeBranch1[n] = -1;
+                    nodeDegreeBranch1[node1] = -1;
+
+                    incCoverCheck(g, coverCheckBranch1, edgeCoveredBranch1, n);
+                    incCoverCheck(g, coverCheckBranch1, edgeCoveredBranch1, node1);
+
+                    std::cout << "three degree vertex CASE 2 branch 2 \n";
+                    return rec_vertex_cover(g, vc, k, nodeDegreeBranch1, allVCs, coverCheckBranch1, edgeCoveredBranch1);
+                }
+            }
+    }
+
+    if(degree(nAdj1)> 1 && degree(nAdj3) > 1){
+        forall_adj_nodes(n, nAdj3){
+                if(adjacent(g, n, nAdj3) && n != nAdj2 && n != node1){
+
+                    // Branch für N(node1)
+                    forall_adj_nodes(n1, node1) {
+                            vc.append(n1);
+                            nodeDegree[n1] = -1;
+
+                            incCoverCheck(g, coverCheck, edgeCovered, n1);
+                        }
+
+                    nodeDegree[node1] = -1;
+
+                    std::cout << "three degree vertex CASE 2 branch 1 \n";
+                    rec_vertex_cover(g, vc, k, nodeDegree, allVCs, coverCheck, edgeCovered);
+
+
+                    //Branch für {node1 ,n1}
+                    vcBranch1.append(n);
+                    vcBranch1.append(node1);
+                    nodeDegreeBranch1[n] = -1;
+                    nodeDegreeBranch1[node1] = -1;
+
+                    incCoverCheck(g, coverCheckBranch1, edgeCoveredBranch1, n);
+                    incCoverCheck(g, coverCheckBranch1, edgeCoveredBranch1, node1);
+
+                    std::cout << "three degree vertex CASE 2 branch 2 \n";
+                    return rec_vertex_cover(g, vc, k, nodeDegreeBranch1, allVCs, coverCheckBranch1, edgeCoveredBranch1);
+                }
+            }
+    }
+
+    if(degree(nAdj2)> 1 && degree(nAdj3) > 1){
+        forall_adj_nodes(n, nAdj3){
+                if(adjacent(g, n, nAdj3) && n != nAdj1 && n != node1){
+
+                    // Branch für N(node1)
+                    forall_adj_nodes(n1, node1) {
+                            vc.append(n1);
+                            nodeDegree[n1] = -1;
+
+                            incCoverCheck(g, coverCheck, edgeCovered, n1);
+                        }
+
+                    nodeDegree[node1] = -1;
+
+                    std::cout << "three degree vertex CASE 2 branch 1 \n";
+                    rec_vertex_cover(g, vc, k, nodeDegree, allVCs, coverCheck, edgeCovered);
+
+
+                    //Branch für {node1 ,n1}
+                    vcBranch1.append(n);
+                    vcBranch1.append(node1);
+                    nodeDegreeBranch1[n] = -1;
+                    nodeDegreeBranch1[node1] = -1;
+
+                    incCoverCheck(g, coverCheckBranch1, edgeCoveredBranch1, n);
+                    incCoverCheck(g, coverCheckBranch1, edgeCoveredBranch1, node1);
+
+                    std::cout << "three degree vertex CASE 2 branch 2 \n";
+                    return rec_vertex_cover(g, vc, k, nodeDegreeBranch1, allVCs, coverCheckBranch1, edgeCoveredBranch1);
+                }
+            }
+    }
+
+    // CASE 3: {a, b, c} sind keine Nachbarn und Grad(a) == 4: Branch mit N(node1) und N(a) und a U N(b) U N(c)
+
+    int degreeCase;
+    node& nAdj = n;
+
+    if(!adjacent(g, nAdj1, nAdj2) && !adjacent(g, nAdj1, nAdj3) && !adjacent(g, nAdj2, nAdj3)){
+        if(degree(nAdj1) == 4){node& nAdj = nAdj1; degreeCase = 1;}
+        else if(degree(nAdj2) == 4) {node& nAdj = nAdj2; degreeCase = 2;}
+        else if(degree(nAdj3) == 4) {node& nAdj = nAdj3; degreeCase = 3;}
+        else return;
+
+        // Branch für N(node1)
+        forall_adj_nodes(n1, node1) {
+                vc.append(n1);
+                nodeDegree[n1] = -1;
+
+                incCoverCheck(g, coverCheck, edgeCovered, n1);
+            }
+
+        nodeDegree[node1] = -1;
+
+        std::cout << "three degree vertex CASE 3 branch 1 \n";
+        rec_vertex_cover(g, vc, k, nodeDegree, allVCs, coverCheck, edgeCovered);
+
+        // Branch für N(a)
+        forall_adj_nodes(n1, nAdj) {
+                vc.append(n1);
+                nodeDegreeBranch1[n1] = -1;
+
+                incCoverCheck(g, coverCheckBranch1, edgeCoveredBranch1, n1);
+            }
+
+        nodeDegreeBranch1[nAdj] = -1;
+
+        std::cout << "three degree vertex CASE 3 branch 2 \n";
+        rec_vertex_cover(g, vc, k, nodeDegreeBranch1, allVCs, coverCheckBranch1, edgeCoveredBranch1);
+
+        // Branch für a U N(b) U N(c)
+
+        switch (degreeCase){
+            case 1 :
+                    forall_adj_nodes(n, nAdj2) {
+                        if (nodeDegreeBranch2[n] != -1) {
+                            vcBranch2.append(n);
+                            nodeDegreeBranch2[n] = -1;
+
+                            incCoverCheck(g, coverCheckBranch2, edgeCoveredBranch2, n);
+                        }
+                    }
+
+                    forall_adj_nodes(n, nAdj3){
+                        if (nodeDegreeBranch2[n] != -1) {
+                            vcBranch2.append(n);
+                            nodeDegreeBranch2[n] = -1;
+
+                            incCoverCheck(g, coverCheckBranch2, edgeCoveredBranch2, n);
+                        }
+                    }
+
+                    vcBranch2.append(nAdj);
+                    incCoverCheck(g, coverCheckBranch2, edgeCoveredBranch2, nAdj);
+
+                    nodeDegreeBranch2[nAdj]  = -1;
+                    nodeDegreeBranch2[nAdj2] = -1;
+                    nodeDegreeBranch2[nAdj3] = -1;
+
+                    std::cout << "three degree vertex CASE 3 branch 3 \n";
+
+                    return rec_vertex_cover(g, vcBranch2, k, nodeDegreeBranch2, allVCs, coverCheckBranch2, edgeCoveredBranch2);
+
+            case 2 :
+                forall_adj_nodes(n, nAdj1) {
+                        if (nodeDegreeBranch2[n] != -1) {
+                            vcBranch2.append(n);
+                            nodeDegreeBranch2[n] = -1;
+
+                            incCoverCheck(g, coverCheckBranch2, edgeCoveredBranch2, n);
+                        }
+                    }
+
+                forall_adj_nodes(n, nAdj3){
+                        if (nodeDegreeBranch2[n] != -1) {
+                            vcBranch2.append(n);
+                            nodeDegreeBranch2[n] = -1;
+
+                            incCoverCheck(g, coverCheckBranch2, edgeCoveredBranch2, n);
+                        }
+                    }
+
+                vcBranch2.append(nAdj);
+                incCoverCheck(g, coverCheckBranch2, edgeCoveredBranch2, nAdj);
+
+                nodeDegreeBranch2[nAdj]  = -1;
+                nodeDegreeBranch2[nAdj1] = -1;
+                nodeDegreeBranch2[nAdj3] = -1;
+
+                std::cout << "three degree vertex CASE 3 branch 3 \n";
+
+                return rec_vertex_cover(g, vcBranch2, k, nodeDegreeBranch2, allVCs, coverCheckBranch2, edgeCoveredBranch2);
+
+            case 3 :
+                forall_adj_nodes(n, nAdj2) {
+                        if (nodeDegreeBranch2[n] != -1) {
+                            vcBranch2.append(n);
+                            nodeDegreeBranch2[n] = -1;
+
+                            incCoverCheck(g, coverCheckBranch2, edgeCoveredBranch2, n);
+                        }
+                    }
+
+                forall_adj_nodes(n, nAdj1){
+                        if (nodeDegreeBranch2[n] != -1) {
+                            vcBranch2.append(n);
+                            nodeDegreeBranch2[n] = -1;
+
+                            incCoverCheck(g, coverCheckBranch2, edgeCoveredBranch2, n);
+                        }
+                    }
+
+                vcBranch2.append(nAdj);
+                incCoverCheck(g, coverCheckBranch2, edgeCoveredBranch2, nAdj);
+
+                nodeDegreeBranch2[nAdj]  = -1;
+                nodeDegreeBranch2[nAdj2] = -1;
+                nodeDegreeBranch2[nAdj1] = -1;
+
+                std::cout << "three degree vertex CASE 3 branch 3 \n";
+
+                return rec_vertex_cover(g, vcBranch2, k, nodeDegreeBranch2, allVCs, coverCheckBranch2, edgeCoveredBranch2);
+            }
+    }
+
 }
 
 void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs) {

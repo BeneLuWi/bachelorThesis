@@ -26,10 +26,9 @@ int main() {
 
     //Graphen einlesen
     ugraph g;
-    if (g.read("graphenbsp/g0.gw") != 0 ){
-        std::cout<< " Konnte Graph nicht lesen\n";
+    if (g.read("graphenbsp/g6.gw") != 0 ){
+        std::cout<< "Konnte Graph nicht lesen\n";
     }
-
     // Start Programm
     int k = 4;
     list<list<node>> allVCs;
