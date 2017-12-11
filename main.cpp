@@ -26,10 +26,12 @@ int main() {
 
     //Graphen einlesen
     ugraph g;
-    std::cout<< g.read("graphenbsp/g2.gw") <<":1=keine file, 2=passt nicht, 3=kein graph, 0=alles jut\n";
+    if (g.read("graphenbsp/g0.gw") != 0 ){
+        std::cout<< " Konnte Graph nicht lesen\n";
+    }
 
     // Start Programm
-    int k = 2;
+    int k = 4;
     list<list<node>> allVCs;
     vertex_cover(g, k, allVCs);
     std::cout << "-------------------------------------------\n";
@@ -45,7 +47,7 @@ int main() {
         forall(it, allVCs){
                 std::cout << " Länge " << it.length() << ", Knoten: ";
                 forall(n, it){
-                        std::cout << n->id() << " ";
+                        std::cout << n->id() + 1 << " ";
                     }
             }
     }
