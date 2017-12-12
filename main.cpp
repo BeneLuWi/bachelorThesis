@@ -25,9 +25,14 @@ int main() {
 
 
     //Graphen einlesen
+
     ugraph g;
-    if (g.read("graphenbsp/g6.gw") != 0 ){
-        std::cout<< "Konnte Graph nicht lesen\n";
+    string graph = "graphenbsp/g6.gw";
+    if (g.read(graph) != 0 ){
+        std::cout<< "Konnte " << graph <<" nicht lesen\n";
+        return 1;
+    } else{
+        std::cout<< graph <<" eingelesen! \n";
     }
     // Start Programm
     int k = 4;
