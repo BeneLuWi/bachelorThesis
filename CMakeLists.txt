@@ -6,9 +6,9 @@ set(CMAKE_CXX_STANDARD 11)
 set(LEDALIBINCLDIR "/home/benedikt/bachelor/LEDA-6.4/incl")
 
 
-set(SOURCE_FILES main.cpp functions.h)
+set(SOURCE_FILES main.cpp functions.h reduction.h)
 
-add_executable(bachelor ${SOURCE_FILES})
+add_executable(bachelor ${SOURCE_FILES} reduction.h)
 
 include_directories(${LEDALIBINCLDIR})
 

@@ -1,13 +1,12 @@
 #ifndef BACHELOR_FUNCTIONS_H
 #define BACHELOR_FUNCTIONS_H
 
-#include <LEDA/graph/graph_iterator.h>
 #include <LEDA/graph/ugraph.h>
 #include <LEDA/graph/graph.h>
 #include <LEDA/core/list.h>
 #include <LEDA/core/tuple.h>
+#include "reduction.h"
 #include <iostream>
-#include "functions.h"
 
 using namespace leda;
 
@@ -30,6 +29,46 @@ static void addSelf(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int&
 static void addAdj(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& coverCheck, edge_array<bool>& edgeCovered, node& node1);
 
 
+
+
+
+
+
+
+void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs) {
+// Funktion zum preprocessen und Initialisierung der Rekursion
+// nodeDegree = sortierte Liste aller Knoten und deren Grad
+// edgeCovered = info, ob die Kante im Vertexcover enthalten ist
+
+    node_array<int> nodeDegree(g);
+
+    edge_array<bool> edgeCovered(g);
+    node n;
+    edge e;
+    int coverCheck = 0;
+    list<node> vc;
+
+    //init
+    forall_nodes(n, g){
+            nodeDegree[n] = degree(n);
+        }
+
+    g.sort_nodes(nodeDegree);
+
+    forall_edges(e, g){
+            edgeCovered[e] = false;
+        }
+
+    isBipartid(g)? std::cout << "jup \n": std::cout << "nö \n";
+
+    node_array<bool> NC(g);
+
+    nemTrott(g, NC);
+
+    //starte Rekursuion
+    rec_vertex_cover(g, vc, k, nodeDegree, allVCs, coverCheck, edgeCovered);
+
+}
 
 
 static void rec_vertex_cover(ugraph& g, list<node>& vc, int& k, node_array<int>& nodeDegree,list<list<node>>& allVCs, int& coverCheck, edge_array<bool>& edgeCovered) {
@@ -98,8 +137,8 @@ static void rec_vertex_cover(ugraph& g, list<node>& vc, int& k, node_array<int>&
                 }
             }
     }
-    std::cout << "VC-Länge: " <<vc.length() << "--RekEnde\n";
-    if (coverCheck == g.all_edges().length()) {
+    std::cout << "VC-Länge: " <<vc.length()  << "--RekEnde\n";
+    if (coverCheck == g.all_edges().length() && vc.length() <= k && vc.length() > 0) {
         allVCs.append(vc);
         std::cout << "VC added \n";
     }
@@ -360,34 +399,6 @@ static void degree_three_vertex(ugraph& g, list<node>& vc, int& k, node_array<in
 
 }
 
-void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs) {
-// Funktion zum preprocessen und Initialisierung der Rekursion
-// nodeDegree = sortierte Liste aller Knoten und deren Grad
-// edgeCovered = info, ob die Kante im Vertexcover enthalten ist
-
-    node_array<int> nodeDegree(g);
-
-    edge_array<bool> edgeCovered(g);
-    node n;
-    edge e;
-    int coverCheck = 0;
-    list<node> vc;
-
-    //init
-    forall_nodes(n, g){
-            nodeDegree[n] = degree(n);
-        }
-
-    g.sort_nodes(nodeDegree);
-
-    forall_edges(e, g){
-            edgeCovered[e] = false;
-        }
-
-    //starte Rekursuion
-    rec_vertex_cover(g, vc, k, nodeDegree, allVCs, coverCheck, edgeCovered);
-
-}
 
 static void incCoverCheck(ugraph& g, int& coverCheck, edge_array<bool>& edgeCovered, node& node1){
 //Für alle Kanten an Knoten node1 überprüfe, ob die Kante bereits covered ist, ansonsten covere Sie und ehöhe coverCheck
@@ -435,10 +446,13 @@ static void addSelf(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int&
 // markiert die Kanden und
 // markiert den aktuellen Knoten
 
-    vc.append(node1);
-    nodeDegree[node1] = -1;
+    if(nodeDegree[node1] != -1) {
 
-    incCoverCheck(g, coverCheck, edgeCovered, node1);
+        vc.append(node1);
+        nodeDegree[node1] = -1;
+
+        incCoverCheck(g, coverCheck, edgeCovered, node1);
+    }
 }
 
 static void addAdj(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& coverCheck, edge_array<bool>& edgeCovered, node& node1){
@@ -459,5 +473,9 @@ static void addAdj(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& 
 
     nodeDegree[node1] = -1;
 }
+
+
+
+
 
 #endif // BACHELOR_FUNCTIONS_H
