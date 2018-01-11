@@ -59,11 +59,11 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs) {
             edgeCovered[e] = false;
         }
 
-    isBipartid(g)? std::cout << "jup \n": std::cout << "nö \n";
+    //isBipartid(g)? std::cout << "jup \n": std::cout << "nö \n";
 
-    node_array<bool> NC(g);
 
-    nemTrott(g, NC);
+
+    nemTrott(g);
 
     //starte Rekursuion
     rec_vertex_cover(g, vc, k, nodeDegree, allVCs, coverCheck, edgeCovered);

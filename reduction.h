@@ -7,34 +7,28 @@
 #include <LEDA/core/tuple.h>
 #include <LEDA/graph/mcb_matching.h>
 #include <iostream>
+#include <LEDA/core/queue.h>
 
 using namespace leda;
 
-static void nemTrott (ugraph& g, node_array< bool>& NC);
+static void nemTrott (ugraph& g);
 
 static bool colorAdj(node& n, node_array<int>& colors);
 
-static bool isBipartid(ugraph& g);
+static bool isBipartid(graph& g);
 
 
 
 
-static void nemTrott (ugraph& g, node_array< bool>& NC){
-
-    if(isBipartid(g)){
-        // NC ist Referenz
-        //MAX_CARD_BIPARTITE_MATCHING(g, NC);
-    }
-
-    else{
+static void nemTrott (ugraph& g){
 
         // Bipartiden Graphen erstellen
         node_array<node> bNodesLeft(g);
         node_array<node> bNodesRight(g);
-        edge e;
         node n, m;
 
-        ugraph b;
+        graph b;
+
 
         forall_nodes(n ,g){
                 bNodesLeft[n] = b.new_node();
@@ -43,111 +37,130 @@ static void nemTrott (ugraph& g, node_array< bool>& NC){
                 std::cout << n->id()+1 <<"= " << bNodesRight[n]->id()+1 <<"\n";
             }
 
-
         forall_nodes(n, g){
                 forall_adj_nodes(m, n){
                     b.new_edge(bNodesLeft[n], bNodesRight[m]);
+                    b.new_edge(bNodesRight[n], bNodesLeft[m]);
                         std::cout << bNodesRight[m]->id()+1<<" + " << bNodesLeft[n]->id()+1 <<"\n";
                 }
             }
-        isBipartid(b)? std::cout<< "jeeese \n" : std::cout << "shit \n";
+
+        node_array<node> nodeLookup(b);
+        forall_nodes(n, g){
+            nodeLookup[bNodesLeft[n]] = n;
+            nodeLookup[bNodesRight[n]] = n;
+        }
+
+    node_array<bool> NC(b);
+
+
+        if(isBipartid(b)){
+            std::cout << "Bipartid graph created"" \n";
+            list<edge> M = MAX_CARD_BIPARTITE_MATCHING(b, NC);
+            std::cout << "MCB korrekt? "<< CHECK_MCB(b, M,NC) << "\n";
+        }else{
+            std::cout << "something went wrong: graph not bipartid \n";
+            abort();
+        }
+
+
+}
+
+static bool isBipartid(graph& g){
+    //2 is default value for color
+    node_array<int> colors(g, 2);
+    node_array<bool> visited(g, false);
+    node n;
+
+    forall_nodes(n, g){
+        if(colors[n] == 2){
+            if(!colorAdj(n,colors)){
+                return false;
+            }
+       }
+    }
+    return true;
+
+
+}
+
+static bool colorAdj(node& n, node_array<int>& colors){
+    colors[n] = 1;
+    leda_queue<node> q;
+    node adj;
+    q.push(n);
+    while(!q.empty()){
+        node m = q.pop();
+        //std::cout << m->id()+1 << " selected " << colors[m] << "\n";
+
+        forall_adj_nodes(adj, m){
+                if(colors[adj] == 2){
+                    colors[adj] = (colors[m]+1)%2;
+                    std::cout << adj->id()+1 << " assigned " << colors[adj] << "\n";
+                    q.push(adj);
+                }
+                else if(colors[adj] == colors [m]){
+                    return false;
+                }
+            }
+    return true;
     }
 
 }
 
-
-static bool isBipartid(ugraph& g){
-    //2 is default value
-    node_array<int> colors(g, 2);
-    node_array<bool> visited(g, false);
-    node n = g.first_node();
-
-    int recCount = 1, recMax = g.all_nodes().length();
-
-    forall_nodes(n, g){
-            if (!colorAdj(n,colors, visited)) return false;
-        }
-
-    return true;
-
-}
-
-static bool colorAdj(node& n, node_array<int>& colors, node_array<bool>& visited){
-    node m;
-
-   /* if(colors[n] == 2){
-        forall_adj_nodes(m, n){
-                switch (colors[m]){
-                    case 1:
-                        if(colors[n] == 2){
-                            colors[n] = 0;
-                            break;
-
-                        }else if(colors[n] == 0){
-                            break;
-                        }
-                    std::cout<< m->id() +1 <<": "<< colors[m] << n->id() + 1  << ": "<< colors[n]<<"fail\n";
-                        return false;
-
-                    case 0:
-                        if (colors[n] == 2){
-                            colors[n] = 1;
-                            break
-                                    ;
-                        }else if(colors[n] == 1){
-                            break;
-                        }
-                        std::cout<< m->id() +1 <<": "<< colors[m] << n->id() + 1  << ": "<< colors[n]<<"fail\n";
-                        return false;
-
-                    default:
-                        colors[n] = 1;
-                        break;
-                }
-
-            }
-    }*/
-
-    std::cout << "\n\n--" << n->id()+1 <<": "<< colors[n] << "\n\n";
+/*    node m;
+    int tmpColor = 2;
+    visited[n] = true;
+    visitCount ++;
+    std::cout<<visitCount << " " << colors.size() << "\n";
     forall_adj_nodes(m, n){
-            if(colors[n]==1){
-                switch (colors[m]) {
-                    case 2:
-                        colors[m] = 0;
-                        std::cout << m->id()+1 <<": "<< colors[m] << ", ";
-                        return
+        // No Adj node has color yet, do nothing and assign assign color 1 to n
+        std::cout << "comparing" <<n->id() +1 <<" " << colors[n] <<" with " <<m->id() +1 << " " << colors[m]<<"\n";
 
-                    case 1:
-                        std::cout << m->id()+1 <<": "<< colors[m] << ": "<< "FAIL\n";
-                        return false;
+        if(tmpColor != 2 && tmpColor == colors[m] && colors[m] != 2){
+            std::cout << "should end\n\n";
+            return false;
+        }
 
-                    case 0:
-                        std::cout << m->id()+1 <<": "<< colors[m] << ", ";
-                        break;
-                }
-
-            }else if(colors[n]==0){
-                switch (colors[m]){
-                    case 2:
-                        colors[m] = 1;
-                        std::cout << m->id()+1 <<": "<< colors[m] << ", ";
-                        break;
-
-                    case 1:
-                        std::cout << m->id()+1 <<": "<< colors[m] << ", ";
-                        break;
-
-                    case 0:
-                        std::cout << m->id()+1 <<": "<< colors[m] << "FAIL\n";
-                        return false;
-                }
-
-            }
+        else if(colors[m] == 0){
+            std::cout << "tmp becomes " << 1 <<"\n";
+            tmpColor = 1;
+        }
+        else if(colors[m] == 1){
+            std::cout << "tmp becomes " << 0 <<"\n";
+            tmpColor = 0;
 
         }
-    return true;
-}
+    }
+    // color n
+    if(tmpColor == 2){
+        colors[n] = 1;
+        std::cout << "assign " <<n->id()+1 <<" " << colors[n]<< "\n";
+    }else{
+        colors[n] = tmpColor;
+        std::cout << "assign " <<n->id()+1 <<" " << colors[n]<< "\n";
+    }
 
-
+    // look for not visited nodes
+    forall_adj_nodes(m, n) {
+            if (!visited[m]) {
+                std::cout << "look at " << m->id() + 1 << "\n";
+                if (!colorAdj(m, colors, visited, visitCount, g)) {
+                    return false;
+                }
+            }
+    }
+    forall_nodes(m, g) {
+            if (!visited[m]) {
+                std::cout << "look at " << m->id() + 1 << "\n";
+                if (!colorAdj(m, colors, visited, visitCount, g)) {
+                    return false;
+                }
+            }
+        }
+    if(visitCount == colors.size()){
+        std::cout << visitCount << "Works \n";
+        return true;
+    }*/
 
 #endif //BACHELOR_REDUCTION_H

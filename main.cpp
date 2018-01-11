@@ -27,7 +27,7 @@ int main() {
     //Graphen einlesen
 
     ugraph g;
-    string graph = "graphenbsp/g8.gw";
+    string graph = "graphenbsp/g0.gw";
     if (g.read(graph) != 0 ){
         std::cout<< "Konnte " << graph <<" nicht lesen\n";
         return 1;
@@ -35,7 +35,7 @@ int main() {
         std::cout<< graph <<" eingelesen! \n";
     }
     // Start Programm
-    int k = 2;
+    int k = 4;
     list<list<node>> allVCs;
     vertex_cover(g, k, allVCs);
     std::cout << "-------------------------------------------\n";
