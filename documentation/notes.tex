@@ -1,0 +1,175 @@
+\documentclass[a4paper]{article}
+\usepackage{ngerman}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{hyperref}
+\lstset{
+  numbers=left,
+  stepnumber=1,    
+  firstnumber=0,
+  numberfirstline=true
+}
+
+\usepackage[latin9]{inputenc}
+\usepackage[T1]{fontenc}
+\begin{document}
+\title{Bachelorabeit\\ Untersuchung von Datenreduktionsregeln beim  Kontenüberdeckungsproblem}
+\author{Benedikt Lüken-Winkels}
+\maketitle
+\tableofcontents
+\part{TODO}
+
+\section{Implementierung}
+\begin{itemize}
+\item Maximal- und Maximummatching implementieren mcb\_matching.html
+\item bipartiden Graphen erkennen
+\end{itemize}
+\section{Vorabeit}
+\begin{itemize}
+\item Algorithmen in Tex schreiben
+\item KÜ-Algorithmus finden
+\item Andere Algorithmen ausarbeiten
+\end{itemize}
+\part{Idee und Vorgehensweise}
+\section{Thema}
+Reihenfolge von Reduktionsregeln und Einfluss auf Laufzeit von Knotenüberdeckung \\
+Zu prüfen:
+\begin{itemize}
+\item Wie oft feuert welche Regel?
+\item Welche Regeln haben den größten Effekt auf die Graphstruktur?
+\subitem Ist der Graph bipartid
+\item Voraussetzungen für Anwendungen der Regeln
+\subitem Wie sehen Graphen aus, auf die keine Regel anwendbar ist
+\subitem Wie sehen Graphen aus, auf auf die nur eine Regel anwendbar ist (und keine andere)
+\end{itemize}
+\section{Fixed-Parameter-Algorithm}
+\begin{itemize}
+\item NP-schwere Probleme
+\item exponentielle Laufzeit
+\item meist wird auf der Größe der Lösungsmenge parametrisiert
+\item exponentieller Faktor hängt nur von einem Parameter ab
+\item Fixed-Parameter-Algotithms lösen Probleme mit einer Eingabeinstanz der Größe $n$ und parameter $k$ in $f(k)* n^{O(1)}$
+\item Vorteile von FPAs
+\subitem die Lösung ist garantiert optimal
+\subitem die obere Schranke der Komplexität ist beweisbar
+\end{itemize}
+
+\section{Definitionen/Erklärungen}
+\subsection{Regulärer Graph}
+Ein Graph G ist $regul\ddot{a}r$, wenn $\forall x,y \in G:\ Grad(x)=Grad(y)\ (f\ddot{u}r\ x\neq y)$
+\subsection{Dominating Set}
+\begin{equation*}
+G=(V,E),\ nonnegative\ int\ k,\ S \subseteq V, (S:\ |S|\leq k,\ v \in S \vee v\ has\ a\ neighbor\ in\ S)
+\end{equation*}
+
+\subsection{Matching}
+In einem Graphen $G=(V,E)$ ist $M \subseteq E$ ein Matching wenn keine 2 Kanten den selben Knoten haben
+\subsubsection{Maximal Matching}
+\begin{itemize}
+\item  Wenn irgendeine Kante zum Matching $M$ hinzugefügt wird, ist das $M$ kein Matching mehr
+\item $M$ ist keine Teilmenge eines anderen Matchings
+\end{itemize}
+\subsubsection{Maximum (Cardinality) Matching}
+\begin{itemize}
+\item Größte Menge an Kanten 
+\item \emph{matching number} $v(G)$ ist die größe eines Maximum Matchings von $G$ 
+\end{itemize}
+\subsubsection{Perfect/Complete Matching}
+\begin{itemize}
+\item Jeder Knoten ist indiziert in $M$
+\end{itemize}
+\subsection{Independent Set}
+\begin{equation*}
+G=(V,E),\ U \subset V, \forall\ v,\ w \in U: (v,w) \notin E 
+\end{equation*}
+\subsection{Bipartider Graph s19}
+Jeder Knoten ist in genau einem von zwei Teilmengen. Innerhalb einer Teilmenge ist kein Knoten benachbart \\
+Knotenfärbung:
+\begin{lstlisting}[mathescape=true]
+Startknoten n wird Farbe U zugeordnet, dann allen Nachbarn Farbe V
+Wiederhole Vorgang für alle Nachbarn
+Wenn einem Knoten eine Farbe zugeordnet werden soll,
+die eine andere ist, als die, die er hat:
+	return Nicht-Bipartid
+\end{lstlisting}
+\section{Knotenüberdeckung/Vertexcover}
+\begin{equation*}
+G=(V,E),\ nonnegative\ int\ k,\ C \subseteq V,\ (C:\ |C|\leq k,\ each\ edge\ in\ E\ has\ one\ endpoint\ in\ C)
+\end{equation*}
+Es gibt eine Knoteüberdeckung der Größe $k$, wenn es ein Independent Set der Größe $n-k$ gibt s32
+\begin{itemize}
+\item Parametrisierung: s41 (Auswahl der richtigen Parametrisierung)
+\subitem Größe der Menge (k) der zu findenden Knotenüberdeckung
+\subitem Gibt es eine Knotenüberdeckung der Größe $n-k$? ($n$ = |V|) $\rightarrow$ Nicht FPT 
+\end{itemize}
+\subsection{Algorithmus s99}
+\begin{itemize}
+\item Suchbaum, dessen Tiefe durch k begrenzt ist
+\end{itemize}
+\begin{lstlisting}[mathescape=true]
+Branching:
+Knoten x$\in$G, Vertex Cover(G)=C=$\emptyset$, Graph G
+switch($\exists$ x mit Grad(x)):
+	case = 1: C $\cup$ N(x) (kein anderer Branch)
+	case > 4: Branch mit x und N(x)
+	case 2-4 und G regulär:	 Branch mit x und N(x)
+	case 2: verwende degree-two-vertices
+	case 3: verwende degree-three-vertices
+
+Degree-two-vertices:
+N(x)={a,b}
+switch:
+	case N(a)=b: C$\cup${a,b}
+	case N(a)=N(b)=c($\neq$x): C $\cup$ {x,c}
+	case default: Branch mit N(x) und N(a) $\cup$ N(b) 
+	
+Degree-three-vertices:
+N(x)={a,b,c}, d $\in$ G 
+switch:
+	case Dreieck mit {x,a,b}(mehr Dreiecke möglich): 
+		Branch mit N(x) und N(c)
+	case Kreis/Cycle mit {x,a,b,d}:
+		Branch mit N(x) und {x,d}
+	case a,b,c=keine Nachbarn Grad(a)=4:
+		Branch mit N(x) und N(a) und {a} $\cup$ N(b) $\cup$ N(c)
+\end{lstlisting}
+Beispiel aus Algorithms on Trees and Graphs von Gabriel Valiente, Springer-Verlag Berlin Heidelberg 2002, Seite 333
+\section{Graph-Reduktion}
+\begin{itemize}
+\item Einfache Teile des Graphen entfernen, sodass nur der Kern des Problems, bzw seine Schwierigkeit übrig bleibt. s51
+\item Knotenüberdeckung kann für Graphen mit fester Baumbreite effizient gelöst werden s51 
+\item Reduktion der Eingabe auf den Problemkern immer sinnvoll s53
+\end{itemize}
+\subsection{Reduktionsregeln}
+\subsubsection{Einfache Regeln}
+\begin{itemize}
+\item Ein isolierter Knoten ist automatisch in der KÜ s54
+\item Bei einem Knoten des Grades 1 wird der Nachbar automatisch hinzugefügt, da er evtl noch weitere Kantenabdeckt s54
+\item Ein Knoten des Grades k+1 (|Lösungsmenge|$\leq$ k ) wird automatisch hinzugefügt, da sonst k+1 Elemente in der Menge wären s54
+\end{itemize}
+\subsubsection{Nemhauser/Trotter - Regel s64}
+\begin{itemize}
+\item Maximum Matching:
+\subitem Königs Minimax Theorie: Bei bipartiden Graphen ist die Größe des Maximum Matching gleich der Größe der Minimalen Knotenüberdeckung s65
+\subitem Die Maximum Matching ist die Größte unter den gültigen Matchings des Graphen (Wikipedia, Matching)
+\subitem
+\begin{lstlisting}[mathescape=true]
+G = (V, E)
+Bipartiden Graphen erstellen $B = (V, V', E')$
+V' ist Kopie von V
+E':= $ \{\{x,y'\}, \{x', y\} | \{x,y\} \in E\}$
+Maximum Matching $M$ mit mcb_machting bestimmen
+VC(B) = CB mit Satz von König bestimmen (mcb_machting)
+VC(G[V0]) $\cup$ C0 = VC(G)
+
+\end{lstlisting}
+\end{itemize}
+\subsubsection{Kronenregel}
+\begin{itemize}
+\item Veralgemeinerung der Grad 1 Emiminierung $\rightarrow$ einfachste Kronenregel 69
+\item Die Krone eines besteht aus dem \textit{Independent Set I} und $H=N(I)$ mit $H \cap I = \emptyset $ und die Kanten zwischen $I$ und $H$ indizieren (matchen) alle Knoten aus $H$ 69
+\end{itemize}
+Cygan Parameterized Algorithm 
+69
+(255)
+\end{document}
