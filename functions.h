@@ -28,12 +28,214 @@ static void addSelf(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int&
 
 static void addAdj(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& coverCheck, edge_array<bool>& edgeCovered, node& node1);
 
+static void nemTrott (ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& coverCheck, edge_array<bool>& edgeCovered);
+
+static bool colorAdj(node& n, node_array<int>& colors, graph& g);
+
+static bool isBipartid(graph& g);
+
+static bool isBipartid(ugraph& g);
+
+static bool colorAdj(node& n, node_array<int>& colors);
+
+static bool checkVertexCover(ugraph& g, list<list<node>>& allVCs);
 
 
 
 
 
+static void nemTrott (ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& coverCheck, edge_array<bool>& edgeCovered){
 
+    // Bipartiden Graphen erstellen
+    node_array<node> bNodesLeft(g);
+    node_array<node> bNodesRight(g);
+    node_array<bool> C0(g, false);
+    node_array<bool> V0(g, false);
+    list<node> bNodesLeftList, bNodesRightList;
+
+    node n, m;
+
+    graph b;
+
+    // Graphen füllen
+    forall_nodes(n ,g){
+            bNodesLeft[n] = b.new_node();
+            //bNodesLeftList.push(bNodesLeft[n]);
+            std::cout << n->id()+1 <<"= " << bNodesLeft[n]->id()+1 <<"\n";
+            bNodesRight[n] = b.new_node();
+            //bNodesRightList.push(bNodesRight[n]);
+            std::cout << n->id()+1 <<"= " << bNodesRight[n]->id()+1 <<"\n";
+        }
+
+    forall_nodes(n, g){
+            forall_adj_nodes(m, n){
+                    b.new_edge(bNodesLeft[n], bNodesRight[m]);
+                    std::cout << bNodesLeft[n]->id()+1<<" + " << bNodesRight[m]->id()+1 <<"\n";
+                    //b.new_edge(bNodesLeft[m], bNodesRight[n]);
+                    //b.new_edge(bNodesRight[n], bNodesLeft[m]);
+                    //std::cout << bNodesLeft[m]->id()+1<<" + " << bNodesRight[n]->id()+1 <<"\n";
+                }
+        }
+
+    // evtl überflüssig
+    node_array<node> nodeLeftLookup(b, NULL);
+    node_array<node> nodeRightLookup(b, NULL);
+    forall_nodes(n, g){
+            nodeLeftLookup[bNodesLeft[n]] = n;
+            nodeRightLookup[bNodesRight[n]] = n;
+        }
+
+
+    node_array<bool> NC(b);
+
+    // Bipartition überprüfen
+    if(isBipartid(b)){
+        std::cout << "Bipartid graph created"" \n";
+        list<edge> M = MAX_CARD_BIPARTITE_MATCHING(b, NC);
+        std::cout << "MCB korrekt? "<< CHECK_MCB(b, M,NC) << "\n";
+    }else{
+        std::cout << "something went wrong: graph not bipartid \n";
+        abort();
+    }
+
+    forall_nodes(n, b){
+            if(NC[n]){
+                if(nodeLeftLookup[n]!=NULL)std::cout << "Im VC(b) "<< nodeLeftLookup[n]->id() +1 << "\n";
+                else std::cout << "Im VC(b) "<< nodeRightLookup[n]->id() +1 << "\n";
+            }
+        }
+
+    // C0 und V0 erstellen -> VC(V0) U C0 = VC(g)
+    forall_nodes(n, g){
+            // alle C0 in vc aufnehmen
+            if(NC[bNodesLeft[n]] && NC[bNodesRight[n]]){
+                addSelf(g, vc, nodeDegree, coverCheck, edgeCovered, n);
+                C0[n] = true;
+                std::cout << n->id()+ 1 << " in C0 \n";
+            }
+            // V0 nicht markieren -> werden von VC betrachtet
+            else if(NC[bNodesLeft[n]] ^ NC[bNodesRight[n]]){
+                V0[n] = true;
+                std::cout << n->id()+ 1 << " in V0 \n";
+            }
+            // weder in V0, noch in C0 -> nicht mehr betrachten
+            else{
+                nodeDegree[n] = -1;
+            }
+        }
+
+}
+
+static bool checkVertexCover(ugraph& g, list<list<node>>& allVCs){
+    edge e;
+    node n,m;
+
+    forall_edges(e, g){
+            for(auto& nodelist : allVCs){
+
+            }
+        }
+}
+
+// directed Graph
+static bool isBipartid(graph& g){
+    //2 is default value for color
+    node_array<int> colors(g, 2);
+    node_array<bool> visited(g, false);
+    node n;
+
+    forall_nodes(n, g){
+            if(colors[n] == 2){
+                if(!colorAdj(n,colors, g)){
+                    return false;
+                }
+            }
+        }
+    return true;
+}
+
+// directed Graph
+static bool colorAdj(node& n, node_array<int>& colors, graph& g){
+    colors[n] = 1;
+    leda_queue<node> q;
+
+    edge adjEdge;
+    q.push(n);
+    while(!q.empty()){
+        node m = q.pop();
+        std::cout << q.length()<< " in queue \n"<< m->id()+1 << " selected " << colors[m]<<" degree "<< degree(m) << "\n";
+
+        forall_out_edges(adjEdge, m){
+                if(colors[g.target(adjEdge)] == 2){
+                    colors[g.target(adjEdge)] = (colors[m]+1)%2;
+                    std::cout << g.target(adjEdge)->id()+1 << " assigned " << colors[g.target(adjEdge)] << "\n";
+                    //q.append(adj);
+                    q.push(g.target(adjEdge));
+                }
+                else if(colors[g.target(adjEdge)] == colors [m]){
+                    return false;
+                }
+            }
+
+        forall_in_edges(adjEdge, m){
+                if(colors[g.source(adjEdge)] == 2){
+                    colors[g.source(adjEdge)] = (colors[m]+1)%2;
+                    std::cout << g.source(adjEdge)->id()+1 << " assigned " << colors[g.source(adjEdge)] << "\n";
+                    //q.append(adj);
+                    q.push(g.source(adjEdge));
+                }
+                else if(colors[g.source(adjEdge)] == colors [m]){
+                    return false;
+                }
+            }
+    }
+    return true;
+
+}
+
+// undirected Graph
+static bool isBipartid(ugraph& g){
+    //2 is default value for color
+    node_array<int> colors(g, 2);
+    node_array<bool> visited(g, false);
+    node n;
+
+    forall_nodes(n, g){
+            if(colors[n] == 2){
+                if(!colorAdj(n,colors)){
+                    return false;
+                }
+            }
+        }
+    return true;
+}
+
+// undirected Graph
+static bool colorAdj(node& n, node_array<int>& colors){
+    colors[n] = 1;
+    leda_queue<node> q;
+    node adj;
+
+    q.push(n);
+    while(!q.empty()){
+        node m = q.pop();
+        std::cout << q.length()<< " in queue \n"<< m->id()+1 << " selected " << colors[m]<<" degree "<< degree(m) << "\n";
+
+        forall_adj_nodes(adj, m){
+                if(colors[adj] == 2){
+                    colors[adj] = (colors[m]+1)%2;
+                    std::cout << adj->id()+1 << " assigned " << colors[adj] << "\n";
+                    //q.append(adj);
+                    q.push(adj);
+                }
+                else if(colors[adj] == colors [m]){
+                    return false;
+                }
+            }
+    }
+    return true;
+
+}
 
 void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs) {
 // Funktion zum preprocessen und Initialisierung der Rekursion
@@ -41,7 +243,6 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs) {
 // edgeCovered = info, ob die Kante im Vertexcover enthalten ist
 
     node_array<int> nodeDegree(g);
-
     edge_array<bool> edgeCovered(g);
     node n;
     edge e;
@@ -59,11 +260,9 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs) {
             edgeCovered[e] = false;
         }
 
-    //isBipartid(g)? std::cout << "jup \n": std::cout << "nö \n";
+    isBipartid(g)? std::cout << "Bipartid\n": std::cout << "Nicht Bipartid \n";
 
-
-
-    nemTrott(g);
+    nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
 
     //starte Rekursuion
     rec_vertex_cover(g, vc, k, nodeDegree, allVCs, coverCheck, edgeCovered);

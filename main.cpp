@@ -3,12 +3,12 @@
 # include <unistd.h>
 #endif
 #ifdef _WIN32
-# include <direct.h>
 #endif
 
 #include <LEDA/core/string.h>
 #include <LEDA/graph/ugraph.h>
 #include "functions.h"
+#include <LEDA/graph/graph_gen.h>
 
 using namespace leda;
 
@@ -27,15 +27,21 @@ int main() {
     //Graphen einlesen
 
     ugraph g;
-    string graph = "graphenbsp/g0.gw";
+    string graph = "graphenbsp/g9.gw";
     if (g.read(graph) != 0 ){
         std::cout<< "Konnte " << graph <<" nicht lesen\n";
         return 1;
     } else{
         std::cout<< graph <<" eingelesen! \n";
     }
+
+    int i=10000,j=5000;
+
+    random_simple_undirected_graph(g,i,j);
+
+    //g.write("g9.gw");
     // Start Programm
-    int k = 4;
+    int k = 5000;
     list<list<node>> allVCs;
     vertex_cover(g, k, allVCs);
     std::cout << "-------------------------------------------\n";
