@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.23)  12 JAN 2018 08:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.23)  17 JAN 2018 12:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -295,7 +295,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Overfull \hbox (10.87961pt too wide) detected at line 63
+Overfull \hbox (10.87961pt too wide) detected at line 70
 \OML/cmm/m/it/10 G \OT1/cmr/m/n/10 = (\OML/cmm/m/it/10 V; E\OT1/cmr/m/n/10 )\OM
 L/cmm/m/it/10 ;  nonnegative int k;  S \OMS/cmsy/m/n/10 ^^R \OML/cmm/m/it/10 V;
  \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 S \OT1/cmr/m/n/10 :  \OMS/cmsy/m/n/10 j\OML/
@@ -305,12 +305,12 @@ OML/cmm/m/it/10 S \OMS/cmsy/m/n/10 _ \OML/cmm/m/it/10 v has a neighbor in S\OT1
  []
 
 
-Overfull \hbox (50.90634pt too wide) in paragraph at lines 89--90
+Overfull \hbox (50.90634pt too wide) in paragraph at lines 96--97
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-
-Overfull \hbox (55.55531pt too wide) detected at line 98
+[3]
+Overfull \hbox (55.55531pt too wide) detected at line 105
 \OML/cmm/m/it/10 G \OT1/cmr/m/n/10 = (\OML/cmm/m/it/10 V; E\OT1/cmr/m/n/10 )\OM
 L/cmm/m/it/10 ;  nonnegative int k;  C \OMS/cmsy/m/n/10 ^^R \OML/cmm/m/it/10 V;
   \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 C \OT1/cmr/m/n/10 :  \OMS/cmsy/m/n/10 j\OML
@@ -318,35 +318,36 @@ L/cmm/m/it/10 ;  nonnegative int k;  C \OMS/cmsy/m/n/10 ^^R \OML/cmm/m/it/10 V;
 e endpoint in C\OT1/cmr/m/n/10 )
  []
 
-[3]
-Overfull \hbox (28.24823pt too wide) in paragraph at lines 134--135
+[4]
+Overfull \hbox (28.24823pt too wide) in paragraph at lines 141--142
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ] 
  []
 
-[4]
-Overfull \hbox (3.9234pt too wide) in paragraph at lines 162--163
+
+Overfull \hbox (3.9234pt too wide) in paragraph at lines 169--170
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 175.
 [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 175.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 199.
+ [6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 199.
  (./notes.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 175.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 175.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 199.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 199.
 Package rerunfilecheck Info: File `notes.out' has not changed.
 (rerunfilecheck)             Checksum: E74F7F147F7A26A6577C6BA49A1F0D03;1454.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 175.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 199.
  ) 
 Here is how much of TeX's memory you used:
- 6915 strings out of 494860
- 96720 string characters out of 6177601
- 194476 words of memory out of 5000000
+ 6931 strings out of 494860
+ 96939 string characters out of 6177601
+ 197476 words of memory out of 5000000
  10120 multiletter control sequences out of 15000+600000
  14358 words of font info for 37 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 29i,7n,32p,222b,1089s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,7n,32p,222b,1781s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/benedikt/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </hom
 e/benedikt/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/benedi
 kt/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/benedikt/.texm
@@ -360,10 +361,10 @@ pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on notes.pdf (5 pages, 160862 bytes).
+Output written on notes.pdf (6 pages, 163350 bytes).
 PDF statistics:
- 548 PDF objects out of 1000 (max. 8388607)
- 237 compressed objects within 3 object streams
- 69 named destinations out of 1000 (max. 500000)
+ 573 PDF objects out of 1000 (max. 8388607)
+ 259 compressed objects within 3 object streams
+ 85 named destinations out of 1000 (max. 500000)
  177 words of extra memory for PDF output out of 10000 (max. 10000000)
 

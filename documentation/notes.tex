@@ -35,9 +35,16 @@
 Reihenfolge von Reduktionsregeln und Einfluss auf Laufzeit von Knotenüberdeckung \\
 Zu prüfen:
 \begin{itemize}
-\item Wie oft feuert welche Regel?
+\item Eigenschaften des Graphen
+\subitem Wie oft tritt welcher Grad auf
+\subitem $\rightarrow$ Korelation zu Größe der Reduktion 
+
+
+
+
+\item Wie oft feuert welche Regel? $\rightarrow$ Größe der Reduktion
 \item Welche Regeln haben den größten Effekt auf die Graphstruktur?
-\subitem Ist der Graph bipartid
+\item der Graph bipartid
 \item Voraussetzungen für Anwendungen der Regeln
 \subitem Wie sehen Graphen aus, auf die keine Regel anwendbar ist
 \subitem Wie sehen Graphen aus, auf auf die nur eine Regel anwendbar ist (und keine andere)
@@ -145,7 +152,7 @@ Beispiel aus Algorithms on Trees and Graphs von Gabriel Valiente, Springer-Verla
 \begin{itemize}
 \item Ein isolierter Knoten ist automatisch in der KÜ s54
 \item Bei einem Knoten des Grades 1 wird der Nachbar automatisch hinzugefügt, da er evtl noch weitere Kantenabdeckt s54
-\item Ein Knoten des Grades k+1 (|Lösungsmenge|$\leq$ k ) wird automatisch hinzugefügt, da sonst k+1 Elemente in der Menge wären s54
+\item Ein Knoten des Grades k+1 (|Lösungsmenge|$\leq$ k ) wird automatisch hinzugefügt, da sonst k+1 Elemente in der Menge wären s54 PA VL03-F05
 \end{itemize}
 \subsubsection{Nemhauser/Trotter - Regel s64}
 \begin{itemize}
@@ -159,7 +166,7 @@ Bipartiden Graphen erstellen $B = (V, V', E')$
 V' ist Kopie von V
 E':= $ \{\{x,y'\}, \{x', y\} | \{x,y\} \in E\}$
 Maximum Matching $M$ mit mcb_machting bestimmen
-VC(B) = CB mit Satz von König bestimmen (mcb_machting)
+VC(B) = C0 mit Satz von König bestimmen (mcb_machting)
 VC(G[V0]) $\cup$ C0 = VC(G)
 
 \end{lstlisting}
@@ -169,6 +176,23 @@ VC(G[V0]) $\cup$ C0 = VC(G)
 \item Veralgemeinerung der Grad 1 Emiminierung $\rightarrow$ einfachste Kronenregel 69
 \item Die Krone eines besteht aus dem \textit{Independent Set I} und $H=N(I)$ mit $H \cap I = \emptyset $ und die Kanten zwischen $I$ und $H$ indizieren (matchen) alle Knoten aus $H$ 69
 \end{itemize}
+Algorithmus aus PA VL04-F10+F11
+\begin{lstlisting}[mathescape=true]
+G = (V, E)
+M1 := maximal matching von G:
+	M1 := $\emptyset$
+	$\forall$ e $\in$ E:	
+	füge e M1 hinzu
+	Entferne e und N(e)
+O  := nicht gepaarte Knoten in M1
+M2 := maxmimum matching von b = G[O $\cup$ N(O)]
+I  := nicht gepaarte Knoten in M2
+H  := N(I)
+I' := I $\cup$ {$\forall$ u $\in$ O|$\exists$ v$\in$ H (uv $\in$ M2)}
+$\rightarrow$ Jeder Knoten in O, der eine Kante nach H hat UND
+diese Kante muss in M2 sein
+Markiere N(I') $\rightarrow$ Reduzierung um I' $\cup$ H(I')
+\end{lstlisting}
 Cygan Parameterized Algorithm 
 69
 (255)

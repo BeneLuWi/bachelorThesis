@@ -27,7 +27,7 @@ int main() {
     //Graphen einlesen
 
     ugraph g;
-    string graph = "graphenbsp/g9.gw";
+    string graph = "graphenbsp/g14.gw";
     if (g.read(graph) != 0 ){
         std::cout<< "Konnte " << graph <<" nicht lesen\n";
         return 1;
@@ -35,32 +35,15 @@ int main() {
         std::cout<< graph <<" eingelesen! \n";
     }
 
-    int i=10000,j=5000;
+    int i=1000,j=2000;
 
-    random_simple_undirected_graph(g,i,j);
-
-    //g.write("g9.gw");
+    //random_simple_undirected_graph(g,i,j);
+    //g.write("graphenbsp/g14.gw");
     // Start Programm
-    int k = 5000;
+    int k =500;
     list<list<node>> allVCs;
     vertex_cover(g, k, allVCs);
-    std::cout << "-------------------------------------------\n";
 
-    //Ergebnis
-    node n;
-    list<node> it;
-
-    if(allVCs.length()==0){
-        std::cout<<"Keine Knotenüberdeckung gefunden mit |VC|<= "<< k <<"\n";
-    } else{
-        std::cout << allVCs.length()<<" Knotenüberdeckungen gefunden mit |VC|<= "<< k <<": \n";
-        forall(it, allVCs){
-                std::cout << " Länge " << it.length() << ", Knoten: ";
-                forall(n, it){
-                        std::cout << n->id() + 1 << " ";
-                    }
-            }
-    }
 
 
 
