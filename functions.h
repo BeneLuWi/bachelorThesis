@@ -63,7 +63,7 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs) {
             nodeDegree[n] = degree(n);
         }
 
-    g.sort_nodes(nodeDegree);
+    //g.sort_nodes(nodeDegree);
 
     forall_edges(e, g){
             edgeCovered[e] = false;
@@ -71,7 +71,8 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs) {
 
     isBipartid(g)? std::cout << "Bipartid\n": std::cout << "Nicht Bipartid \n";
 
-    //nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
+    //crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
+    nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
     crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
 
 
@@ -467,7 +468,6 @@ static void degree_three_vertex(ugraph& g, list<node>& vc, int& k, node_array<in
 
 }
 
-
 static void nemTrott (ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& coverCheck, edge_array<bool>& edgeCovered){
 
     // Bipartiden Graphen erstellen
@@ -484,17 +484,15 @@ static void nemTrott (ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
     // Graphen füllen
     forall_nodes(n ,g){
             bNodesLeft[n] = b.new_node();
-            //bNodesLeftList.push(bNodesLeft[n]);
-            std::cout << n->id()+1 <<"= " << bNodesLeft[n]->id()+1 <<"\n";
+            //std::cout << n->id()+1 <<"= " << bNodesLeft[n]->id()+1 <<"\n";
             bNodesRight[n] = b.new_node();
-            //bNodesRightList.push(bNodesRight[n]);
-            std::cout << n->id()+1 <<"= " << bNodesRight[n]->id()+1 <<"\n";
+            //std::cout << n->id()+1 <<"= " << bNodesRight[n]->id()+1 <<"\n";
         }
 
     forall_nodes(n, g){
             forall_adj_nodes(m, n){
                     b.new_edge(bNodesLeft[n], bNodesRight[m]);
-                    std::cout << bNodesLeft[n]->id()+1<<" + " << bNodesRight[m]->id()+1 <<"\n";
+                    //std::cout << bNodesLeft[n]->id()+1<<" + " << bNodesRight[m]->id()+1 <<"\n";
                     //b.new_edge(bNodesLeft[m], bNodesRight[n]);
                     //b.new_edge(bNodesRight[n], bNodesLeft[m]);
                     //std::cout << bNodesLeft[m]->id()+1<<" + " << bNodesRight[n]->id()+1 <<"\n";
@@ -554,7 +552,6 @@ static void nemTrott (ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
     std::cout << "Nemhauser-Trotter Reduktion: \n---------------\nProblemkern (=V0): " << kernel << "\nIn der Knotenüberdeckung (=C0): "<< c << "\nNicht mehr zu betrachten: "<<triv<< "\n";
 }
 
-
 static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& coverCheck, edge_array<bool>& edgeCovered){
 
     node n, m;
@@ -570,19 +567,29 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
     node_array<bool> addedToB(g, false);
 
     // Maximal Matching matching1 in g finden
-    std::cout << "M1: \n";
+    //std::cout << "In M1: \n";
     forall_edges(e, g){
-            if(matching1[e] == 0){
+            if(matching1[e] == 0 && !edgeCovered[e]){
                     forall_adj_edges(adjE, g.source(e)){
-                            matching1[adjE] = 2;
+                            if(!edgeCovered[adjE]) {
+                                matching1[adjE] = 2;
+                            }
                         }
                     forall_adj_edges(adjE, g.target(e)){
-                            matching1[adjE] = 2;
+                            if(!edgeCovered[adjE]) {
+                                matching1[adjE] = 2;
+                            }
                         }
                     matching1[e] = 1;
                     //std::cout << g.source(e)->id() +1 <<" - "<< g.target(e)->id()+1 <<"\n";
                     covered[g.source(e)] = 1;
                     covered[g.target(e)] = 1;
+            }
+        }
+    //std::cout << "Nicht In M1: \n";
+    forall_nodes(n, g){
+            if(covered[n] == 0){
+                //std::cout << n->id() + 1 << "\n";
             }
         }
 
@@ -594,7 +601,7 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
 
     // Graphen füllen
     forall_nodes(n ,g){
-            if(covered[n] == 0 && g.degree(n) > 0) {
+            if(covered[n] == 0 && nodeDegree[n] > 0) {
                 unmatchM1[n] = b.new_node();
                 addedToB[n] = true;
                 //std::cout << n->id() + 1 << " nicht in M1. Nachbarn: " << "\n";
@@ -604,7 +611,6 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
                             addedToB[m] = true;
 
                         }
-                        std::cout << m->id() + 1 << "\n";
                     }
             }
         }
@@ -614,7 +620,7 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
     node_array<int> unmatchM2(b, 0);
 
     forall_nodes(n, g){
-            if(covered[n] == 0 && g.degree(n) > 0) {
+            if(covered[n] == 0 && nodeDegree[n] > 0) {
                 forall_adj_nodes(m, n) {
                         b.new_edge(unmatchM1[n], adjUnmatchM1[m]);
 
@@ -631,32 +637,73 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
     if(!isBipartid(b)){
         std::cout << "Graph not Bipartid"<<"\n";
         abort();
-    }else{
-        std::cout << "Graph Bipartid"<<"\n";
     }
 
     edge_array<int> matching2(b, 0);
 
     // Maximum Matching G[O U N(O)]
-    // herausfinden, welche knoten und Kanten nicht getroffen werden => I (= unmatchM2[node] == 0)
+    // herausfinden, welche knoten und Kanten nicht getroffen werden => unmatchM2[node] == 0
     list<edge> m2 = MAX_CARD_BIPARTITE_MATCHING(b);
     for(auto& edge1: m2){
         matching2[edge1] = 1;
+
         unmatchM2[b.source(edge1)] = 1;
         unmatchM2[b.target(edge1)] = 1;
+
+        //std::cout << "In M2: "<< unmatchM1Lookup[b.source(edge1)]->id() + 1<<  " - "<< unmatchM1Lookup[b.target(edge1)]->id() + 1  << "\n";
+
     }
 
     // H(I) finden
     forall_nodes(n, b){
-            if (unmatchM2[n] == 0){
+            //std::cout <<unmatchM2[n] << " " << covered[unmatchM1Lookup[n]] << "\n";
+            // Wenn Knoten nicht in m2 gematcht wird und in O (!!!nicht in N(O)) ist, dann ist er in I
+            if (unmatchM2[n] == 0 && covered[unmatchM1Lookup[n]] == 0){
+
+                //std::cout<< "In I: "<< unmatchM1Lookup[n]->id() + 1 << "\n";
                 // Finde H(I)
                 forall_adj_nodes(m, unmatchM1Lookup[n]){
-                        covered[m] == 2;
+                        if(covered[m] != 0){
+                            covered[m] = 2;
+                            //std::cout << "In H(I): "<< m->id() + 1 << "\n";
+                        }
+
                     }
-                // Finde I...alle I sind in I'
+                // Finde I...packe I in I'
                 covered[unmatchM1Lookup[n]] = 3;
+                //std::cout<< "In I': "<< unmatchM1Lookup[n]->id() + 1 << "\n";
             }
         }
+    int reduktion = 0;
+    // Finde alle n aus O, die eine Kante in M2 haben und
+    for(auto& edge1: m2){
+
+        // Modell: node1 -> node2 (b ist gerichtet)
+        // std::cout<< "Testing:  "<< unmatchM1Lookup[b.source(edge1)]->id() + 1 << covered[unmatchM1Lookup[b.source(edge1)]] <<" - " << unmatchM1Lookup[b.target(edge1)]->id() + 1<< covered[unmatchM1Lookup[b.target(edge1)]] << "\n";
+        // Wenn Kante in M2 UND node1 in O UND node2 in H
+        if(covered[unmatchM1Lookup[b.source(edge1)]] == 0  &&
+           covered[unmatchM1Lookup[b.target(edge1)]] == 2 ){
+
+            // Füge node1 in I'
+            covered[unmatchM1Lookup[b.source(edge1)]] = 3;
+            addAdj(g, vc, nodeDegree, coverCheck,edgeCovered, unmatchM1Lookup[b.source(edge1)]);
+            reduktion++;
+            //std::cout<< "In I': "<< unmatchM1Lookup[b.source(edge1)]->id() + 1 << "\n";
+        }
+
+        // Wenn Kante in M2 UND node2 in O UND node1 in H
+        if(covered[unmatchM1Lookup[b.target(edge1)]] == 0  &&
+           covered[unmatchM1Lookup[b.source(edge1)]] == 2 ){
+
+            // Füge node2 in I'
+            covered[unmatchM1Lookup[b.target(edge1)]] = 3;
+            addAdj(g, vc, nodeDegree, coverCheck,edgeCovered, unmatchM1Lookup[b.target(edge1)]);
+            reduktion++;
+            //std::cout<< "In I': "<< unmatchM1Lookup[b.target(edge1)]->id() + 1 << "\n";
+        }
+    }
+    std::cout << "Reduktion um: "<<reduktion << " Knoten \n";
+
 }
 
 

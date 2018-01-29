@@ -27,7 +27,7 @@ int main() {
     //Graphen einlesen
 
     ugraph g;
-    string graph = "graphenbsp/g14.gw";
+    string graph = "graphenbsp/g15.gw";
     if (g.read(graph) != 0 ){
         std::cout<< "Konnte " << graph <<" nicht lesen\n";
         return 1;
@@ -35,10 +35,10 @@ int main() {
         std::cout<< graph <<" eingelesen! \n";
     }
 
-    int i=1000,j=2000;
+    int i=10000,j=10000;
 
     //random_simple_undirected_graph(g,i,j);
-    //g.write("graphenbsp/g14.gw");
+    //g.write("graphenbsp/g15.gw");
     // Start Programm
     int k =500;
     list<list<node>> allVCs;

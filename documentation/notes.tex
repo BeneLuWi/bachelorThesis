@@ -187,11 +187,15 @@ M1 := maximal matching von G:
 O  := nicht gepaarte Knoten in M1
 M2 := maxmimum matching von b = G[O $\cup$ N(O)]
 I  := nicht gepaarte Knoten in M2
-H  := N(I)
-I' := I $\cup$ {$\forall$ u $\in$ O|$\exists$ v$\in$ H (uv $\in$ M2)}
+I  := $\emptyset$
+while I' $\neq$ I
+	I' := I	
+	H  := N(I)
+	I' := I $\cup$ {$\forall$ u $\in$ O|$\exists$ v$\in$ H (uv $\in$ M2)}
 $\rightarrow$ Jeder Knoten in O, der eine Kante nach H hat UND
 diese Kante muss in M2 sein
-Markiere N(I') $\rightarrow$ Reduzierung um I' $\cup$ H(I')
+Markiere N(I') $\rightarrow$ Reduzierung um I'$\cup$ H = N(I')
+durch Hinzufügen des VC von H
 \end{lstlisting}
 Cygan Parameterized Algorithm 
 69
