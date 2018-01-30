@@ -8,6 +8,7 @@
 #include <iostream>
 #include <LEDA/graph/mcb_matching.h>
 #include <LEDA/core/queue.h>
+#include <vector>
 
 using namespace leda;
 
@@ -31,6 +32,14 @@ static void addAdj(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& 
 
 static void nemTrott (ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& coverCheck, edge_array<bool>& edgeCovered);
 
+static void degreeZero(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& coverCheck, edge_array<bool>& edgeCovered);
+
+static void buss(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& coverCheck, edge_array<bool>& edgeCovered);
+
+static void degreeOne(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& coverCheck, edge_array<bool>& edgeCovered);
+
+static void printStatistics(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& coverCheck, edge_array<bool>& edgeCovered);
+
 static bool colorAdj(node& n, node_array<int>& colors, graph& g);
 
 static bool isBipartid(graph& g);
@@ -46,6 +55,77 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
 
 
 
+static void degreeZero(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& coverCheck, edge_array<bool>& edgeCovered){
+    node n;
+    int reduction = 0;
+    forall_nodes(n ,g){
+            if(nodeDegree[n] == 0){
+                nodeDegree[n] = -1;
+                reduction++;
+            }
+        }
+
+    std::cout << "-----------\nKnoten mit Grad = 0 reduziert: " << reduction << "\n-----------\n";
+}
+
+static void buss(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& coverCheck, edge_array<bool>& edgeCovered, int k){
+    node n;
+    int reduction = 0;
+    forall_nodes(n ,g){
+            if(nodeDegree[n] >= k){
+                addSelf(g, vc, nodeDegree, coverCheck, edgeCovered, n);
+                reduction++;
+            }
+        }
+
+    std::cout << "-----------\nKnoten mit Grad >= k reduziert: " << reduction << "\n-----------\n";
+}
+
+static void degreeOne(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& coverCheck, edge_array<bool>& edgeCovered){
+    node n;
+    int reduction = 0;
+    forall_nodes(n ,g){
+            if(nodeDegree[n] == 1){
+                addAdj(g, vc, nodeDegree, coverCheck, edgeCovered, n);
+                reduction++;
+            }
+        }
+
+    std::cout << "-----------\nKnoten mit Grad = 1 reduziert: " << reduction << "\n-----------\n";
+
+}
+
+static void printStatistics(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& coverCheck, edge_array<bool>& edgeCovered){
+    node n;
+    edge e;
+    std::vector<int> degrees;
+
+    std::cout << "Info über Graphen: \n";
+
+    // Grad 0 Knoten
+    degrees.push_back(0);
+
+    forall_nodes(n, g){
+            while(int(degrees.size()) < g.degree(n)){
+
+                degrees.push_back(0);
+
+            }
+            degrees[g.degree(n)]++;
+        }
+    std::cout << "Gradverteilung der Knoten: \n"
+            "|Grad| Anzahl\n";
+
+    for (int i = 0; i < int(degrees.size()); i++){
+        if(i < 10)std::cout << "|   " << i << "| " << int(degrees[i]) << "\n";
+        if(i > 9)std::cout << "|   " << i << "| " << int(degrees[i]) << "\n";
+
+    }
+
+
+}
+
+
 void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs) {
 // Funktion zum preprocessen und Initialisierung der Rekursion
 // nodeDegree = sortierte Liste aller Knoten und deren Grad
@@ -58,7 +138,9 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs) {
     int coverCheck = 0;
     list<node> vc;
 
-    //init
+    //
+    // Initialisierung
+    //
     forall_nodes(n, g){
             nodeDegree[n] = degree(n);
         }
@@ -69,11 +151,17 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs) {
             edgeCovered[e] = false;
         }
 
-    isBipartid(g)? std::cout << "Bipartid\n": std::cout << "Nicht Bipartid \n";
+    //
+    // Statistiken
+    //
 
-    //crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
-    nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
+    printStatistics(g, vc, nodeDegree, coverCheck, edgeCovered);
+
+
+
     crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
+    nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
+    //crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
 
 
 
@@ -103,7 +191,6 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs) {
     }
     */
 }
-
 
 static void rec_vertex_cover(ugraph& g, list<node>& vc, int& k, node_array<int>& nodeDegree,list<list<node>>& allVCs, int& coverCheck, edge_array<bool>& edgeCovered) {
 // Rekursive Funktion, init und preprocessing durch vertex_cover
@@ -483,28 +570,33 @@ static void nemTrott (ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
 
     // Graphen füllen
     forall_nodes(n ,g){
-            bNodesLeft[n] = b.new_node();
-            //std::cout << n->id()+1 <<"= " << bNodesLeft[n]->id()+1 <<"\n";
-            bNodesRight[n] = b.new_node();
-            //std::cout << n->id()+1 <<"= " << bNodesRight[n]->id()+1 <<"\n";
+            if(nodeDegree[n] > 0) {
+                bNodesLeft[n] = b.new_node();
+                //std::cout << n->id()+1 <<"= " << bNodesLeft[n]->id()+1 <<"\n";
+                bNodesRight[n] = b.new_node();
+                //std::cout << n->id()+1 <<"= " << bNodesRight[n]->id()+1 <<"\n";
+            }
         }
 
     forall_nodes(n, g){
-            forall_adj_nodes(m, n){
-                    b.new_edge(bNodesLeft[n], bNodesRight[m]);
-                    //std::cout << bNodesLeft[n]->id()+1<<" + " << bNodesRight[m]->id()+1 <<"\n";
-                    //b.new_edge(bNodesLeft[m], bNodesRight[n]);
-                    //b.new_edge(bNodesRight[n], bNodesLeft[m]);
-                    //std::cout << bNodesLeft[m]->id()+1<<" + " << bNodesRight[n]->id()+1 <<"\n";
-                }
+            if(nodeDegree[n] > 0) {
+                forall_adj_nodes(m, n) {
+                        if(nodeDegree[m] > 0) {
+                            b.new_edge(bNodesLeft[n], bNodesRight[m]);
+                            //std::cout << bNodesLeft[n]->id()+1<<" + " << bNodesRight[m]->id()+1 <<"\n";
+                        }
+                    }
+            }
         }
 
     // evtl überflüssig
     node_array<node> nodeLeftLookup(b, NULL);
     node_array<node> nodeRightLookup(b, NULL);
     forall_nodes(n, g){
-            nodeLeftLookup[bNodesLeft[n]] = n;
-            nodeRightLookup[bNodesRight[n]] = n;
+            if(nodeDegree[n] > 0) {
+                nodeLeftLookup[bNodesLeft[n]] = n;
+                nodeRightLookup[bNodesRight[n]] = n;
+            }
         }
 
 
@@ -512,44 +604,48 @@ static void nemTrott (ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
 
     // Bipartition überprüfen
     if(isBipartid(b)){
-        std::cout << "Bipartid graph created"" \n";
         list<edge> M = MAX_CARD_BIPARTITE_MATCHING(b, NC);
-        std::cout << "MCB korrekt? "<< CHECK_MCB(b, M,NC) << "\n";
+        if(!CHECK_MCB(b, M,NC)) {
+            std::cout << "something went wrong: Matching not correct\n";
+            abort();
+        }
     }else{
-        std::cout << "something went wrong: graph not bipartid \n";
+        std::cout << "something went wrong: Graph not bipartid \n";
         abort();
     }
-
+    /*
     forall_nodes(n, b){
             if(NC[n]){
                 if(nodeLeftLookup[n]!=NULL)std::cout << "Im VC(b) "<< nodeLeftLookup[n]->id() +1 << "\n";
                 else std::cout << "Im VC(b) "<< nodeRightLookup[n]->id() +1 << "\n";
             }
         }
-
+    */
     int kernel = 0, c = 0, triv = 0;
     // C0 und V0 erstellen -> VC(V0) U C0 = VC(g)
     forall_nodes(n, g){
-            // alle C0 in vc aufnehmen
-            if(NC[bNodesLeft[n]] && NC[bNodesRight[n]]){
-                addSelf(g, vc, nodeDegree, coverCheck, edgeCovered, n);
-                C0[n] = true;
-                std::cout << n->id()+ 1 << " in C0 \n";
-                c++;
-            }
-                // V0 nicht markieren -> werden von VC betrachtet
-            else if(NC[bNodesLeft[n]] ^ NC[bNodesRight[n]]){
-                V0[n] = true;
-                std::cout << n->id()+ 1 << " in V0 \n";
-                kernel++;
-            }
-                // weder in V0, noch in C0 -> nicht mehr betrachten
-            else{
-                nodeDegree[n] = -1;
-                triv++;
+            if(nodeDegree[n] > 0) {
+                // alle C0 in vc aufnehmen
+                if (NC[bNodesLeft[n]] && NC[bNodesRight[n]]) {
+                    addSelf(g, vc, nodeDegree, coverCheck, edgeCovered, n);
+                    C0[n] = true;
+                    //std::cout << n->id() + 1 << " in C0 \n";
+                    c++;
+                }
+                    // V0 nicht markieren -> werden von VC betrachtet
+                else if (NC[bNodesLeft[n]] ^ NC[bNodesRight[n]]) {
+                    V0[n] = true;
+                    //std::cout << n->id() + 1 << " in V0 \n";
+                    kernel++;
+                }
+                    // weder in V0, noch in C0 -> nicht mehr betrachten
+                else {
+                    nodeDegree[n] = -1;
+                    triv++;
+                }
             }
         }
-    std::cout << "Nemhauser-Trotter Reduktion: \n---------------\nProblemkern (=V0): " << kernel << "\nIn der Knotenüberdeckung (=C0): "<< c << "\nNicht mehr zu betrachten: "<<triv<< "\n";
+    std::cout << "Nemhauser-Trotter Reduktion: \n---------------\nProblemkern (=V0): " << kernel << "\nIn die Knotenüberdeckung aufgenommen (=C0): "<< c << "\nDeaktiviert: "<<triv<< "\n";
 }
 
 static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& coverCheck, edge_array<bool>& edgeCovered){
