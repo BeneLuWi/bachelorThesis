@@ -1,0 +1,38 @@
+% $ biblatex auxiliary file $
+% $ biblatex version 2.6 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\entry{paper:1}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {E.~C.~Sewell}{E.~C.~S.}%
+     {Hemanshu~Kaul}{H.~K.}%
+     {}{}%
+     {S.~H.~Jacobson}{S.~H.~J.}}%
+  }
+  \strng{namehash}{ECSSHJHK1}
+  \strng{fullhash}{ECSSHJHK1}
+  \field{sortinit}{E}
+  \field{title}{Reductions for the Stable Set Problem}
+  \field{journaltitle}{Algorithmic Operations Research Vol.6 40–55}
+  \field{year}{2011}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.23)  29 JAN 2018 16:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.23)  1 FEB 2018 11:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -341,11 +341,11 @@ Package rerunfilecheck Info: File `notes.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 203.
  ) 
 Here is how much of TeX's memory you used:
- 6935 strings out of 494860
- 96999 string characters out of 6177601
- 197476 words of memory out of 5000000
- 10120 multiletter control sequences out of 15000+600000
- 14358 words of font info for 37 fonts, out of 8000000 for 9000
+ 6937 strings out of 494860
+ 97024 string characters out of 6177601
+ 196476 words of memory out of 5000000
+ 10121 multiletter control sequences out of 15000+600000
+ 15045 words of font info for 38 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  29i,7n,32p,222b,1781s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/benedikt/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </hom
@@ -355,16 +355,17 @@ f-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/benedikt/.texmf-var/fo
 nts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/benedikt/.texmf-var/fonts/pk/l
 jfour/jknappen/ec/ecbx1440.600pk> </home/benedikt/.texmf-var/fonts/pk/ljfour/jk
 nappen/ec/ecrm1200.600pk> </home/benedikt/.texmf-var/fonts/pk/ljfour/jknappen/e
-c/ecrm1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on notes.pdf (6 pages, 163724 bytes).
+c/ecti1728.600pk> </home/benedikt/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm17
+28.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on notes.pdf (6 pages, 166723 bytes).
 PDF statistics:
- 577 PDF objects out of 1000 (max. 8388607)
- 263 compressed objects within 3 object streams
+ 589 PDF objects out of 1000 (max. 8388607)
+ 267 compressed objects within 3 object streams
  89 named destinations out of 1000 (max. 500000)
  177 words of extra memory for PDF output out of 10000 (max. 10000000)
 
