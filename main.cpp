@@ -33,7 +33,7 @@ int main() {
 
     // DIMACS Graphen einlesen
 
-    list<node> v_list;
+    list<node> v_list; 
     node_array<int> n_label;
     edge_array<int> e_label;
 

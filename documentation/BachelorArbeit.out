@@ -1,1 +1,17 @@
 \BOOKMARK [1][-]{section.1}{Einleitung}{}% 1
+\BOOKMARK [1][-]{section.2}{Knoten\374berdeckungsproblem}{}% 2
+\BOOKMARK [1][-]{section.3}{Graphreduktion}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Parametrisierte Algorithmen}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Einfache Reduktionsregeln}{section.3}% 5
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Grad 0, Grad 1}{subsection.3.2}% 6
+\BOOKMARK [2][-]{subsection.3.3}{Buss}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.4}{Nemhauser/Trotter}{section.3}% 8
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Theorie}{subsection.3.4}% 9
+\BOOKMARK [3][-]{subsubsection.3.4.2}{Implementierung/Umsetzung}{subsection.3.4}% 10
+\BOOKMARK [3][-]{subsubsection.3.4.3}{Ergebnisse}{subsection.3.4}% 11
+\BOOKMARK [2][-]{subsection.3.5}{Kronenregel}{section.3}% 12
+\BOOKMARK [3][-]{subsubsection.3.5.1}{Theorie}{subsection.3.5}% 13
+\BOOKMARK [3][-]{subsubsection.3.5.2}{Implementierung/Umsetzung}{subsection.3.5}% 14
+\BOOKMARK [3][-]{subsubsection.3.5.3}{Ergebnisse}{subsection.3.5}% 15
+\BOOKMARK [1][-]{section.4}{Analyse}{}% 16
+\BOOKMARK [2][-]{subsection.4.1}{Vergleich}{section.4}% 17
