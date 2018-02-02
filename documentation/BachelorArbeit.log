@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.23)  1 FEB 2018 17:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.23)  2 FEB 2018 10:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -816,10 +816,12 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 30.
 
 [2] [3]
+
+LaTeX Warning: Empty bibliography on input line 91.
+
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 93.
- [4]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 93.
- (./BachelorArbeit.aux)
+(./BachelorArbeit.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 93.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 93.
 Package rerunfilecheck Info: File `BachelorArbeit.out' has not changed.
@@ -831,27 +833,26 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 93.
  )
 (\end occurred when \iftrue on line 19 was incomplete) 
 Here is how much of TeX's memory you used:
- 11716 strings out of 494860
- 179229 string characters out of 6177601
+ 11603 strings out of 494860
+ 177222 string characters out of 6177601
  357820 words of memory out of 5000000
- 14904 multiletter control sequences out of 15000+600000
- 15121 words of font info for 38 fonts, out of 8000000 for 9000
+ 14795 multiletter control sequences out of 15000+600000
+ 14435 words of font info for 37 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 35i,6n,45p,928b,945s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 32i,6n,32p,928b,668s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/benedikt/.texmf-v
-ar/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/benedikt/.texmf-var/fonts
-/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/benedikt/.texmf-var/fonts/pk/ljfo
-ur/jknappen/ec/ecrm0900.600pk> </home/benedikt/.texmf-var/fonts/pk/ljfour/jknap
-pen/ec/ecbx0900.600pk> </home/benedikt/.texmf-var/fonts/pk/ljfour/jknappen/ec/e
-crm1000.600pk> </home/benedikt/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.
-600pk> </home/benedikt/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> <
-/home/benedikt/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/be
-nedikt/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on BachelorArbeit.pdf (4 pages, 96760 bytes).
+ar/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/benedikt/.texmf-var/fonts
+/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/benedikt/.texmf-var/fonts/pk/ljfo
+ur/jknappen/ec/ecbx0900.600pk> </home/benedikt/.texmf-var/fonts/pk/ljfour/jknap
+pen/ec/ecrm1000.600pk> </home/benedikt/.texmf-var/fonts/pk/ljfour/jknappen/ec/e
+cbx1000.600pk> </home/benedikt/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.
+600pk> </home/benedikt/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> <
+/home/benedikt/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on BachelorArbeit.pdf (3 pages, 86206 bytes).
 PDF statistics:
- 442 PDF objects out of 1000 (max. 8388607)
- 152 compressed objects within 2 object streams
- 25 named destinations out of 1000 (max. 500000)
+ 396 PDF objects out of 1000 (max. 8388607)
+ 141 compressed objects within 2 object streams
+ 22 named destinations out of 1000 (max. 500000)
  137 words of extra memory for PDF output out of 10000 (max. 10000000)
 

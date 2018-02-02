@@ -33,18 +33,18 @@ int main() {
 
     // DIMACS Graphen einlesen
 
-    list<node> v_list; 
+    list<node> v_list;
     node_array<int> n_label;
     edge_array<int> e_label;
 
     std::filebuf fb;
-    fb.open ("graphenbsp/frb59-26-5.mis",std::ios::in);
+    fb.open ("graphenbsp/frb35-17-1.mis",std::ios::in);
     std::istream is(&fb);
 
     read_dimacs_graph0(is, gdimacs, v_list, n_label, e_label, 0);
 
 
-    string graphLocation = "graphenbsp/g15.gw";
+    string graphLocation = "graphenbsp/g17.gw";
     if (gleda.read(graphLocation) != 0 ){
         std::cout<< "Konnte " << graphLocation <<" nicht lesen\n";
         return 1;
@@ -52,14 +52,14 @@ int main() {
         std::cout<< graphLocation <<" eingelesen! \n";
     }
 
-    int i=10000,j=30000;
+    int i=10000,j=50000;
 
-    //random_simple_undirected_graph(g,i,j);
+    //random_simple_undirected_graph(gleda,i,j);
     //g.write("graphenbsp/g15.gw");
     // Start Programm
-    int k =220;
+    int k =10;
     list<list<node>> allVCs;
-    vertex_cover(gdimacs, k, allVCs);
+    vertex_cover(gleda, k, allVCs);
 
 
     fb.close();

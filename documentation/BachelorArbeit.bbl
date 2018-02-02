@@ -16,22 +16,6 @@
   {}
 \endgroup
 
-\entry{paper:1}{article}{}
-  \name{author}{1}{}{%
-    {{}%
-     {E.~C.~Sewell}{E.~C.~S.}%
-     {Hemanshu~Kaul}{H.~K.}%
-     {}{}%
-     {S.~H.~Jacobson}{S.~H.~J.}}%
-  }
-  \strng{namehash}{ECSSHJHK1}
-  \strng{fullhash}{ECSSHJHK1}
-  \field{sortinit}{E}
-  \field{title}{Reductions for the Stable Set Problem}
-  \field{journaltitle}{Algorithmic Operations Research Vol.6 40–55}
-  \field{year}{2011}
-\endentry
-
 \lossort
 \endlossort
 
