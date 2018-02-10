@@ -95,13 +95,17 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs) {
 
     printStatistics(g, vc, nodeDegree, coverCheck, edgeCovered);
 
-    //degreeZero(g, vc, nodeDegree, coverCheck, edgeCovered);
+    degreeZero(g, vc, nodeDegree, coverCheck, edgeCovered);
     //degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
-    //buss(g, vc, nodeDegree, coverCheck, edgeCovered, k);
-    crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
-    //nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
-    //crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
+    //degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
+    //degreeZero(g, vc, nodeDegree, coverCheck, edgeCovered);
 
+
+    //buss(g, vc, nodeDegree, coverCheck, edgeCovered, k);
+    //crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
+    nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
+    nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
+    crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
     printReductionResults(g, vc, nodeDegree, coverCheck, edgeCovered);
 
 
@@ -514,11 +518,11 @@ static void printReductionResults(ugraph& g, list<node>& vc, node_array<int>& no
     int deaktiviert = 0;
     forall_nodes(n, g){
             if(nodeDegree[n] == -1){
-                cout << n->id() + 1 << "\n";
+                cout << n->id() + 1 << "; ";
                 deaktiviert++;
             }
         }
-    cout << deaktiviert << "/" << g.all_nodes().size();
+    cout << "\n" << deaktiviert << "/" << g.all_nodes().size();
 
 
 
@@ -689,10 +693,17 @@ static void nemTrott (ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
                     kernelString += std::to_string(n->id() +1 ) + "  ";
                     kernel++;
                 }
-                    // weder in V0, noch in C0 -> nicht mehr betrachten
+                    // weder in V0, noch in C0 -> nicht mehr betrachten Und entfernen
                 else {
                     deaktiviert += std::to_string(n->id() + 1)  + "  ";
                     nodeDegree[n] = -1;
+                    // Alle NachbarKnoten des Knotens, um einen Grad kleiner machen
+                    forall_adj_nodes(m, n){
+                            if(nodeDegree[m] > -1){
+                                nodeDegree[m]--;
+                                cout << "Verringert"<< m->id() +1 << "  "<< nodeDegree[m] << "\n";
+                            }
+                        }
                     triv++;
                 }
             }
@@ -708,6 +719,9 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
     edge e, adjE;
     graph b;
 
+    bool giveInfo = false, highDegreeFirst = true;
+
+
     cout << "-----------\nKronenregel:\n";
 
     // matching1: 0 = nicht betrachtet, 1 = in matching1, 2 = deaktiviert
@@ -718,54 +732,63 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
     node_array<int> covered(g, 0);
     node_array<bool> addedToB(g, false);
 
+
+    //
     // Maximal Matching matching1 in g finden
-    std::cout << "In M1: \n";
-    forall_edges(e, g){
-            if(matching1[e] == 0 && !edgeCovered[e]){
-                if((g.degree(g.source(e)) > 2) && (g.degree(g.target(e)) > 2 )) {
+    //
+
+    // zunächst nur Knoten mit Grad > 2
+    if(giveInfo) std::cout << "In M1: \n";
+
+    if(highDegreeFirst) {
+        forall_edges(e, g) {
+                if (matching1[e] == 0 && !edgeCovered[e]) {
+                    if ((g.degree(g.source(e)) > 2) && (g.degree(g.target(e)) > 2)) {
 
 
-                    forall_adj_edges(adjE, g.source(e)) {
-                            if (!edgeCovered[adjE]) {
-                                matching1[adjE] = 2;
+                        forall_adj_edges(adjE, g.source(e)) {
+                                if (!edgeCovered[adjE]) {
+                                    matching1[adjE] = 2;
+                                }
                             }
-                        }
-                    forall_adj_edges(adjE, g.target(e)) {
-                            if (!edgeCovered[adjE]) {
-                                matching1[adjE] = 2;
+                        forall_adj_edges(adjE, g.target(e)) {
+                                if (!edgeCovered[adjE]) {
+                                    matching1[adjE] = 2;
+                                }
                             }
-                        }
-                    matching1[e] = 1;
-                    std::cout << g.source(e)->id() + 1 << " - " << g.target(e)->id() + 1 << "\n";
-                    covered[g.source(e)] = 1;
-                    covered[g.target(e)] = 1;
+                        matching1[e] = 1;
+                        if (giveInfo) std::cout << g.source(e)->id() + 1 << " - " << g.target(e)->id() + 1 << "\n";
+                        covered[g.source(e)] = 1;
+                        covered[g.target(e)] = 1;
+                    }
                 }
             }
-        }
-
-/*
+    }
     forall_edges(e, g){
             if(matching1[e] == 0 && !edgeCovered[e]){
-                    forall_adj_edges(adjE, g.source(e)){
-                            if(!edgeCovered[adjE]) {
-                                matching1[adjE] = 2;
-                            }
+
+                forall_adj_edges(adjE, g.source(e)) {
+                        if (!edgeCovered[adjE]) {
+                            matching1[adjE] = 2;
                         }
-                    forall_adj_edges(adjE, g.target(e)){
-                            if(!edgeCovered[adjE]) {
-                                matching1[adjE] = 2;
-                            }
+                    }
+                forall_adj_edges(adjE, g.target(e)) {
+                        if (!edgeCovered[adjE]) {
+                            matching1[adjE] = 2;
                         }
-                    matching1[e] = 1;
-                    std::cout << g.source(e)->id() +1 <<" - "<< g.target(e)->id()+1 <<"\n";
-                    covered[g.source(e)] = 1;
-                    covered[g.target(e)] = 1;
+                    }
+                matching1[e] = 1;
+                if(giveInfo) std::cout << g.source(e)->id() + 1 << " - " << g.target(e)->id() + 1 << "\n";
+                covered[g.source(e)] = 1;
+                covered[g.target(e)] = 1;
             }
-        }*/
-    std::cout << "Nicht In M1: \n";
+
+        }
+
+    if(giveInfo) std::cout << "Nicht In M1: \n";
     forall_nodes(n, g){
             if(covered[n] == 0){
-                std::cout << n->id() + 1 << "\n";
+                if(giveInfo) std::cout << n->id() + 1 << "\n";
             }
         }
 
@@ -780,7 +803,7 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
             if(covered[n] == 0 && nodeDegree[n] > 0) {
                 unmatchM1[n] = b.new_node();
                 addedToB[n] = true;
-                //std::cout << n->id() + 1 << " nicht in M1. Nachbarn: " << "\n";
+                if(giveInfo) std::cout << n->id() + 1 << " nicht in M1. Nachbarn: " << "\n";
                 forall_adj_nodes(m, n){
                         if(!addedToB[m]) {
                             adjUnmatchM1[m] = b.new_node();
@@ -797,12 +820,14 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
     forall_nodes(n, g){
             if(covered[n] == 0 && nodeDegree[n] > 0) {
                 forall_adj_nodes(m, n) {
-                        b.new_edge(unmatchM1[n], adjUnmatchM1[m]);
 
-                        unmatchM1Lookup[adjUnmatchM1[m]] = m;
+                            b.new_edge(unmatchM1[n], adjUnmatchM1[m]);
 
-                        // evtl überflüssig?
-                        adjUnmatchM1LookUp[adjUnmatchM1[m]] = m;
+                            unmatchM1Lookup[adjUnmatchM1[m]] = m;
+
+                            // evtl überflüssig?
+                            adjUnmatchM1LookUp[adjUnmatchM1[m]] = m;
+
 
                     }
                 unmatchM1Lookup[unmatchM1[n]] = n;
@@ -825,32 +850,38 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
         unmatchM2[b.source(edge1)] = 1;
         unmatchM2[b.target(edge1)] = 1;
 
-        std::cout << "In M2: "<< unmatchM1Lookup[b.source(edge1)]->id() + 1<<  " - "<< unmatchM1Lookup[b.target(edge1)]->id() + 1  << "\n";
+        if(giveInfo) std::cout << "In M2: "<< unmatchM1Lookup[b.source(edge1)]->id() + 1<<  " - "<< unmatchM1Lookup[b.target(edge1)]->id() + 1  << "\n";
 
     }
 
+    int reduktion = 0;
+    int prevVcSize = 0;
     // H(I) finden
     forall_nodes(n, b){
-            //std::cout <<unmatchM2[n] << " " << covered[unmatchM1Lookup[n]] << "\n";
+            if(giveInfo) std::cout <<unmatchM2[n] << " " << covered[unmatchM1Lookup[n]] << "\n";
             // Wenn Knoten nicht in m2 gematcht wird und in O (!!!nicht in N(O)) ist, dann ist er in I
             if (unmatchM2[n] == 0 && covered[unmatchM1Lookup[n]] == 0){
 
-                //std::cout<< "In I: "<< unmatchM1Lookup[n]->id() + 1 << "\n";
+                if(giveInfo) std::cout<< "In I: "<< unmatchM1Lookup[n]->id() + 1 << "\n";
                 // Finde H(I)
                 forall_adj_nodes(m, unmatchM1Lookup[n]){
                         if(covered[m] != 0){
                             covered[m] = 2;
-                            std::cout << "In H(I): "<< m->id() + 1 << "\n";
+                            if(giveInfo) std::cout << "In H(I): "<< m->id() + 1 << "\n";
                         }
 
                     }
-                // Finde I...packe I in I'
+                // Finde I...packe I in I', Deaktiviere I
                 covered[unmatchM1Lookup[n]] = 3;
-                std::cout<< "In I': "<< unmatchM1Lookup[n]->id() + 1 << "\n";
+                if(nodeDegree[unmatchM1Lookup[n]] >= 0){
+                    reduktion++;
+                }
+                nodeDegree[unmatchM1Lookup[n]] = -1;
+                if(giveInfo) std::cout<< "In I: "<< unmatchM1Lookup[n]->id() + 1 << "\n";
             }
         }
-    int reduktion = 0;
-    int prevVcSize = 0;
+
+
     // Finde alle n aus O, die eine Kante in M2 haben und
     for(auto& edge1: m2){
 
@@ -865,7 +896,7 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
             prevVcSize = vc.size();
             addAdj(g, vc, nodeDegree, coverCheck,edgeCovered, unmatchM1Lookup[b.source(edge1)]);
             reduktion += vc.size() - prevVcSize;
-            std::cout<< "In I': "<< unmatchM1Lookup[b.source(edge1)]->id() + 1 << "\n";
+            if(giveInfo) std::cout<< "In I': "<< unmatchM1Lookup[b.source(edge1)]->id() + 1 << "\n";
         }
 
         // Wenn Kante in M2 UND node2 in O UND node1 in H
@@ -877,7 +908,7 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
             prevVcSize = vc.size();
             addAdj(g, vc, nodeDegree, coverCheck,edgeCovered, unmatchM1Lookup[b.target(edge1)]);
             reduktion += vc.size() - prevVcSize;
-            std::cout<< "In I': "<< unmatchM1Lookup[b.target(edge1)]->id() + 1 << "\n";
+            if(giveInfo) std::cout<< "In I': "<< unmatchM1Lookup[b.target(edge1)]->id() + 1 << "\n";
         }
     }
 
@@ -1057,11 +1088,18 @@ static void addSelf(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int&
 // markiert die Kanden und
 // markiert den aktuellen Knoten
 
+    node n;
     if(nodeDegree[node1] != -1) {
 
         vc.append(node1);
         //cout << node1->id() + 1 << " in VC\n";
         nodeDegree[node1] = -1;
+
+        forall_adj_nodes(n, node1){
+                if(nodeDegree[n] > -1){
+                    nodeDegree[n]--;
+                }
+            }
 
         incCoverCheck(g, coverCheck, edgeCovered, node1);
     }
@@ -1072,7 +1110,7 @@ static void addAdj(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& 
 // markiert die Kanten und
 // markiert den aktuellen Knoten
 
-    node n;
+    node n, m;
 
     forall_adj_nodes(n, node1) {
             if(nodeDegree[n] != -1) {
@@ -1080,6 +1118,13 @@ static void addAdj(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, int& 
                 //cout << n->id() + 1 << " in VC\n";
                 nodeDegree[n] = -1;
 
+                // Alle NachbarKnoten des Knoten, der in die Überdeckung aufgenommen wird um einen Grad kleiner machen
+                forall_adj_nodes(m, n){
+                        if(nodeDegree[m] > -1){
+                            nodeDegree[m]--;
+                            //cout << "Verringert"<< m->id() +1 << "  "<< nodeDegree[m] << "\n";
+                        }
+                    }
                 incCoverCheck(g, coverCheck, edgeCovered, n);
             }
         }

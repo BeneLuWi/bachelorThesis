@@ -40,8 +40,10 @@ Was ist Vertex Cover und warum sollte man es reduzieren; Es gibt verschiedene Al
 \end{itemize}
 
 \section{Graphreduktion}
+
 \begin{itemize}
 \item Effekt von Graphreduktionsalgorithmen auf die Problemkomplexität
+\item Kategorisierung der Regeln?
 \item Bewertungskriterien für einen GRalgorithmus
 	\begin{itemize}
 	\item Laufzeit (Parametrisierung)
@@ -80,9 +82,15 @@ Selbsterlklärend
 \subsubsection{Theorie}
 
 \subsubsection{Implementierung/Umsetzung}
-
+\begin{itemize}
+\item Das Ergebnis wird besser, wenn für das beim Erstellen des greedy Matchings zunächst hochgradige Knoten, beziehungsweise Kanten eine Kante $e$ mit Endpunkten $a$ und $b$ mit $Grad(a) > 2$ und $Grad(b) > 2$ betrachtet werden. -> Tabelle mit Werten Einfügen (Ergebnis der Kronenregel)
+\end{itemize}
 \subsubsection{Ergebnisse}
 Relevant, wie das Matching geformt wird. 
+Testsets:
+http://www.hlt.utdallas.edu/~vgogate/uai14-competition/problems.html
+http://genoweb.toulouse.inra.fr/~degivry/evalgm/
+
 \section{Analyse}
 
 \subsection{Vergleich}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.23)  2 FEB 2018 10:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.23)  6 FEB 2018 14:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -817,19 +817,19 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 
 [2] [3]
 
-LaTeX Warning: Empty bibliography on input line 91.
+LaTeX Warning: Empty bibliography on input line 93.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 93.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 93.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 95.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 95.
 (./BachelorArbeit.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 93.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 93.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 95.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 95.
 Package rerunfilecheck Info: File `BachelorArbeit.out' has not changed.
 (rerunfilecheck)             Checksum: 645DBE513C2605B7DD354051E61CA6BC;1105.
 Package logreq Info: Writing requests to 'BachelorArbeit.run.xml'.
 \openout1 = `BachelorArbeit.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 93.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 95.
  )
 (\end occurred when \iftrue on line 19 was incomplete) 
 Here is how much of TeX's memory you used:
@@ -848,11 +848,13 @@ pen/ec/ecrm1000.600pk> </home/benedikt/.texmf-var/fonts/pk/ljfour/jknappen/ec/e
 cbx1000.600pk> </home/benedikt/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.
 600pk> </home/benedikt/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> <
 /home/benedikt/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on BachelorArbeit.pdf (3 pages, 86206 bytes).
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on BachelorArbeit.pdf (3 pages, 104868 bytes).
 PDF statistics:
- 396 PDF objects out of 1000 (max. 8388607)
- 141 compressed objects within 2 object streams
+ 410 PDF objects out of 1000 (max. 8388607)
+ 147 compressed objects within 2 object streams
  22 named destinations out of 1000 (max. 500000)
  137 words of extra memory for PDF output out of 10000 (max. 10000000)
 
