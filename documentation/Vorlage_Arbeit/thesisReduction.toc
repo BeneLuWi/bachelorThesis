@@ -1,0 +1,29 @@
+\select@language {ngerman}
+\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Problemstellung}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Zielsetzung}{1}{section.1.3}
+\contentsline {section}{\numberline {1.4}Gliederung/Aufbau der Arbeit}{2}{section.1.4}
+\contentsline {chapter}{\numberline {2}Grundlagen}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Knoten\IeC {\"u}berdeckung}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Nemhauser-Trotter Reduktionsregeln}{3}{section.2.2}
+\contentsline {section}{\numberline {2.3}Kronenregel}{3}{section.2.3}
+\contentsline {section}{\numberline {2.4}Einfache Reduktionsregeln}{3}{section.2.4}
+\contentsline {section}{\numberline {2.5}State of the Art}{3}{section.2.5}
+\contentsline {chapter}{\numberline {3}Analyse}{4}{chapter.3}
+\contentsline {section}{\numberline {3.1}Anforderungen}{4}{section.3.1}
+\contentsline {section}{\numberline {3.2}Weiterer Abschnitt}{4}{section.3.2}
+\contentsline {section}{\numberline {3.3}Zusammenfassung}{5}{section.3.3}
+\contentsline {chapter}{\numberline {4}Entwurf / Konzeption}{6}{chapter.4}
+\contentsline {section}{\numberline {4.1}Abschnitt 1}{6}{section.4.1}
+\contentsline {section}{\numberline {4.2}Abschnitt 2}{6}{section.4.2}
+\contentsline {section}{\numberline {4.3}Zusammenfassung}{6}{section.4.3}
+\contentsline {chapter}{\numberline {5}Implementierung}{7}{chapter.5}
+\contentsline {section}{\numberline {5.1}Abschnitt 1}{7}{section.5.1}
+\contentsline {section}{\numberline {5.2}Abschnitt 2}{7}{section.5.2}
+\contentsline {chapter}{\numberline {6}Evaluation}{8}{chapter.6}
+\contentsline {section}{\numberline {6.1}Abschnitt 1}{8}{section.6.1}
+\contentsline {section}{\numberline {6.2}Abschnitt 2}{8}{section.6.2}
+\contentsline {section}{\numberline {6.3}Zusammenfassung}{8}{section.6.3}
+\contentsline {chapter}{\numberline {7}Diskussion und Ausblick}{9}{chapter.7}
+\contentsline {chapter}{Literaturverzeichnis}{10}{section*.5}
