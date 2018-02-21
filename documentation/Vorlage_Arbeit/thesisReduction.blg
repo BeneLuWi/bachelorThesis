@@ -13,44 +13,44 @@ A level-1 auxiliary file: src/fazit.aux
 The style file: itmabbrv.bst
 A level-1 auxiliary file: src/erklaerung.aux
 Database file #1: thesis.bib
-You've used 12 entries,
+You've used 4 entries,
             2758 wiz_defined-function locations,
-            656 strings with 5972 characters,
-and the built_in function-call counts, 4716 in all, are:
-= -- 453
-> -- 239
-< -- 12
-+ -- 75
-- -- 92
-* -- 277
-:= -- 777
-add.period$ -- 38
-call.type$ -- 12
-change.case$ -- 63
-chr.to.int$ -- 12
-cite$ -- 12
-duplicate$ -- 202
-empty$ -- 328
-format.name$ -- 95
-if$ -- 982
+            612 strings with 5173 characters,
+and the built_in function-call counts, 1252 in all, are:
+= -- 117
+> -- 52
+< -- 4
++ -- 16
+- -- 18
+* -- 61
+:= -- 221
+add.period$ -- 15
+call.type$ -- 4
+change.case$ -- 18
+chr.to.int$ -- 4
+cite$ -- 4
+duplicate$ -- 53
+empty$ -- 97
+format.name$ -- 22
+if$ -- 253
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 11
-newline$ -- 65
-num.names$ -- 38
-pop$ -- 91
+missing$ -- 5
+newline$ -- 26
+num.names$ -- 12
+pop$ -- 30
 preamble$ -- 1
-purify$ -- 86
+purify$ -- 26
 quote$ -- 0
-skip$ -- 215
+skip$ -- 51
 stack$ -- 0
-substring$ -- 161
-swap$ -- 51
-text.length$ -- 12
-text.prefix$ -- 11
+substring$ -- 29
+swap$ -- 4
+text.length$ -- 4
+text.prefix$ -- 4
 top$ -- 0
-type$ -- 98
+type$ -- 32
 warning$ -- 0
-while$ -- 38
-width$ -- 14
-write$ -- 154
+while$ -- 9
+width$ -- 5
+write$ -- 54

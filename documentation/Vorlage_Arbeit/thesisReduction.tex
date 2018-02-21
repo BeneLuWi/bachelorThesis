@@ -20,7 +20,7 @@
 \usepackage[numbers,sort&compress]{natbib}
 % \usepackage{varioref}
 % \usepackage{verbatim}
-% \usepackage{float}    %z.B. \floatstyle{ruled}\restylefloat{figure}
+\usepackage{float}    %z.B. \floatstyle{ruled}\restylefloat{figure}
 % \usepackage{subfigure}
 % \usepackage{fancybox} % für schattierte,ovale Boxen etc.
 % \usepackage{tabularx} % automatische Spaltenbreite
@@ -33,10 +33,26 @@
 %% Informationen für die PDF-Datei
 \hypersetup{
  pdfauthor={Benedikt Lüken-Winkels},
- pdftitle={Bachelorarbeit_1138844_s4beluek}
+ pdftitle={Bachelorarbeit_1138844_s4beluek},
  pdfsubject={Graphreduktionsregeln},
  pdfkeywords={Graphreduktionsregeln, Knotenüberdeckung, Bachelorarbeit}
 }
+
+%%Eigene Includes
+
+%Codepaket
+\usepackage{listings}
+\lstset{
+  numbers=left,
+  stepnumber=1,    
+  firstnumber=0,
+  numberfirstline=true
+}
+
+%Mathematikumgebungen
+\usepackage{amsmath,amsthm,amssymb}
+
+\usepackage{threeparttable}
 
 % Macros, nicht unbedingt notwendig
 \input{macros}

@@ -9,18 +9,18 @@
 \BOOKMARK [1][-]{section.2.2}{2.2 Nemhauser-Trotter Reduktionsregeln}{chapter.2}% 9
 \BOOKMARK [1][-]{section.2.3}{2.3 Kronenregel}{chapter.2}% 10
 \BOOKMARK [1][-]{section.2.4}{2.4 Einfache Reduktionsregeln}{chapter.2}% 11
-\BOOKMARK [1][-]{section.2.5}{2.5 State of the Art}{chapter.2}% 12
-\BOOKMARK [0][]{chapter.3}{3 Analyse}{}% 13
-\BOOKMARK [1][-]{section.3.1}{3.1 Anforderungen}{chapter.3}% 14
-\BOOKMARK [1][-]{section.3.2}{3.2 Weiterer Abschnitt}{chapter.3}% 15
-\BOOKMARK [1][-]{section.3.3}{3.3 Zusammenfassung}{chapter.3}% 16
-\BOOKMARK [0][]{chapter.4}{4 Entwurf / Konzeption}{}% 17
-\BOOKMARK [1][-]{section.4.1}{4.1 Abschnitt 1}{chapter.4}% 18
-\BOOKMARK [1][-]{section.4.2}{4.2 Abschnitt 2}{chapter.4}% 19
-\BOOKMARK [1][-]{section.4.3}{4.3 Zusammenfassung}{chapter.4}% 20
-\BOOKMARK [0][]{chapter.5}{5 Implementierung}{}% 21
-\BOOKMARK [1][-]{section.5.1}{5.1 Abschnitt 1}{chapter.5}% 22
-\BOOKMARK [1][-]{section.5.2}{5.2 Abschnitt 2}{chapter.5}% 23
+\BOOKMARK [0][]{chapter.3}{3 Analyse}{}% 12
+\BOOKMARK [1][-]{section.3.1}{3.1 Anforderungen}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.2}{3.2 Bewertung der Reduktionsregeln}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.3}{3.3 Anwendung der Reduktionsregeln}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.4}{3.4 Interpretation der Ergebnisse}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.5}{3.5 Zusammenfassung}{chapter.3}% 17
+\BOOKMARK [0][]{chapter.4}{4 Entwurf / Konzeption}{}% 18
+\BOOKMARK [1][-]{section.4.1}{4.1 Abschnitt 1}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.2}{4.2 Abschnitt 2}{chapter.4}% 20
+\BOOKMARK [1][-]{section.4.3}{4.3 Zusammenfassung}{chapter.4}% 21
+\BOOKMARK [0][]{chapter.5}{5 Implementierung}{}% 22
+\BOOKMARK [1][-]{section.5.1}{5.1 Kronenregel}{chapter.5}% 23
 \BOOKMARK [0][]{chapter.6}{6 Evaluation}{}% 24
 \BOOKMARK [1][-]{section.6.1}{6.1 Abschnitt 1}{chapter.6}% 25
 \BOOKMARK [1][-]{section.6.2}{6.2 Abschnitt 2}{chapter.6}% 26
