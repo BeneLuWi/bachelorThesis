@@ -106,7 +106,7 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs, std::ofstream &re
         while(prev != vc.length()) {
             prev = vc.length();
 
-            degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
+            //degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
             //buss(g, vc, nodeDegree, coverCheck, edgeCovered, k);
             //crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
             //nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
@@ -144,7 +144,7 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs, std::ofstream &re
             //degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
             //buss(g, vc, nodeDegree, coverCheck, edgeCovered, k);
             //crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
-            nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
+            //nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
 
 
             degreeZero(g, vc, nodeDegree, coverCheck, edgeCovered);
@@ -157,6 +157,7 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs, std::ofstream &re
 
 
     }
+
     /*
     while(prev != vc.length()) {
         prev = vc.length();
@@ -229,6 +230,10 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs, std::ofstream &re
         }
 
     result << g.all_edges().length() << delim << deaktiviert << delim << iterations1<< delim << iterations2 << delim << iterations3 << delim << iterations4 << "\n";
+
+    allVCs.append(vc);
+
+    //cout << checkVertexCover(g, allVCs)<< "-----------\n";
 
     //starte Rekursuion für Knotenüberdeckung
     /*rec_vertex_cover(g, vc, k, nodeDegree, allVCs, coverCheck, edgeCovered);
@@ -635,10 +640,10 @@ static void printReductionResults(ugraph& g, list<node>& vc, node_array<int>& no
     cout << "-----------\nReduktion insgesamt:\n"
          << "Knoten in VC: " << std::to_string(vc.size()) << "\n";
 
-    for(auto& node1 : vc){
+    /*for(auto& node1 : vc){
         cout << node1->id() + 1 << " ";
     }
-
+*/
 
 
     cout << "\nKnoten deaktiviert: ";
@@ -646,12 +651,17 @@ static void printReductionResults(ugraph& g, list<node>& vc, node_array<int>& no
     int deaktiviert = 0;
     forall_nodes(n, g){
             if(nodeDegree[n] == -1){
-                cout << n->id() + 1 << "; ";
+                //cout << n->id() + 1 << "; ";
                 deaktiviert++;
             }
         }
-    cout << "\n" << deaktiviert << "/" << g.all_nodes().size();
+    cout << "\n" << deaktiviert << "/" << g.all_nodes().size()<<"\n";
 
+    forall_nodes(n, g){
+            if(nodeDegree[n] != -1){
+                cout << "Knoten " << n->id() + 1<< " Tatsächlicher Grad" <<g.degree(n) << " Nach Reduktion:" << nodeDegree[n]<<"\n";
+            }
+        }
 
 
 }
@@ -757,9 +767,9 @@ static void nemTrott (ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
     forall_nodes(n ,g){
             if(nodeDegree[n] > 0) {
                 bNodesLeft[n] = b.new_node();
-                // if(giveInfo) cout << n->id()+1 <<"= " << bNodesLeft[n]->id()+1 <<"\n";
+                if(giveInfo) cout << n->id()+1 <<"= " << bNodesLeft[n]->id()+1 <<"\n";
                 bNodesRight[n] = b.new_node();
-                // if(giveInfo) cout << n->id()+1 <<"= " << bNodesRight[n]->id()+1 <<"\n";
+                if(giveInfo) cout << n->id()+1 <<"= " << bNodesRight[n]->id()+1 <<"\n";
             }
         }
 
@@ -768,7 +778,8 @@ static void nemTrott (ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
                 forall_adj_nodes(m, n) {
                         if(nodeDegree[m] > 0) {
                             b.new_edge(bNodesLeft[n], bNodesRight[m]);
-                            // if(giveInfo) cout << bNodesLeft[n]->id()+1<<" + " << bNodesRight[m]->id()+1 <<"\n";
+                            b.new_edge(bNodesRight[m], bNodesLeft[n]);
+                            if(giveInfo) cout << bNodesLeft[n]->id()+1<<" + " << bNodesRight[m]->id()+1 <<"\n";
                         }
                     }
             }
@@ -815,7 +826,7 @@ static void nemTrott (ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
                 if (NC[bNodesLeft[n]] && NC[bNodesRight[n]]) {
                     addSelf(g, vc, nodeDegree, coverCheck, edgeCovered, n);
                     C0[n] = true;
-                    // if(giveInfo) cout << n->id() + 1 << " in C0 \n";
+                    if(giveInfo) cout << n->id() + 1 << " in C0 \n";
                     c++;
                 }
                     // V0 nicht markieren -> werden von VC betrachtet
@@ -851,7 +862,7 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
     edge e, adjE;
     graph b;
 
-    bool giveInfo = false, highDegreeFirst = true;
+    bool giveInfo = true, highDegreeFirst = true;
 
 
     if(giveInfo) cout << "-----------\nKronenregel:\n";
@@ -897,13 +908,13 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
             sumDegrees  += degrees[i] * i;
             sumNodes += degrees[i];
         }
-        int limit = 0;
+        int limit = 1;
         if(sumNodes != 0) {
             limit = sumDegrees / sumNodes;
         }
         forall_edges(e, g) {
                 if (matching1[e] == 0 && !edgeCovered[e]) {
-                    if ((nodeDegree[g.source(e)] > limit) && (nodeDegree[g.target(e)] > limit)) {
+                    if ((nodeDegree[g.source(e)] = limit) && (nodeDegree[g.target(e)] = limit)) {
 
 
                         forall_adj_edges(adjE, g.source(e)) {
@@ -948,7 +959,7 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
 
     if(giveInfo)  cout << "Nicht In M1: \n";
     forall_nodes(n, g){
-            if(covered[n] == 0){
+            if(covered[n] == 0 && nodeDegree[n]>0){
                 if(giveInfo)  cout << n->id() + 1 << "\n";
             }
         }
@@ -1082,6 +1093,7 @@ static bool checkVertexCover(ugraph& g, list<list<node>>& allVCs){
     edge e;
     bool result;
     if(allVCs.length() == 0){
+        cout << "Wut\n";
         return false;
     }
 
