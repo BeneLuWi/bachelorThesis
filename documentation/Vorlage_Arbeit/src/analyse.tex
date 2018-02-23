@@ -64,11 +64,11 @@ Um die verwendeten Reduktionsregeln zu bewerten, beziehungsweise zu vergleichen,
 	
 	\hline
 
-	Nemhauser Trotter&$O(k^{3})$&  $\leq 2k$\\
+	Nemhauser-Trotter&$O(k^{3})$&  $\leq 2k$\\
 	Kronenregel&$O(\sqrt{|V|}|E|)$ & $\leq 3k$\\
 	Buss&$O(k|V|)$  & $\leq k^{2}$\\
-	Grad 0&$O(m|V|)\ mit\ m\leq1$& \tnote{*} \\
-	Grad 1&$O(m|V|)\ mit\ m<1$& \tnote{*} \\
+	Grad 0&$O(|V|)$& \tnote{*} \\
+	Grad 1&$O(|V|)$& \tnote{*} \\
 	%Grad 2&$O(n|V|)\ mit\ n\leq1$&\\
 	
 \end{tabular}
@@ -84,9 +84,9 @@ Um die verwendeten Reduktionsregeln zu bewerten, beziehungsweise zu vergleichen,
 
 \end{table}
 
-In Tabelle \ref{tab:liste} stehen die Laufzeiten in der $O$-Notation und erwartete Größe der reduzierten Problemkerns der Nemhauser Trotter Regel \cite[S67]{fixed}, der Kronenregel \cite[S71]{fixed} \cite{manual}, die der Buss Regel \cite[S67]{fixed} und von einfachen Reduktionsregeln (Grad 0 und Grad 1) gegenüber. Die Laufzeiten der einfachen Reduktionsregeln ergeben sich folgt:
+In Tabelle \ref{tab:liste} stehen die Laufzeiten in der $O$-Notation und erwartete Größe der reduzierten Problemkerns der Nemhauser-Trotter-Regel \cite[S67]{fixed}, der Kronenregel \cite[S71]{fixed} \cite{manual}, die der Buss Regel \cite[S67]{fixed} und von einfachen Reduktionsregeln (Grad 0 und Grad 1) gegenüber. Die Laufzeiten der einfachen Reduktionsregeln ergeben sich folgt:
 \begin{proof}
- Sei Graph G = (V,E)
+ $Sei\ Graph\ G = (V,E)$
 	\begin{align*}
   		Grad\ 0-Reduktion\\
   		\underline{1.Fall:}\ |E|=0&\\
@@ -95,17 +95,17 @@ In Tabelle \ref{tab:liste} stehen die Laufzeiten in der $O$-Notation und erwarte
   		\underline{2.Fall:}\ |E|>0&\\
   		&Sobald\ bei\ der\ Iteration\ ein\ Knoten\ mit\ Grad(v)>0\ (v\in V)\ \\
   		&ausgew\ddot{a}hlt\ wird,\ k\ddot{o}nnen\ alle\ Nachbarn\ ignoriert\ werden.\\
-  		&\Rightarrow\ Laufzeit:\ O(m|V|)\ mit\ (m<1)\\
+  		&\Rightarrow\ Laufzeit:\ O(x|V|)\ mit\ (x<1)\\
 	\end{align*}
 \end{proof}
 \begin{proof}
- Sei Graph G = (V,E)
+$Sei\ Graph\ G = (V,E)$
 	\begin{align*}
   		Grad\ 1-Reduktion\\
   		&Sobald\ bei\ der\ Iteration\ ein\ Knoten\ mit\ Grad(v)=1\ (v\in V)\ \\
   		&ausgew\ddot{a}hlt\ wird,\ wird\ der\ Nachbar\ in\ die\ Knotenüberdeckung\\
   		&aufgenommen.\\
-  		&\Rightarrow\ Laufzeit:\ O(m|V|)\ mit\ (m<1)\\
+  		&\Rightarrow\ Laufzeit:\ O(x|V|)\ mit\ (x<1)\\
 	\end{align*}
 \end{proof}
 
@@ -117,9 +117,10 @@ TODO was bringt die Bewertung?
 \label{ch:Analyse:sec:Anwendung}
 %% ==============================
 
-Das Testset an dem die Algorithmen angewandt wurden besteht aus ungerichteten Graphen, die jeweils eine Knotenmenge von 1000 Knoten und eine Kantenanzahl von 1000 bis 10000 (aufsteigend in 200er Schritten) umfassen. Von jeder \emph{Graphklasse}, die sich durch die Kantenmenge auszeichnet gibt es 20 Exemplare. Dadurch entsteht ein Testset von 900 Graphen. Zum Erstellen der Graphen wurde die LEDA-Funktion \lstinline{random_simple_undirected_graph(|V|,|E|)} \cite{manual} verwendet. Da Zufallsgraphen verwendet werden, gibt es keine Vorgabe für den Parameter \emph{k}. Die obere Beschränkung der Kantenmenge (10000) hat sich bei den Tests ergeben, da ab einer bestimmten Dichte, beziehungsweise Knotenanzahl keine Reduktionsregel mehr erfolgreich ist. Dies kann mit der erwarteten Reduktion (siehe Tabelle \ref{tab:liste}) erklärt werden: Je dichter der Graph wird, desto größer wird \emph{k} und sobald $k>\frac{|V|}{2}$ ist, ist bei der Nemhauser Trotter-Regel und somit auch bei den anderen die theoretische Größe des reduzierten Problemkerns größer oder gleich der Menge der Knoten. Daher eignen sich viele Benchmarktests \footnote{http://dimacs.rutgers.edu/pub/challenge/graph/benchmarks/} \footnote{http://sites.nlsde.buaa.edu.cn/~kexu/benchmarks/graph-benchmarks.htm} nicht, was sich bei Testdurchläufen herausstellte. Die Knotenmenge 1000 erwies sich in den Tests als ausreichend hoher Wert, um das Einsetzen der Reduktionsregeln zu beobachten.\\
-Die Reduktionsregeln wurden jeweils solange auf einen Graphen angewandt, bis sich keine Änderungen mehr ergeben haben. Erzielte eine der Regeln eine Reduktion, wurde der gesamte Vorgang wiederholt. Ausgeführt wurden die Experimente auf einem 2.6 GHz, Zweikern, Intel Core i5-3320M mit 8 GB Speicher. In der Tabelle \ref{tab:anwendung} werden die durchschnittliche Anzahl der Anwendungen pro Graph, die durschnittliche Reduktion (Anzahl der Knoten, die aus dem Graphen entfernt wurden), und die durchschnittliche CPU-Zeit, die pro Graph aufgebracht wurde. Die Buss Regel wurde von der Untersuchung ausgeschlossen, da kein Wert für \emph{k} vorliegt, welcher für die Anwendung essentiell ist, während die restlichen Regeln auch ohne diesen Parameter verwendbar sind.\\
-Tabelle \ref{tab:anwendung} spiegelt die erwarteten Werte (\ref{tab:liste}) in soweit wieder, als das die Nemhauser Trotter Regel eine deutlich bessere Reduktion als die Kronenregel erreicht, zumindest, wenn sie isoliert angewandt wird. Dabei werden weniger Durchläufe, allerdings ein höherer Rechenaufwand benötigt. 
+Das Testset an dem die Algorithmen angewandt wurden besteht aus ungerichteten Graphen, die jeweils eine Knotenmenge von 1000 Knoten und eine Kantenanzahl von 1000 bis 10000 (aufsteigend in 200er Schritten) umfassen. Von jeder \emph{Graphklasse}, die sich durch die Kantenmenge auszeichnet gibt es 20 Exemplare. Dadurch entsteht ein Testset von 900 Graphen. Zum Erstellen der Graphen wurde die LEDA-Funktion \lstinline{random_simple_undirected_graph(|V|,|E|)} \cite{manual} verwendet. Da Zufallsgraphen verwendet werden, gibt es keine Vorgabe für den Parameter \emph{k}. Die obere Beschränkung der Kantenmenge (10000) hat sich bei den Tests ergeben, da ab einer bestimmten Dichte, beziehungsweise Knotenanzahl keine Reduktionsregel mehr erfolgreich ist, beziehungsweise keine Änderung am eingegebenen Graphen mehr erzielte. Dies kann mit der erwarteten Reduktion (siehe Tabelle \ref{tab:liste}) erklärt werden: Je dichter der Graph wird, desto größer wird \emph{k} und sobald $k>\frac{|V|}{2}$ wird, ist bei der Nemhauser-Trotter-Regel und somit auch bei den anderen die theoretische Größe des reduzierten Problemkerns größer oder gleich der Menge der Knoten, was bedeutet, dass theoretisch keine Reduktion stattfinden kann. Daher eignen sich viele Benchmarktests \footnote{http://dimacs.rutgers.edu/pub/challenge/graph/benchmarks/} \footnote{http://sites.nlsde.buaa.edu.cn/~kexu/benchmarks/graph-benchmarks.htm} nicht, da sich diese durch sehr schwere Probleme mit dichten Graphen und Werten für \emph{k}, die sich der Größe der Knotenmenge im jeweiligen Problem annähern, auszeichnen. Eine Knotenmenge von 1000 Knoten pro Graph für das Testset erwies sich bei der Anwendung als ausreichend hoher Wert, um das Einsetzen der Reduktionsregeln zu beobachten.\\
+Die Reduktionsregeln wurden jeweils solange auf einen Graphen angewandt, bis sich keine Änderungen mehr ergeben haben. Erzielte mindestens eine der Regeln eine Reduktion, wurde der gesamte Vorgang wiederholt. In der Anwendung sorgte dies dafür, dass für manche Regeln einige weitere Iterationen mögich wurden. In Tabelle \ref{tab:crownSpecial} kann man diesen Effekt beobachten. Die Anwendung der Grad$_{1}$-Regel nach der Kronenregel sorgte dafür, dass bei Graph$_{1}$ 3 und bei Graph$_{2}$ sogar 5 weitere Iterationen der Kronenregel eine Reduktion erzielten.
+ Ausgeführt wurden die Experimente auf einem 2.6 GHz, Zweikern, Intel Core i5-3320M mit 8 GB Arbeitsspeicher. In der Tabelle \ref{tab:anwendung} werden die durchschnittliche Anzahl der Anwendungen pro Graph, die durschnittliche Reduktion (Anzahl der Knoten, die aus dem Graphen entfernt wurden), und die durchschnittliche CPU-Zeit, die pro Graph aufgebracht wurde. Die Buss Regel wurde von der Untersuchung ausgeschlossen, da kein Wert für \emph{k} vorliegt, welcher für deren Anwendung essentiell ist, während die restlichen Regeln auch ohne diesen Parameter verwendbar sind.\\
+Tabelle \ref{tab:anwendung} spiegelt die erwarteten Werte (\ref{tab:liste}) in soweit wieder, als das die Nemhauser-Trotter-Regel eine deutlich bessere Reduktion als die Kronenregel erreicht, zumindest, wenn sie isoliert angewandt wird. Dabei werden weniger Durchläufe, allerdings ein höherer Rechenaufwand benötigt.
 
 \begin{table}[htb]
 \caption{Anwendung einzelner Reduktionsregeln\label{tab:anwendung}}
@@ -135,13 +136,13 @@ Tabelle \ref{tab:anwendung} spiegelt die erwarteten Werte (\ref{tab:liste}) in s
 	\multicolumn{1}{c|}{\textbf{Reduktionsregel}} & 
 	\multicolumn{1}{c|}{\textbf{Anwendungen}} & 
 	\multicolumn{1}{c|}{\textbf{Reduktion}} & 
-	\multicolumn{1}{c}{\textbf{CPU-Zeit}} \\ 
+	\multicolumn{1}{c}{\textbf{CPU-Zeit }} \\ 
 	
 	\hline
 
-	Nemhauser Trotter& 0.27 &  50.3 & 0.014\\
-	Kronenregel& 0.46 & 19.77 & 0.005\\
-	Grad 1&1.32 & 99.06 & 0.001\\
+	Nemhauser-Trotter& 0.27 &  50.3 & 0.014s\\
+	Kronenregel& 0.46 & 19.77 & 0.005s\\
+	Grad 1&1.32 & 99.06 & 0.001s\\
 	%Grad 2&$O(n|V|)\ mit\ n\leq1$&\\
 	
 \end{tabular}
@@ -149,9 +150,14 @@ Tabelle \ref{tab:anwendung} spiegelt die erwarteten Werte (\ref{tab:liste}) in s
 \egroup
 
 \end{table}
-Während sich die Reduktion durch die Nemhauser Trotter und die Grad 1 Regel bei der Anwendung an dichteren Graphen, also Graphen mit einer höheren Kantenzahl \cite{dummy}, erwartungsgemäß stetig verringerte, zeigten sich bei der Kronenregel einige Ausnahmen. Wie in Abbildung \ref{fig:crown} zu sehen ist, setzten sich diese deutlich vom Durchschnitt ab. In Tabelle \ref{tab:crownSpecial} werden die drei Graphen mit einer Kantenmenge über (beziehungsweise gleich) 3000 und einer durch die Kronenregel erreichten Reduktion > 480 Knoten betrachtet. Keiner dieser Graphen ist bipartit.
-Bei allen drei Graphen führte die Anwendung der Nemhauser Trotter Regel zu keinerlei nennenswertem Effekt, weder isoliert, noch in Kombination mit den anderen Regeln. Ähnlich verhielt sich zunächst die Grad$_{1}$ Regel, wohingegen die Anwendung in Kombination einen großen Einfluss auf die Reduktion hatte. Kombiniert man die Regeln, scheint die Reihenfolge, in der sie eingesetzt werden schwer ins Gewicht zu fallen. Besonders fiel das bei Graph$_{1}$ (3200 Kanten) auf. Wurde zuerst die Grad$_{1}$ und dann die Kronenregel verwendet, war jeweils lediglich ein Durchlauf (Anwendung) zu beobachten. Die Grad$_{1}$ Regel scheint den Graphen derart zu verändern, als dass kaum Reduktionsmöglichkeiten bei der Kronenregeln übrig bleiben. Betrachtet man dagegen das Ergebnis des Graphen$_{2}$, erzeugte die Anwendung in gerade dieser Reihenfolge eine Lösung des Problems: 1000 von 1000 Konten reduziert, wovon 619 eine Knotenüberdeckung für den Graphen$_{2}$ bilden. Auch hier war die Reihenfolge wieder wichtig, wie man bei der Reduktionsmenge beim entgegengesetzten Experiment (erst Kronenregel, dann Grad$_{1}$ Regel) sieht, wo 858 Knoten entfernt wurden. Bei Graph$_{1}$ und Graph$_{3}$ zeichnet sich der übrig gebliebene Problemkern nach der jeweils größten Reduktion dadurch aus, dass der Großteil der Knoten vom Grad 2 ist. Der Problemkern $G'_{3}$ von Graph$_{3}$ lässt sich in die Knotenmengen $V_{1}$ und $V_{2}$  mit $|V_{1}| = |V_{2}| = 5$ aufteilen. Bis auf die Knoten $v_{1} \in V_{1}$ und $v_{2} \in V_{2}$, welche vom Grad 3 sind, hat jeder andere Knoten in  $G'_{3}$ (durch die vorherige Reduktion) den Grad 2. Für  $v_{1}$ und $v_{2}$ existiert eine Kante $(v_{1}, v_{2})$ in $G'_{3}$, welche die Knotenmengen verbindet. Innerhalb der Knotenmengen existiert einen Zyklus (Kreis) \cite{dummy}, mit ungerader Knotenzahl, woraus sich folgern lässt, dass $G'_{3}$ nicht bipartit ist. Hier ist keine der Reduktionsregeln mehr erfolgreich.
-
+Während sich die Reduktion durch die Nemhauser-Trotter und die Grad 1 Regel bei der Anwendung an dichteren Graphen, also Graphen mit einer höheren Kantenzahl \cite{dummy}, erwartungsgemäß stetig verringerte, zeigten sich bei der Kronenregel einige Ausnahmen. Wie in Abbildung \ref{fig:crown} zu sehen ist, setzten sich diese deutlich vom Durchschnitt ab. In Tabelle \ref{tab:crownSpecial} werden die drei Graphen mit einer Kantenmenge über (beziehungsweise gleich) 3000 und einer durch die Kronenregel erreichten Reduktion > 480 Knoten betrachtet. Keiner dieser Graphen ist bipartit.
+Bei allen drei Graphen führte die Anwendung der Nemhauser-Trotter-Regel zu keinerlei nennenswertem Effekt, weder isoliert, noch in Kombination mit den anderen Regeln. Ähnlich verhielt sich zunächst die Grad$_{1}$-Regel, wohingegen die Anwendung in Kombination einen großen Einfluss auf die Reduktion hatte. Kombiniert man die Regeln, scheint die Reihenfolge, in der sie eingesetzt werden schwer ins Gewicht zu fallen. Besonders fiel das bei Graph$_{1}$ (3200 Kanten) auf. Wurde zuerst die Grad$_{1}$ und dann die Kronenregel verwendet, war jeweils lediglich ein Durchlauf (Anwendung) zu beobachten. Die Grad$_{1}$-Regel scheint den Graphen derart zu verändern, dass die Stuktur keine Reduktion durch die Kronenregeln mehr zulässt. Betrachtet man dagegen das Ergebnis von Graph$_{2}$, erzeugte die Anwendung in gerade dieser Reihenfolge eine Lösung des Problems: 1000 von 1000 Konten reduziert, wovon 619 eine Knotenüberdeckung für Graph$_{2}$ bilden. Auch hier war die Reihenfolge wieder wichtig, wie man bei der Reduktionsmenge beim entgegengesetzten Experiment (erst Kronenregel, dann Grad$_{1}$-Regel) sieht, wo 858 Knoten bei der Reduktion aus dem Graphen entfernt wurden. Bei Graph$_{1}$ und Graph$_{3}$ zeichnet sich der übrig gebliebene Problemkern nach der jeweils größten Reduktion dadurch aus, dass der Großteil der Knoten vom Grad 2 ist. Der Problemkern $G'_{3}$ von Graph$_{3}$, zu sehen in  Abbildung \ref{fig:crownRest}, lässt sich in die Knotenmengen $V_{1}$ und $V_{2}$  mit $|V_{1}| = |V_{2}| = 5$ aufteilen. Bis auf die Knoten $v_{1} \in V_{1}$ und $v_{2} \in V_{2}$, welche vom Grad 3 sind, hat jeder andere Knoten in  $G'_{3}$ durch die vorherige Reduktion den Grad 2. Für  $v_{1}$ und $v_{2}$ existiert eine Kante $(v_{1}, v_{2})$ in $G'_{3}$, welche die Knotenmengen verbindet. Innerhalb der Knotenmengen existiert einen Zyklus (Kreis) \cite{dummy}, mit ungerader Knotenzahl, woraus sich folgern lässt, dass $G'_{3}$ nicht bipartit ist. Hier ist keine der Reduktionsregeln mehr erfolgreich.
+\begin{figure}[htb]
+\centering
+  	{\includegraphics[width=0.3\textwidth]{crownRest.pdf}}
+	\caption{Graph$_{3}$ nach Anwendung von Grad$_{1}$-Regel und Kronenregel.\label{fig:crownRest}}
+\centering
+\end{figure}
 \begin{figure}[htb]
 \centering
   	{\includegraphics[width=\textwidth]{analysisCrown.pdf}}
@@ -180,7 +186,7 @@ Bei allen drei Graphen führte die Anwendung der Nemhauser Trotter Regel zu kein
 	\hline
 		
 	Graph$_{1}$ & Kronenregel& 11 & - & 560\\
-	& Nemhauser Trotter & 1 & - & 4\\
+	& Nemhauser-Trotter & 1 & - & 4\\
 	& Grad$_{1}$ & 1 & - & 18 \\
 	& Grad$_{1}$-Kronenregel & 1 & 1 & 22\\
 	& Kronenregel - Grad$_{1}$ & 14 & 11 & 946\\
@@ -188,7 +194,7 @@ Bei allen drei Graphen führte die Anwendung der Nemhauser Trotter Regel zu kein
 	\hline
 
 	Graph$_{2}$ & Kronenregel & 13 & - & 486\\
-	& Nemhauser Trotter & 1 & - & 6\\
+	& Nemhauser-Trotter & 1 & - & 6\\
 	& Grad$_{1}$ & 2 & - & 40 \\
 	& Grad$_{1}$-Kronenregel & 12 & 13 & 1000\\
 	& Kronenregel - Grad$_{1}$ & 18 & 12 & 858\\
@@ -196,7 +202,7 @@ Bei allen drei Graphen führte die Anwendung der Nemhauser Trotter Regel zu kein
 	\hline	
 	
 	Graph$_{3}$ & Kronenregel & 15 & - &633\\	
-	& Nemhauser Trotter & 1 & - & 4\\
+	& Nemhauser-Trotter & 1 & - & 4\\
 	& Grad$_{1}$ & 2 & - & 46 \\
 	& Grad$_{1}$-Kronenregel & 18 & 11 & 990\\
 	& Kronenregel - Grad$_{1}$ & 15 & 9 & 971\\
@@ -216,7 +222,28 @@ Bei allen drei Graphen führte die Anwendung der Nemhauser Trotter Regel zu kein
 
 \end{table}
 
-Werden die Reduktionsregeln in Kombination angewandt, zeigen sich sowohl durch verschiedene Kombinationen, als auch durch unterschiedliche Reihenfolge  im Ergebnis große Unterschiede.
+Die in Tabelle \ref{tab:anwendung} zusammengefassten Ergebnisse zeigen, dass die Nemhauser-Trotter-Regel in Kombination nicht die Effektivität der Grad$_{1}$ und der Kronenregel hat. Des Weiteren lassen sich eine Reihe von Beobachtungen anstellen.
+\begin{figure}[htb]
+\centering
+  	{\includegraphics[width=0.3\textwidth]{restkrone.pdf}}
+	\caption{Einfache Krone\label{fig:restcrown}}
+\centering
+\end{figure}
+\\
+Da durch die Grad$_{1}$-Regel einfache 1-gradige Knoten, beziehungsweise deren Nachbarn und damit der Kopf einer einfachen Krone, reduziert wird, stellt sie eine vereinfachte Form der Kronenregel dar. Daher sollten intuitiv nach der erschöpfenden Anwendung der Kronenregel kaum Probleminstanzen, bei denen die Grad$_{1}$-Regel erfolgreich ist, übrig bleiben. Wie die Tabelle allerdings zeigt, ist die Kombination beider Regeln im Vergleich zu den anderen Zweierkombination diejenige, die am meißten Knoten aus den Problemgraphen entfernt. Zu dem besseren Ergebnis der Reduktion kommmt hier noch die stark erhöhte durchschnittliche Anwendung pro Graph. Ein Grund hierfür könnte die Auswahl des ersten Matchings in der Kronenregel sein, welches maßgeblich für die darauffolgende Reduktion ist. Eine "einfache" Krone, wie sie in Abbildung \ref{fig:crownRest} zu sehen ist, wird mit großer Wahrscheinlichkeit von der Kronenregel, so wie sie hier verwendet wird, ignoriert. Im Abschnitt \ref{ch:Implementierung:sec:Kronenregel} wird genauer erläutert, warum das der Fall ist: Bei der Anwendung auf das Testset wird die größte Reduktion mit der Kronenregel dann erreicht, wenn bei der Erstellung des Matchings $M_{1}$ zunächt Kanten betrachtet werden, bei denen beide Knoten höhergradig, genauer gesagt einen höheren Grad, als der durchschnittliche Knoten im akutellen Graphen haben. Wäre die abgebildete Krone Teil eines größeren Graphen, kann es sein, dass der Kopf dieser Krone nicht in das Matching $M_{1}$ aufgenommen und so bei der weiteren Reduktion nicht berücksichtigt wird. Die Grad$_{1}$-Regel reduziert demnach jene einfachen Kronen, die von der Kronenregel ignoriert, beziehungsweise nicht erkannt werden. Ändert man nun die Reihenfolge, in der die beiden Regeln angewandt werden, zeigen sich nur minimale Änderungen in der durchschnittlichen Reduktion und der durchschnittlichen Anwendung pro Graph. Das könnte die Vermutung stützen, dass die Grad$_{1}$-Regel und die Kronenregel überwiegend verschiedene Arten von Kronen abdecken, da annähernd gleiche Ergebnisse unabhängig von der Reihenfolge der Regeln erzielt werden. Die Unterschiede in den Ergebnissen zeichnen sich dadurch aus, dass die als Zweites verwendete Regel im Schnitt weniger Anwendungen hat, als wenn sie als Erstes verwendet wird. Für die Kronenregel bedeutet das eine Differenz von 0.42 durchschnittlichen Durchläufen, für die Grad$_{1}$-Regel nur 0.07. Diese 0.07 Grad$_{1}$-Regel-Durchläufe mehr pro Graph verschlechtern allerdings die Gesamtreduktion. Diesen Effekt kann auch bei dem Extrembespiel von Graph${_1}$ in Tabelle \ref{tab:crownSpecial} beobachten, wo der gleiche Effekt eintritt. Es scheint also generell für eine maximale Reduktion von Vorteil zu sein, wenn die Kronenregel vor der Grad$_{1}$-Regel angewandt wird, was die die anderen Beispielen in Tabelle \ref{tab:kombination} wiederum untermalen.\\
+Betrachtet man die Grad$_{1}$-Regel in Kombination mit der Nemhauser-Trotter-Regel sorgt die Reihenfolge zwar für einen Unterschied in der durchschnittlichen Anwendung, allerdings ist das Ergebnis der Redktion identisch. Ein Teil der von der Grad$_{1}$-Regel abgedeckten Reduktion wird auch von der Nemhauser-Trotter-Regel reduziert und anders herum. Die Differenz bei verschiedener Reihenfolge bei der Grad$_{1}$-Regel beträgt 0.2 und bei der NT-Regel 0.26 Iterationen pro Graph, was vermuten lässt, dass die Grad$_{1}$-Regel Bereich des Graphen, den beide abdecken effizienter, mit weniger Durchläufen arbeitet.
+
+Werden Nemhauser-Trotter-Regel, Kronenregel und Grad$_{1}$-Regel in dieser Reihenfolge angewandt, kann im Schnitt die größte Reduktion pro Graph erreicht werden. In Abbildung \ref{fig:trottCrownOne} lassen sich wiederum einige Ausnahmen erkennen. 
+
+
+
+\begin{figure}[htb]
+\centering
+  	{\includegraphics[width=\textwidth]{analysisTrott_Crown_One.pdf}}
+	\caption{Anwendung von Nemhauser-Trotter-Regel, Kronenregel und Grad$_{1}$-Regel.\label{fig:trottCrownOne}}
+\centering
+\end{figure}
+
 
 \begin{table}[htbp]
 \caption{Anwendung kombinierter Reduktionsregeln\label{tab:kombination}}

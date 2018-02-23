@@ -1,5 +1,11 @@
 \begin{thebibliography}{Ummy00}
 
+\bibitem[MeN{\"a}06]{manual}
+K.~Mehlhorn und S.~N{\"a}her.
+\newblock {\em LEDA: A Platform for Combinatorial and Geometric Computing}.
+\newblock Cambridge University Press.
+\newblock 2006.
+
 \bibitem[Nied06]{fixed}
 R.~Niedermeier.
 \newblock {\em Invitation to Fixed-Parameter Algorithms}.
@@ -10,13 +16,6 @@ R.~Niedermeier.
 E.~C. Sewell, S.~H. Jacobson und H.~Kaul.
 \newblock Reductions for the Stable Set Problem.
 \newblock {\em Algorithmic Operations Research Vol.6 40–55}, 2011.
-
-\bibitem[Uhri17]{manual}
-C.~Uhrig.
-\newblock The LEDA User Manual, Version 6.5.
-\newblock \url{http://www.algorithmic-solutions.info/leda_manual/MANUAL.html},
-  2017.
-\newblock Zugriff: 16.02.2018.
 
 \bibitem[Ummy00]{dummy}
 D.~Ummy.
