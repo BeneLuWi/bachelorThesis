@@ -1,0 +1,101 @@
+%% implemen.tex
+%% $Id: implemen.tex 61 2012-05-03 13:58:03Z bless $
+%%
+
+\chapter{Implementierung}
+\label{ch:Implementierung}
+%% ==============================
+
+
+Die Regeln wurden in der Programmiersprache \emph{C++} unter Verwendung der Bibliothek \emph{LEDA} \cite{manual} implementiert. Sie wurden bei der Anwendung jeweils solange wiederholt, bis sich am Graphen keine Änderung mehr ergab. 
+
+%% ==============================
+\section{Kronenregel}
+%% ==============================
+\label{ch:Implementierung:sec:Kronenregel}
+
+Beim Austesten der Kronenregel hat sich gezeigt, dass die Auswahl des Matchings $M_{1}$ im in Kapitel \ref{ch:Grundlagen:sec:Kronenregel} dargestellten Algorithmus das Ergebnis der Reduktion in großem Maße beeinflusst. Wenn also beim Finden von $M_{1}$ zunächst Kanten mit Knoten höheren Grades betrachtet werden, können bessere Ergebnisse in der darauf folgenden Reduktion erzielt werden. Daraufhin wurde untersucht, wie die höhergradigen Knoten, beziehungsweise die dazugehörigen Kanten ausgewählt werden müssen. Zum einen (Tabelle \ref{tab:degreeOR}) wurden Kanten betrachtet, bei denen das Auswahlkriterium auf mindestens einen der Knoten zutrifft, auf der anderen Seite Kanten, bei denen beide Knoten die Bedingung erfüllen (Tabelle \ref{tab:degreeAND}). \emph{Größte Anzahl} und \emph{Durchschnittliche Anzahl} ergeben sich jeweils aus der Menge an Knoten eines bestimmtes Grades. Bei ersterem werden Knoten, deren Grad im aktuellen Graphen am häufigsten vorkommt bevorzugt. Bei letzterem dementsprechend Knoten, deren Grad im aktuellen Graphen dem Durchschnitt entspricht. Diese Werte werden bei jeder Iteration des Algorithmus neu berechnet und passen sich dadurch während der Laufzeit an den Graphen an.\\ 
+Generell wird eine bessere (größere) Reduktion mit der Kronenregel erreicht, wenn beim Machting $M_{1}$ zunächst Kanten betrachtet werden, bei denen die Einschränkung auf beide Knoten zutrifft. Die Reduktionsmenge bei Knoten mit $Grad>2$ erzeugt im Vergleich mit anderen statischen Werten das beste Ergebnis. Dies könnte damit zusammenhängen, dass bei den Graphen, bei denen diese Regel sehr effektiv ist, der durchschnittliche Grad der Knoten 2 ist. Vermutlich erzielt die Bevorzugung des durchschnittlichen Grades das beste Ergebnis, da sich dieser Wert mit jedem Durchlauf verändert.
+
+\begin{table}[htb]
+\caption{Mindestens ein Knoten mit Einschränkung\label{tab:degreeOR}}
+\vspace*{1em}
+\centering
+
+\bgroup
+\def\arraystretch{1.3}%  1 is the default, change whatever you need
+
+\begin{threeparttable}
+
+\begin{tabular}[c]{l|l|l}
+	
+	\multicolumn{1}{c|}{\textbf{Grad der Knoten}} & 
+	\multicolumn{1}{c|}{\textbf{Anwendungen}} & 
+	\multicolumn{1}{c}{\textbf{Reduktion}} \\ 
+	
+	\hline
+
+	keine Einschränkung&0.29&13.04\\
+	>1&0.29 &13.04 \\
+	>2&0.29 &13.22 \\
+	>3& 0.27& 12.92 \\
+	>4& 0.3& 13.71 \\
+	>5& 0.31&13.38 \\
+	Größte Anzahl& 0.32&13.44 \\
+	Durchschnittliche Anzahl& 0.29&12.98 \\
+	
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item \emph{Grad der Knoten} bezieht sich auf die Bedingung für die bevorzugte Auswahl der Kanten für $M_{1}$, bzw. dessen Knoten. \emph{Anwendung} und \emph{Reduktion} stellen jeweils den Durchschnittswert beim gesamten Testset dar.
+\end{tablenotes}
+
+\end{threeparttable}
+
+\egroup
+
+\end{table}
+
+\begin{table}[htb]
+\caption{Beide Knoten mit Einschränkung\label{tab:degreeAND}}
+\vspace*{1em}
+\centering
+
+\bgroup
+\def\arraystretch{1.3}%  1 is the default, change whatever you need
+
+\begin{threeparttable}
+
+\begin{tabular}[c]{l|l|l}
+	
+	\multicolumn{1}{c|}{\textbf{Grad der Knoten}} & 
+	\multicolumn{1}{c|}{\textbf{Anwendungen}} & 
+	\multicolumn{1}{c}{\textbf{Reduktion}} \\ 
+	
+	\hline
+
+	keine Einschränkung&0.29&13.04\\
+	>1&0.36 &15.34 \\
+	>2&0.41 &16.96 \\
+	>3& 0.39& 16.52 \\
+	>4& 0.4 &15.78 \\
+	>5& 0.4 & 15.72\\
+	Größte Anzahl& 0.29 &13.06 \\
+	Durchschnittliche Anzahl& 0.46&19.77 \\
+	
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item \emph{Grad der Knoten} bezieht sich auf die Bedingung für die bevorzugte Auswahl der Kanten für $M_{1}$, bzw. dessen Knoten. \emph{Anwendung} und \emph{Reduktion} stellen jeweils den Durchschnittswert beim gesamten Testset dar.
+\end{tablenotes}
+
+\end{threeparttable}
+
+\egroup
+
+\end{table}
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "thesis"
+%%% End: 
