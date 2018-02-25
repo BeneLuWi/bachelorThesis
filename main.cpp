@@ -27,7 +27,7 @@ int main() {
     //VC(g0,4) = {{n1,n2,n6,n7}, {n1,n4,n5,n6}, {n2,n3,n4,n7}}
 
     std::ofstream result;
-    result.open("Results/analysisCrownGrad1.csv");
+    result.open("Results/special15-2400One.csv");
 
     //
     //Graphen einlesen
@@ -49,7 +49,7 @@ int main() {
     read_dimacs_graph0(is, gdimacs, v_list, n_label, e_label, 0);
 
 
-    string graphLocation = "graphenbsp/Interessant/tests1000_14-3200.gw", location;
+    string graphLocation = "graphenbsp/Interessant/tests1000_15-2400.gw", location;
     if (gleda.read(graphLocation) != 0) {
         std::cout << "Konnte " << graphLocation << " nicht lesen\n";
         return 1;
@@ -92,7 +92,7 @@ int main() {
 
 
     int k =1000, graphcount = 0;
-
+/*
     for (int p = 0; p < 20; p++) {
         int i = 1000;
         for (int j = i; j < 10000; j += (i / 5)) {
@@ -141,10 +141,10 @@ int main() {
          }*/
         //int k =1000; list<list<node>> allVCs; vertex_cover(gleda, k, allVCs, result);
 
-    }
+    //}
 
-    //list<list<node>> allVCs;
-    //vertex_cover(gleda, k, allVCs, result);
+    list<list<node>> allVCs;
+    vertex_cover(gleda, k, allVCs, result);
 
     fb.close();
     result.close();
