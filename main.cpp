@@ -27,7 +27,7 @@ int main() {
     //VC(g0,4) = {{n1,n2,n6,n7}, {n1,n4,n5,n6}, {n2,n3,n4,n7}}
 
     std::ofstream result;
-    result.open("Results/special15-2400One.csv");
+    result.open("Results/special4-7200Crown_One.csv");
 
     //
     //Graphen einlesen
@@ -49,7 +49,7 @@ int main() {
     read_dimacs_graph0(is, gdimacs, v_list, n_label, e_label, 0);
 
 
-    string graphLocation = "graphenbsp/Interessant/tests1000_15-2400.gw", location;
+    string graphLocation = "graphenbsp/Interessant/tests1000_4-7200.gw", location;
     if (gleda.read(graphLocation) != 0) {
         std::cout << "Konnte " << graphLocation << " nicht lesen\n";
         return 1;
