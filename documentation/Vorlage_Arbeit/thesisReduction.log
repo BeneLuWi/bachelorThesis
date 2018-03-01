@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.12.16)  28 FEB 2018 17:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.12.16)  1 MAR 2018 19:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1017,32 +1017,47 @@ File: omsaer.fd 1999/12/27
 )
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 16.
+
+
+pdfTeX warning: pdflatex.exe (file ./img/vertexcoverBsp.pdf): PDF inclusion: fo
+und PDF version <1.7>, but at most version <1.5> allowed
+<img/vertexcoverBsp.pdf, id=171, 317.77924pt x 210.09392pt>
+File: img/vertexcoverBsp.pdf Graphic file (type pdf)
+<use img/vertexcoverBsp.pdf>
+Package pdftex.def Info: img/vertexcoverBsp.pdf  used on input line 25.
+(pdftex.def)             Requested size: 213.39568pt x 141.08595pt.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 24.
+(babel)             in language  on input line 30.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 24.
+(babel)             in language  on input line 30.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 36.
+(babel)             in language  on input line 30.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 36.
+(babel)             in language  on input line 30.
+[1
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1.1}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.30 
+      <./img/vertexcoverBsp.pdf>]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 57.
+(babel)             in language  on input line 32.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 57.
+(babel)             in language  on input line 32.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 41.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 41.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 62.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 62.
 )
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 121.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 121.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 121.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 121.
- [1
-
-
-
-]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 121.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1054,8 +1069,7 @@ Package babel Info: Redefining ngerman shorthand "~
  [2]
 \openout2 = `src/grundlagen.aux'.
 
-
-(./src/grundlagen.tex
+ (./src/grundlagen.tex
 Kapitel 2.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 5.
@@ -1166,36 +1180,36 @@ l.126
 
 pdfTeX warning: pdflatex.exe (file ./img/crownRest.pdf): PDF inclusion: found P
 DF version <1.7>, but at most version <1.5> allowed
-<img/crownRest.pdf, id=217, 481.12248pt x 415.42703pt>
+<img/crownRest.pdf, id=250, 481.12248pt x 415.42703pt>
 File: img/crownRest.pdf Graphic file (type pdf)
 <use img/crownRest.pdf>
 Package pdftex.def Info: img/crownRest.pdf  used on input line 166.
 (pdftex.def)             Requested size: 128.0387pt x 110.55672pt.
-
-
-pdfTeX warning: pdflatex.exe (file ./img/analysisCrown.pdf): PDF inclusion: fou
-nd PDF version <1.7>, but at most version <1.5> allowed
-<img/analysisCrown.pdf, id=218, 753.1829pt x 300.64018pt>
-File: img/analysisCrown.pdf Graphic file (type pdf)
-<use img/analysisCrown.pdf>
-Package pdftex.def Info: img/analysisCrown.pdf  used on input line 172.
-(pdftex.def)             Requested size: 426.79135pt x 170.36205pt.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 176.
+(babel)             in language  on input line 170.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 176.
+(babel)             in language  on input line 170.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 176.
+(babel)             in language  on input line 170.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 176.
+(babel)             in language  on input line 170.
 [6pdfTeX warning (ext4): destination with the same identifier (name{table.3.2})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.176 
+l.170 
       ]
-Overfull \hbox (14.61246pt too wide) in paragraph at lines 186--229
+
+pdfTeX warning: pdflatex.exe (file ./img/analysisCrown.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<img/analysisCrown.pdf, id=259, 753.1829pt x 300.64018pt>
+File: img/analysisCrown.pdf Graphic file (type pdf)
+<use img/analysisCrown.pdf>
+Package pdftex.def Info: img/analysisCrown.pdf  used on input line 173.
+(pdftex.def)             Requested size: 426.79135pt x 170.36205pt.
+
+Overfull \hbox (14.61246pt too wide) in paragraph at lines 187--230
  [] 
  []
 
@@ -1203,110 +1217,110 @@ Overfull \hbox (14.61246pt too wide) in paragraph at lines 186--229
 
 pdfTeX warning: pdflatex.exe (file ./img/restkrone.pdf): PDF inclusion: found P
 DF version <1.7>, but at most version <1.5> allowed
-<img/restkrone.pdf, id=228, 261.47388pt x 153.91702pt>
+<img/restkrone.pdf, id=261, 261.47388pt x 153.91702pt>
 File: img/restkrone.pdf Graphic file (type pdf)
 <use img/restkrone.pdf>
-Package pdftex.def Info: img/restkrone.pdf  used on input line 237.
+Package pdftex.def Info: img/restkrone.pdf  used on input line 238.
 (pdftex.def)             Requested size: 128.0387pt x 75.37067pt.
 
-Overfull \hbox (3.11938pt too wide) in paragraph at lines 234--246
+Overfull \hbox (3.11938pt too wide) in paragraph at lines 235--247
 []\T1/aer/m/n/12 Die in Ta-bel-le []3.4[] zu-sam-men-ge-fass-ten Er-geb-nis-se 
 zei-gen, dass die Nemhauser-Trotter-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 234--246
+Underfull \hbox (badness 10000) in paragraph at lines 235--247
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 234--246
+Underfull \hbox (badness 10000) in paragraph at lines 235--247
 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 246.
+(babel)             in language  on input line 247.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 246.
+(babel)             in language  on input line 247.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 246.
+(babel)             in language  on input line 247.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 246.
+(babel)             in language  on input line 247.
 [7pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.246 
+l.247 
        <./img/crownRest.pdf>]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 246.
+(babel)             in language  on input line 247.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 246.
+(babel)             in language  on input line 247.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 246.
+(babel)             in language  on input line 247.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 246.
+(babel)             in language  on input line 247.
  [8pdfTeX warning (ext4): destination with the same identifier (name{figure.3.2
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.246 
+l.247 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 3.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.246 
+l.247 
        <./img/analysisCrown.pdf> <./img/restkrone.pdf>]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 246.
+(babel)             in language  on input line 247.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 246.
+(babel)             in language  on input line 247.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 246.
+(babel)             in language  on input line 247.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 246.
+(babel)             in language  on input line 247.
  [9pdfTeX warning (ext4): destination with the same identifier (name{table.3.3}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.246 
+l.247 
       ]
 
 pdfTeX warning: pdflatex.exe (file ./img/analysisTrott_Crown_One.pdf): PDF incl
 usion: found PDF version <1.7>, but at most version <1.5> allowed
-<img/analysisTrott_Crown_One.pdf, id=265, 747.90819pt x 290.09076pt>
+<img/analysisTrott_Crown_One.pdf, id=298, 747.90819pt x 290.09076pt>
 File: img/analysisTrott_Crown_One.pdf Graphic file (type pdf)
 <use img/analysisTrott_Crown_One.pdf>
 Package pdftex.def Info: img/analysisTrott_Crown_One.pdf  used on input line 25
-0.
+1.
 (pdftex.def)             Requested size: 426.79135pt x 165.53935pt.
 
-Overfull \hbox (37.06433pt too wide) in paragraph at lines 265--296
+Overfull \hbox (37.06433pt too wide) in paragraph at lines 266--297
  [] 
  []
 
 
-Overfull \hbox (20.0385pt too wide) in paragraph at lines 311--345
+Overfull \hbox (20.0385pt too wide) in paragraph at lines 312--346
  [] 
  []
 
 
-Overfull \hbox (32.17326pt too wide) in paragraph at lines 362--405
+Overfull \hbox (32.17326pt too wide) in paragraph at lines 363--406
  [] 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 411.
+(babel)             in language  on input line 412.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 411.
+(babel)             in language  on input line 412.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 423.
+(babel)             in language  on input line 424.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 423.
+(babel)             in language  on input line 424.
 )
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 123.
@@ -1492,10 +1506,10 @@ Package rerunfilecheck Info: File `thesisReduction.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 171.
  ) 
 Here is how much of TeX's memory you used:
- 10720 strings out of 492985
- 145221 string characters out of 6136283
- 273986 words of memory out of 5000000
- 13906 multiletter control sequences out of 15000+600000
+ 10728 strings out of 492985
+ 145399 string characters out of 6136283
+ 274035 words of memory out of 5000000
+ 13911 multiletter control sequences out of 15000+600000
  47580 words of font info for 96 fonts, out of 8000000 for 9000
  1146 hyphenation exceptions out of 8191
  41i,16n,45p,3040b,975s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1515,10 +1529,10 @@ ublic/amsfonts/cm/cmsy10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsy8.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mti10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
 >
-Output written on thesisReduction.pdf (23 pages, 414769 bytes).
+Output written on thesisReduction.pdf (23 pages, 460943 bytes).
 PDF statistics:
- 405 PDF objects out of 1000 (max. 8388607)
- 349 compressed objects within 4 object streams
- 76 named destinations out of 1000 (max. 500000)
- 197 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 437 PDF objects out of 1000 (max. 8388607)
+ 367 compressed objects within 4 object streams
+ 78 named destinations out of 1000 (max. 500000)
+ 202 words of extra memory for PDF output out of 10000 (max. 10000000)
 
