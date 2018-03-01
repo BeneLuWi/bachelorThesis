@@ -27,7 +27,7 @@ int main() {
     //VC(g0,4) = {{n1,n2,n6,n7}, {n1,n4,n5,n6}, {n2,n3,n4,n7}}
 
     std::ofstream result;
-    result.open("Results/special4-7200Crown_One.csv");
+    result.open("Results/analysis20_One_Crown.csv");
 
     //
     //Graphen einlesen
@@ -57,6 +57,10 @@ int main() {
         std::cout << graphLocation << " eingelesen! \n";
     }
 
+    //
+    //1000er Graphen schreiben
+    //
+
     /*for (int p = 0; p < 20; p++) {
         int i = 1000;
             for (int j = i; j < 10000; j += (i / 5)) {
@@ -79,19 +83,41 @@ int main() {
 
     }
 */
-    //int i=100,j=200;
+    //
+    //20er Graphen schreiben
+    //
+/*
+    for (int p = 0; p < 20; p++) {
+        int i = 20;
+            for (int j = i; j < 190; j += (i / 4)) {
 
 
-    //random_simple_undirected_graph(gleda,i,j);
-    //random_planar_graph(gledaDirect, i);
+                char *iP, *jP, jS[32], iS[32];
 
 
-    //g.write("graphenbsp/g15.gw");
+                location = "graphenbsp/tests/tests20_";
 
+                sprintf(iS, "%d", p);
+                sprintf(jS, "%d", j);
+                iP = iS;
+                jP = jS;
+                location += string(iP) + "-" + string(jP) + ".gw";
+
+                random_simple_undirected_graph(gleda, i, j);
+
+                gleda.write(location);
+            }
+
+    }
+*/
     // Start Programm
 
 
     int k =1000, graphcount = 0;
+
+    //
+    // 1000er Graphen Einlesen
+    //
 /*
     for (int p = 0; p < 20; p++) {
         int i = 1000;
@@ -121,30 +147,47 @@ int main() {
             //cout << graphcount++ << "\n";
         }
 
-        /* i =210;
-         for (int j = i; j < (i * (i-1))/10; j += (i/4)){
 
-             char *iP, *jP,jS[32], iS[32];
+    }
+    */
 
-             location="graphenbsp/tests/test";
+    //
+    // 20er Graphen lesen
+    //
 
-             sprintf(iS,"%d",i);
-             sprintf(jS,"%d",j);
-             iP = iS; jP = jS;
-             location += string(iP) + "-" + string(jP) + ".gw";
+    for (int p = 0; p < 20; p++) {
+        int i = 20;
+        for (int j = i; j < 190; j += (i / 4)) {
 
-             gleda.read(location);
+            char *iP, *jP, jS[32], iS[32];
 
-             int k =1000;
-             list<list<node>> allVCs;
-             vertex_cover(gleda, k, allVCs, result);
-         }*/
-        //int k =1000; list<list<node>> allVCs; vertex_cover(gleda, k, allVCs, result);
 
-    //}
+            location = "graphenbsp/tests/tests20_";
 
-    list<list<node>> allVCs;
-    vertex_cover(gleda, k, allVCs, result);
+            sprintf(iS, "%d", p);
+            sprintf(jS, "%d", j);
+            iP = iS;
+            jP = jS;
+            location += string(iP) + "-" + string(jP) + ".gw";
+
+            gleda.read(location);
+
+
+            list<list<node>> allVCs;
+
+
+            //clock_t begin = clock();
+            vertex_cover(gleda, k, allVCs, result);
+            //clock_t end = clock();
+            //result << ';'<< ((double)(end-begin))/ CLOCKS_PER_SEC << "\n";
+            //cout << graphcount++ << "\n";
+        }
+
+
+    }
+
+    //list<list<node>> allVCs;
+    //vertex_cover(gleda, k, allVCs, result);
 
     fb.close();
     result.close();

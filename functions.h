@@ -108,9 +108,9 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs, std::ofstream &re
         while(prev != vc.length()) {
             prev = vc.length();
 
-            //degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
+            degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
             //buss(g, vc, nodeDegree, coverCheck, edgeCovered, k);
-            crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
+            //crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
             //redTrott = nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
 
             if(redTrott!= redTrottPrev || prev!= vc.length()){
@@ -129,9 +129,9 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs, std::ofstream &re
         while(prev != vc.length()) {
             prev = vc.length();
 
-            degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
+            //degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
             //buss(g, vc, nodeDegree, coverCheck, edgeCovered, k);
-            //crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
+            crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
             //redTrott = nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
 
 
@@ -148,7 +148,7 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs, std::ofstream &re
         while(prev != vc.length()) {
             prev = vc.length();
 
-            degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
+            //degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
             //buss(g, vc, nodeDegree, coverCheck, edgeCovered, k);
             //crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
             //redTrott = nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
@@ -951,6 +951,7 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
             limit = sumDegrees / sumNodes;
             cout << "Durchschnittsgrad: "<< limit << "\n";
         }
+        limit = 13;
 
         forall_edges(e, g) {
                 if (matching1[e] == 0 && !edgeCovered[e]) {
