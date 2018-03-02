@@ -72,10 +72,18 @@ Ein nichtdeterministischer Algorithmus kann jede vermeintliche Lösungskombinati
 \egroup
 
 \end{table}
-Es scheint also sinnvoll zu sein, die Eingabe möglichst klein zu halten und zu \emph{reduzieren}, indem einfache Teile des Graphen durch Vorverarbeitung (englisch \emph{Preprocessing}) entfernt werden und gegebenenfalls in die Lösungsmenge aufgenommen werden. Hierfür bieten sich einige Einface
+Es scheint also sinnvoll zu sein, die Eingabe möglichst klein zu halten und zu \emph{reduzieren}, indem einfache Teile des Graphen durch Vorverarbeitung (englisch \emph{Preprocessing}) entfernt werden und gegebenenfalls in die Lösungsmenge aufgenommen werden. Hierfür bieten sich einige einfache Beobachtungen, die über einen Graphen getroffen werden können an. Auf das Stromnetzproblem einem Netz mit maximal \emph{k} Generatoren bezogen bedeuten diese: 
+\begin{enumerate}
+\item Häuser, die isoliert stehen und keine Leitungen haben, können aus dem Netz entfernt werden
+\item Bei Häuser, die genau eine Leitung, beziehungsweise genau ein Nachbarhaus haben, bekommt entsprechende Nachbarhaus automatisch einen Stromgenerator (in Zukunft Grad$_{1}$-Regel)
+\item Häuser, die $k+1$ Leitungen zu anderen Häusern haben, erhalten einen Generator, da sonst alle Nachbarnhäuser versorgt würden und somit mehr Generatoren, als verfügbar verteilt werden müssten (Buss-Regel)
+\end{enumerate}
+Angewandt an einer Probleminstanz bedeutet das Einsetzen einer der Regeln, dass die entsprechenden Häuser und Leitungen von einer weiterführenden Betrachtung ausgeschlossen sind, da so eine
+....Definition Reduktion.....
+Um das Problem weiter zu vereinfachen stehen allerdings auch weiteaus komplexere Reduktionsregeln zur Verfügung. In dieser Arbeit werden das Nemhauser-Trotter-Theorem, beziehungsweise die dazugehörige Reduktionsregel und die Kronenregel betrachet.
 
 
-Eine schnelle Laufzeit, um eine Knotenüberdeckung in einem gegebenen Graphen \emph{G}, Parameter \emph{k} und einer Knontenmenge \emph{n} zu finden wird von Chen et al \cite{paper:4} mit $O(kn + 1.271^{k}k^{2})$ vorgeschlagen, die schnellste bekannte Methode, alle Knotenüberdeckungen eines Graphen zu zählen von Mölle et al 
+Eine schnelle Laufzeit, um eine Knotenüberdeckung in einem gegebenen Graphen \emph{G}, Parameter \emph{k} und einer Knontenmenge \emph{n} zu finden wird von Chen et al \cite{paper:4} mit $O(kn + 1.271^{k}k^{2})$ vorgeschlagen; die schnellste bekannte Methode, alle Knotenüberdeckungen eines Graphen zu zählen von Mölle et al \cite{paper:5} mit einer Laufzeit von $O(1.3803^{k})$.
 
 %% ==============================
 \section{Problemstellung}
