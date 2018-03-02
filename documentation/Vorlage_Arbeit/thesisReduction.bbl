@@ -21,6 +21,19 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{intract}
+M.~R. Garey and D.~S. Johnson, \emph{Computers and Intractability : a guide to
+  the theory of NP-completeness}.\hskip 1em plus 0.5em minus 0.4em\relax
+  Freeman New York, 2007.
+
+\bibitem{trees}
+G.~Valiente, \emph{Algorithms on Trees and Graphs}.\hskip 1em plus 0.5em minus
+  0.4em\relax Springer, Berlin, Heidelberg, 2002.
+
+\bibitem{paper:4}
+J.~Chen, I.~A. Kanj, and W.~Jia, ``Vertex cover: further observations and
+  further improvements,'' \emph{Journal of Algorithms 41, 280 - 301}, 2001.
+
 \bibitem{fixed}
 R.~Niedermeier, \emph{Invitation to Fixed-Parameter Algorithms}.\hskip 1em plus
   0.5em minus 0.4em\relax Oxford University Press, 2006.
@@ -45,25 +58,25 @@ F.~Abu-Khzam, R.~Collins, M.~Fellows, M.~Langston, and W.~S.~C. Symons,
   experiments,'' \emph{Proceedings of the 6th Workshop on Algorithm Engineering
   and Experiments (ALENEX), ACM/SIAM, Proc. Applied Mathematics 115}, 2004.
 
+\bibitem{paper:5}
+S.~R. aniel M{\"o}lle and P.~Rossmanith, ``Enumerate and expand: New runtime
+  bounds for vertex cover variants,'' \emph{Computing and Combinatorics.
+  Lecture Notes in Computer Science, vol 4112, 265-273}, 2006.
+
 \bibitem{param}
 M.~Cygan, \emph{Parameterized algorithms}.\hskip 1em plus 0.5em minus
-  0.4em\relax Cham : Springer, 2015.
+  0.4em\relax Springer Cham, 2015.
 
 \bibitem{exakt}
 F.~Gurski, \emph{Exakte Algorithmen für schwere Graphenprobleme}.\hskip 1em
-  plus 0.5em minus 0.4em\relax Heidelberg : Springer, 2010.
+  plus 0.5em minus 0.4em\relax Springer Heidelberg, 2010.
 
 \bibitem{fundamentals}
 R.~G. Downey and M.~R. Fellows, \emph{Fundamentals of parameterized
-  complexity}.\hskip 1em plus 0.5em minus 0.4em\relax London : Springer, 2013.
+  complexity}.\hskip 1em plus 0.5em minus 0.4em\relax Springer London, 2013.
 
 \bibitem{complex}
 ------, \emph{Parametrized Complexity}.\hskip 1em plus 0.5em minus 0.4em\relax
-  New York: Springer, 1997.
-
-\bibitem{intract}
-M.~R. Garey and D.~S. Johnson, \emph{Computers and intractability : a guide to
-  the theory of NP-completeness}.\hskip 1em plus 0.5em minus 0.4em\relax New
-  York: Freeman, 2007.
+  Springer New York, 1997.
 
 \end{thebibliography}
