@@ -1,0 +1,133 @@
+\documentclass{beamer}
+\usetheme{metropolis}           % Use metropolis theme
+%\usetheme{CambridgeUS}
+\title{Kolloquium zur Bachelorarbeit}
+\date{07. M{\"a}rz 2018}
+
+\institute{Universit{\"a}t Trier}
+
+\usepackage{listings}
+\lstset{
+  numbers=left,
+  stepnumber=1,    
+  firstnumber=0,
+  numberfirstline=true
+}
+
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}Benedikt L{\"u}ken-Winkels
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle\hspace*{3em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{1ex}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+
+%Mathematikumgebungen
+\usepackage{amsmath,amsthm,amssymb}
+
+\usepackage{threeparttable}
+\usepackage{ngerman}
+\usepackage[utf8]{inputenc}
+\graphicspath{{img/}}
+
+\definecolor{amber}{rgb}{1.0, 0.75, 0.0}
+\setbeamercolor{block title}{use=text,
+    fg=amber,
+    bg=gray}
+\setbeamercolor{block body}{use={block title , text},
+    fg=text.fg,
+    bg=lightgray}
+    
+\begin{document}
+\author{%
+\begin{tabular}{l l} 
+Referent:   & Benedikt L{\"u}ken-Winkels \\[1ex] 
+Pr{\"u}fer:  & Prof. Dr. Henning Fernau\\
+             & Prof. Dr.  Stefan N{\"a}her
+\end{tabular}}
+	\maketitle
+	\section{Knotenüberdeckungsproblem}
+	\begin{frame}{Knotenüberdeckungsproblem - Definition}
+\begin{block}{Knotenüberdeckung}
+EINGABE: $\ Graph\ G=(V,E),\ positive\ Integer\ k\leq |V|$\\
+AUSGABE: $\ S\subseteq V\ mit\ |S|\leq k,$ sodass\ jede\ Kante\ aus\ E\ einen\ Endpunkt\ in\ S\ hat.
+\end{block}			
+		
+	\end{frame}
+	\section{Graphreduktion}
+	\begin{frame}{}
+	\end{frame}
+  
+	\section{Einfache Reduktionsregeln}
+	\begin{frame}{}
+	\end{frame}
+	
+	\section{Kronenregel}
+    \begin{frame}{}
+	\end{frame}
+	
+	\section{Nemhauser-Trotter-Regel}
+	\begin{frame}{}
+	\end{frame}
+	
+	\section{Laufzeit und erwartete Reduktion}
+	\begin{frame}{}
+	\end{frame}
+	\subsection{Test}
+	\section{Anwendung}
+	\begin{frame}{}
+	\begin{table}[htbp]
+\caption{Anwendung kombinierter Reduktionsregeln\label{tab:kombination}}
+\vspace*{1em}
+\centering
+
+\bgroup
+\def\arraystretch{1.3}%  1 is the default, change whatever you need
+\tiny
+\begin{tabular}[c]{l|l|l|l|l}
+
+	
+	\multicolumn{1}{c|}{\textbf{Kombination}} &
+	\multicolumn{1}{c|}{\textbf{Anwendungen$_{1}$}} &
+	\multicolumn{1}{c|}{\textbf{Anwendungen$_{2}$}} &
+	\multicolumn{1}{c|}{\textbf{Anwendungen$_{3}$}} & 
+	\multicolumn{1}{c}{\textbf{Reduktion}} \\
+	\hline
+
+	K - G$_{1}$ & 3.63 & 4.3 & - &331.8\\
+	G$_{1}$ - K & 4.37 & 3.22 & - &331.17\\
+	K - NT & 0.8 & 0.38 & - & 68.28 \\
+	NT - K & 0.45 & 0.56 & - & 68.6\\
+	G$_{1}$ - NT & 1.33 & 0.017 & - & 99.87\\
+	NT - G$_{1}$ & 0.28 & 1.13 & - & 99.87\\
+	K  - G$_{1}$ - NT & 3.61 & 4.29 & 0.11 & 334.67 \\
+	K - NT - G$_{1}$ & 3.6 & 0.87 & 3.39 & 334.83 \\
+	G$_{1}$ - NT - K & 4.36 & 0.12 & 3.2 & 334.17 \\
+	G$_{1}$ - K - NT & 3.61 & 3.2 & 0.65 & 334.16 \\
+	NT - K - G$_{1}$ & 0.39 & 3.44 & 4.03 & 335.2 \\
+	NT - G$_{1}$ - K & 0.91 & 3.42 & 3.2 & 334.16 \\
+
+	
+\end{tabular}
+
+\egroup
+
+\end{table}
+	\end{frame}
+	
+	\section{Implementierung}
+	\begin{frame}{}
+	\end{frame}
+	
+	\section{Fazit}
+	\begin{frame}{}
+	\end{frame}
+  
+\end{document}
