@@ -1,4 +1,5 @@
 \documentclass{beamer}
+\geometry{paperwidth=140mm,paperheight=105mm}
 \usetheme{metropolis}           % Use metropolis theme
 %\usetheme{CambridgeUS}
 \title{Kolloquium zur Bachelorarbeit}
@@ -6,14 +7,25 @@
 
 \institute{Universit{\"a}t Trier}
 
+%Pseudocode
 \usepackage{listings}
 \lstset{
   numbers=left,
   stepnumber=1,    
   firstnumber=0,
-  numberfirstline=true
+  numberfirstline=true,
+basicstyle=\ttfamily\scriptsize,
+extendedchars=true, literate=%
+    {Ä}{{\"A}}1%
+    {Ö}{{\"O}}1%
+    {Ü}{{\"U}}1%
+    {ä}{{\"a}}1%
+    {ö}{{\"o}}1%
+    {ü}{{\"u}}1%
+    {ß}{{\ss}}1%
 }
 
+%Footer
 \setbeamertemplate{footline}
 {
   \leavevmode%
@@ -28,15 +40,13 @@
   \vskip0pt%
 }
 
-
 %Mathematikumgebungen
 \usepackage{amsmath,amsthm,amssymb}
-
-\usepackage{threeparttable}
 \usepackage{ngerman}
 \usepackage[utf8]{inputenc}
 \graphicspath{{img/}}
 
+%Farbe für Block
 \definecolor{amber}{rgb}{1.0, 0.75, 0.0}
 \setbeamercolor{block title}{use=text,
     fg=amber,
@@ -45,19 +55,25 @@
     fg=text.fg,
     bg=lightgray}
     
+    
+    
 \begin{document}
+
+\setbeamercovered{transparent}
 \author{%
 \begin{tabular}{l l} 
 Referent:   & Benedikt L{\"u}ken-Winkels \\[1ex] 
 Pr{\"u}fer:  & Prof. Dr. Henning Fernau\\
              & Prof. Dr.  Stefan N{\"a}her
 \end{tabular}}
+
+
 	\maketitle
 	\section{Knotenüberdeckungsproblem}
 	\begin{frame}{Knotenüberdeckungsproblem - Definition}
 \begin{block}{Knotenüberdeckung}
 EINGABE: $\ Graph\ G=(V,E),\ positive\ Integer\ k\leq |V|$\\
-AUSGABE: $\ S\subseteq V\ mit\ |S|\leq k,$ sodass\ jede\ Kante\ aus\ E\ einen\ Endpunkt\ in\ S\ hat.
+AUSGABE: $\ S\subseteq V\ mit\ |S|\leq k,$ \textit{sodass\ jede\ Kante\ aus\ E\ einen\ Endpunkt\ in\ S\ hat.}
 \end{block}			
 		
 	\end{frame}
@@ -70,17 +86,60 @@ AUSGABE: $\ S\subseteq V\ mit\ |S|\leq k,$ sodass\ jede\ Kante\ aus\ E\ einen\ E
 	\end{frame}
 	
 	\section{Kronenregel}
-    \begin{frame}{}
+\begin{frame}[fragile]
+\frametitle{Kronenregel - Algorithmus}
+    \begin{lstlisting}[mathescape=true]
+G = (V, E)
+M$_{1}$ := maximal matching von G:
+	M$_{1}$ := $\emptyset$
+	$\forall e \in$ E:	
+	füge e M_{1} hinzu
+	Entferne e und N(e)
+O  := nicht gepaarte Knoten in $M_{1}$
+M_{2} := maxmimum matching von b = G[O $\cup$ N(O)]
+I  := nicht gepaarte Knoten in $M_{2}$
+$I  := \emptyset$
+while I' $\neq$ I
+	$I := I'$
+	$H  := N(I)$
+	$I' := I \cup \{\forall u \in O|\exists v\in H (uv \in M_{2})\}$
+Markiere N(I') $\rightarrow$ Reduzierung um I'$\cup$ H = N(I')
+durch Hinzufügen des VC von H
+\end{lstlisting}
 	\end{frame}
 	
 	\section{Nemhauser-Trotter-Regel}
-	\begin{frame}{}
+	
+	\begin{frame}{Nemhauser-Trotter-Regel}
+\begin{block}{Nemhauser-Trotter-Theorem}
+$\textit{Für einen Graphen}\ G=(V,E)\textit{ können zwei disjunkte Mengen}$\\ $\ C_{0}\ und\ V_{0} \textit{ gefunden werden, sodass}$
+\begin{enumerate}
+\item $C_{0}$ \textit{ in einer minimalen Knotenüberdeckung} \\ 
+\textit{von G enthalten ist,}
+\item \textit{der Teilgraph }$G[V_{0}]$ \textit{eine Knotenüberdeckung}\\
+\textit{der Größe} $\leq |V_{0}| / 2$ \textit{ hat,}
+\item \textit{und} $VC(G) = VC(G[V_{0}])\cup C_{0}$ \textit{ gilt.}
+\end{enumerate}
+
+\end{block}
 	\end{frame}
+	
+\begin{frame}[fragile]
+\frametitle{NT-Regel - Algorithmus}
+\begin{lstlisting}[mathescape = true]
+G = (V, E)
+Bipartiden Graphen erstellen $B = (V, V', E')$
+E':= $ \{\{x,y'\}, \{x', y\} | \{x,y\} \in E\}$
+Maximum Matching $M$ von $B$ bestimmen
+$C_{B}:= VC(B)$
+$C_{0}:= \{x \in V\ |\ x \in C_{B}\ und\ x' \in C_{B} \}$
+$V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$
+\end{lstlisting}
+\end{frame}
 	
 	\section{Laufzeit und erwartete Reduktion}
 	\begin{frame}{}
 	\end{frame}
-	\subsection{Test}
 	\section{Anwendung}
 	\begin{frame}{}
 	\begin{table}[htbp]

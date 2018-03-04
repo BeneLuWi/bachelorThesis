@@ -1,0 +1,10 @@
+\frametitle{NT-Regel - Algorithmus}
+\begin{lstlisting}[mathescape = true]
+G = (V, E)
+Bipartiden Graphen erstellen $B = (V, V', E')$
+E':= $ \{\{x,y'\}, \{x', y\} | \{x,y\} \in E\}$
+Maximum Matching $M$ von $B$ bestimmen
+$C_{B}:= VC(B)$
+$C_{0}:= \{x \in V\ |\ x \in C_{B}\ und\ x' \in C_{B} \}$
+$V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$
+\end{lstlisting}
