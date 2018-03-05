@@ -111,7 +111,7 @@ $M_{1}$ := Maximal Matching von $G$!\pause!
     $M_{1} = M_{1} \cup e$ !\pause!
     Entferne $e$ und $N(e)$ aus der weiteren Betrachtung!\pause!
 $O$ := nicht gepaarte Knoten in $M_{1}$!\pause!
-$M_{2}$ := Maxmimum Matching von $B = G[O \cup N(O)]$!\pause!
+$M_{2}$ := Maxmimum Matching von $B = (O, N(O), \{ uv| u \in O \wedge v \in N(O)\}) $!\pause!
 $I$  := nicht gepaarte Knoten aus $O$ in $M_{2}$!\pause!
 $I'  := \emptyset$!\pause!
 while $I' \neq I$!\pause!
@@ -132,7 +132,7 @@ $M_{1}$ := Maximal Matching von $G$
     $M_{1} = M_{1} \cup e$
     Entferne $e$ und $N(e)$ aus der weiteren Betrachtung
 $O$ := nicht gepaarte Knoten in $M_{1}$
-$M_{2}$ := Maxmimum Matching von $B = G[O \cup N(O)]$
+$M_{2}$ := Maxmimum Matching von $B = (O, N(O), \{ uv| u \in O \wedge v \in N(O)\}) $
 $I$  := nicht gepaarte Knoten aus $O$ in $M_{2}$
 $I'  := \emptyset$
 while $I' \neq I$
@@ -143,9 +143,9 @@ Entferne $N(I)$ aus $G$
 \end{lstlisting}
 \only<1>{Zeilen 1-5: $m \cdot d$}
 \only<2>{Zeile 6: $n$}
-\only<3>{Zeile 7: $\frac{2k^{2}}{2} + \sqrt{2k} \cdot k$ (LEDA:mcb\_matching, Hopcroft und Karp) }
-\only<4>{Zeile 8: }
-\only<5>{}
+\only<3>{Zeile 7(1): $\frac{(n-2k) d}{2}$}
+\only<4>{Zeile 7(1): $\sqrt{n-2k} \cdot m $ (LEDA:mcb\_matching, Hopcroft und Karp) }
+\only<5>{Zeile 8:  }
 
 
 \end{frame}
