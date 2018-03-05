@@ -85,21 +85,54 @@ AUSGABE: $\ S\subseteq V\ mit\ |S|\leq k,$ \textit{sodass\ jede\ Kante\ aus\ E\ 
 \end{frame}
   
 \section{Einfache Reduktionsregeln}
-\begin{frame}{}
+\begin{frame}{Einfache Regeln}
+\begin{block}{$Graph\ G=(V,E),\ Integer\ k$}\pause
+\begin{enumerate}
+\item $v \in V$ hat keine Kanten $\Rightarrow V = V \setminus v$ (Grad$_{0}$-Regel) \pause
+\item $v \in V$ hat genau eine Kante $\Rightarrow V = V \setminus (v \cup N(v)); k = k-1 $ (Grad$_{1}$-Regel) \pause
+\item $v \in V$ hat mehr als $k$ Kanten $\Rightarrow V = V \setminus (v); k = k-1 $ (Buss-Regel) \pause
+
+\end{enumerate}
+\end{block}
 \end{frame}
-	
+
+\begin{frame}{Grad$_{1}$ - Ergebnisse}
+\includegraphics[scale= .4]{analysisOne.pdf} 
+\end{frame}
+
 \section{Kronenregel}
 \begin{frame}[fragile]
 \frametitle{Kronenregel - Algorithmus}
 \begin{lstlisting}[mathescape=true, escapechar = !,basicstyle=\ttfamily\scriptsize]
+$G = (V, E)$!\pause!
+$M_{1}$ := Maximal Matching von $G$!\pause!
+  $M_{1} := \emptyset$
+  $\forall e \in$ E:	!\pause!
+    $M_{1} = M_{1} \cup e$ !\pause!
+    Entferne $e$ und $N(e)$ aus der weiteren Betrachtung!\pause!
+$O$ := nicht gepaarte Knoten in $M_{1}$!\pause!
+$M_{2}$ := Maxmimum Matching von $B = G[O \cup N(O)]$!\pause!
+$I$  := nicht gepaarte Knoten aus $O$ in $M_{2}$!\pause!
+$I'  := \emptyset$!\pause!
+while $I' \neq I$!\pause!
+  $I' := I$!\pause!
+  $H:= N(I)$!\pause!
+  $I := I \cup \{\forall u \in O|\exists v\in H (uv \in M_{2})\}$!\pause!
+Entferne $N(I)$ aus $G$!\pause!
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Kronenregel - Laufzeit}
+\begin{lstlisting}[mathescape=true, escapechar = !,basicstyle=\ttfamily\scriptsize]
 $G = (V, E)$
 $M_{1}$ := Maximal Matching von $G$
   $M_{1} := \emptyset$
-  $\forall e \in$ E:	
-    $M_{1} = M_{1} \cup e$ 
+  $\forall e \in$ E:
+    $M_{1} = M_{1} \cup e$
     Entferne $e$ und $N(e)$ aus der weiteren Betrachtung
 $O$ := nicht gepaarte Knoten in $M_{1}$
-$M_{2}$ := maxmimum matching von $B = G[O \cup N(O)]$
+$M_{2}$ := Maxmimum Matching von $B = G[O \cup N(O)]$
 $I$  := nicht gepaarte Knoten aus $O$ in $M_{2}$
 $I'  := \emptyset$
 while $I' \neq I$
@@ -108,8 +141,24 @@ while $I' \neq I$
   $I := I \cup \{\forall u \in O|\exists v\in H (uv \in M_{2})\}$
 Entferne $N(I)$ aus $G$
 \end{lstlisting}
+\only<1>{Zeilen 1-5: $m \cdot d$}
+\only<2>{Zeile 6: $n$}
+\only<3>{Zeile 7: $\frac{2k^{2}}{2} + \sqrt{2k} \cdot k$ (LEDA:mcb\_matching, Hopcroft und Karp) }
+\only<4>{Zeile 8: }
+\only<5>{}
+
+
 \end{frame}
-	
+
+
+\begin{frame}{Kronenegel - Laufzeit}
+\includegraphics[scale= .4]{analysis1000_CrownNormal_runtime.pdf} 
+\end{frame}
+
+\begin{frame}{Kronenregel - Ergebnisse}
+\includegraphics[scale= .4]{analysisCrown.pdf} 
+\end{frame}
+
 \section{Nemhauser-Trotter-Regel}
 	
 \begin{frame}{Nemhauser-Trotter-Regel}
@@ -151,14 +200,14 @@ $C_{B}:= VC(B)$
 $C_{0}:= \{x \in V\ |\ x \in C_{B}\ und\ x' \in C_{B} \}$ 
 $V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$ 
 \end{lstlisting}
-\only<1>{Zeilen 1-2: $n \cdot 2m$}
-\only<2>{Zeilen 3-4: $\sqrt{n} \cdot m$ (LEDA:mcb\_matching, Hopcroft and Karp)}
+\only<1>{Zeilen 1-2: $n \cdot 2d$}
+\only<2>{Zeilen 3-4: $\sqrt{n} \cdot m$ (LEDA:mcb\_matching, Hopcroft und Karp)}
 \only<3>{Zeilen 5-6: $2n + k \cdot d$}
-\only<4>{$n \cdot 2m + \sqrt{n} \cdot m + 2n + k \cdot d$}
-\only<5>{$n \cdot 2m + \sqrt{n} \cdot m + 2n + k \cdot d \Rightarrow O(2mn)$}
+\only<4>{$n \cdot 2d + \sqrt{n} \cdot m + 2n + k \cdot d$}
+\only<5>{$n \cdot 2d + \sqrt{n} \cdot m + 2n + k \cdot d \Rightarrow O(n + \sqrt{n} \cdot m)$}
 \end{frame}
 \begin{frame}{NT-Regel - Laufzeit}
-\includegraphics[scale= .4]{analysisTrott_runtime.pdf} 
+\includegraphics[scale= .4]{analysis1000_TrottNormal_runtime.pdf} 
 \end{frame}
 \begin{frame}{NT-Regel - Ergebnisse}
 \includegraphics[scale= .4]{analysisTrott.pdf} 

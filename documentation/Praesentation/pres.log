@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.12.16)  5 MAR 2018 12:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.12.16)  5 MAR 2018 16:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1336,88 +1336,176 @@ Overfull \vbox (15.63992pt too high) detected at line 74
 
 ] [8
 
-]
-\openout4 = `pres.vrb'.
-
- (./pres.vrb) [9
+] [9
 
 ] [10
 
 ] [11
 
-] [12
+]
 
-] [13
+pdfTeX warning: pdflatex.exe (file ./img/analysisOne.pdf): PDF inclusion: found
+ PDF version <1.7>, but at most version <1.5> allowed
+<img/analysisOne.pdf, id=124, 844.95674pt x 597.432pt>
+File: img/analysisOne.pdf Graphic file (type pdf)
+<use img/analysisOne.pdf>
+Package pdftex.def Info: img/analysisOne.pdf  used on input line 101.
+(pdftex.def)             Requested size: 337.97672pt x 238.96857pt.
+[12
+
+ <./img/analysisOne.pdf>] [13
 
 ]
 \openout4 = `pres.vrb'.
 
  (./pres.vrb) [14
 
-]
-(./pres.vrb) [15
+] (./pres.vrb) [15
 
-] (./pres.vrb) [16
+]
+(./pres.vrb) [16
 
 ] (./pres.vrb) [17
 
 ] (./pres.vrb) [18
 
-]
-(./pres.vrb) [19
+] (./pres.vrb) [19
 
 ]
-\openout4 = `pres.vrb'.
-
- (./pres.vrb) [20
+(./pres.vrb) [20
 
 ] (./pres.vrb) [21
 
 ] (./pres.vrb) [22
 
-]
-(./pres.vrb) [23
-
-] (./pres.vrb) [24
+] (./pres.vrb) [23
 
 ]
+(./pres.vrb) [24
 
-pdfTeX warning: pdflatex.exe (file ./img/analysisTrott_runtime.pdf): PDF inclus
-ion: found PDF version <1.7>, but at most version <1.5> allowed
-<img/analysisTrott_runtime.pdf, id=211, 844.95674pt x 597.432pt>
-File: img/analysisTrott_runtime.pdf Graphic file (type pdf)
-<use img/analysisTrott_runtime.pdf>
-Package pdftex.def Info: img/analysisTrott_runtime.pdf  used on input line 162.
+] (./pres.vrb) [25
 
+] (./pres.vrb) [26
+
+] (./pres.vrb) [27
+
+]
+(./pres.vrb) [28
+
+]
+\openout4 = `pres.vrb'.
+
+ (./pres.vrb) [29
+
+] (./pres.vrb) [30
+
+] (./pres.vrb) [31
+
+]
+(./pres.vrb) [32
+
+] (./pres.vrb) [33
+
+]
+
+pdfTeX warning: pdflatex.exe (file ./img/analysis1000_CrownNormal_runtime.pdf):
+ PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<img/analysis1000_CrownNormal_runtime.pdf, id=275, 844.95674pt x 597.432pt>
+File: img/analysis1000_CrownNormal_runtime.pdf Graphic file (type pdf)
+<use img/analysis1000_CrownNormal_runtime.pdf>
+Package pdftex.def Info: img/analysis1000_CrownNormal_runtime.pdf  used on inpu
+t line 156.
 (pdftex.def)             Requested size: 337.97672pt x 238.96857pt.
-[25
+[34
 
- <./img/analysisTrott_runtime.pdf>]
+ <./img/analysis1000_CrownNormal_runtime.pdf>]
+
+pdfTeX warning: pdflatex.exe (file ./img/analysisCrown.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<img/analysisCrown.pdf, id=291, 844.95674pt x 597.432pt>
+File: img/analysisCrown.pdf Graphic file (type pdf)
+<use img/analysisCrown.pdf>
+Package pdftex.def Info: img/analysisCrown.pdf  used on input line 160.
+(pdftex.def)             Requested size: 337.97672pt x 238.96857pt.
+[35
+
+ <./img/analysisCrown.pdf>] [36
+
+] [37
+
+] [38
+
+] [39
+
+]
+\openout4 = `pres.vrb'.
+
+ (./pres.vrb) [40
+
+]
+(./pres.vrb) [41
+
+] (./pres.vrb) [42
+
+] (./pres.vrb) [43
+
+] (./pres.vrb) [44
+
+]
+(./pres.vrb) [45
+
+]
+\openout4 = `pres.vrb'.
+
+ (./pres.vrb) [46
+
+] (./pres.vrb) [47
+
+] (./pres.vrb) [48
+
+]
+(./pres.vrb) [49
+
+] (./pres.vrb) [50
+
+]
+
+pdfTeX warning: pdflatex.exe (file ./img/analysis1000_TrottNormal_runtime.pdf):
+ PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<img/analysis1000_TrottNormal_runtime.pdf, id=400, 844.95674pt x 597.432pt>
+File: img/analysis1000_TrottNormal_runtime.pdf Graphic file (type pdf)
+<use img/analysis1000_TrottNormal_runtime.pdf>
+Package pdftex.def Info: img/analysis1000_TrottNormal_runtime.pdf  used on inpu
+t line 211.
+(pdftex.def)             Requested size: 337.97672pt x 238.96857pt.
+[51
+
+ <./img/analysis1000_TrottNormal_runtime.pdf>]
 
 pdfTeX warning: pdflatex.exe (file ./img/analysisTrott.pdf): PDF inclusion: fou
 nd PDF version <1.7>, but at most version <1.5> allowed
-<img/analysisTrott.pdf, id=227, 844.95674pt x 597.432pt>
+<img/analysisTrott.pdf, id=416, 844.95674pt x 597.432pt>
 File: img/analysisTrott.pdf Graphic file (type pdf)
 <use img/analysisTrott.pdf>
-Package pdftex.def Info: img/analysisTrott.pdf  used on input line 165.
+Package pdftex.def Info: img/analysisTrott.pdf  used on input line 214.
 (pdftex.def)             Requested size: 337.97672pt x 238.96857pt.
-[26
+[52
 
- <./img/analysisTrott.pdf>] [27
+ <./img/analysisTrott.pdf>] [53
 
-] [28
+] [54
 
-] [29
+] [55
 
-] [30
+] [56
 
-] [31
+] [57
 
-] [32
+] [58
 
-] [33
+] [59
 
-] [34
+] [60
 
 ]
 \tf@nav=\write6
@@ -1429,27 +1517,23 @@ Package pdftex.def Info: img/analysisTrott.pdf  used on input line 165.
 \tf@snm=\write8
 \openout8 = `pres.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 219.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 219.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 268.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 268.
 
 (./pres.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 219.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 219.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 268.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 268.
 Package rerunfilecheck Info: File `pres.out' has not changed.
 (rerunfilecheck)             Checksum: 5CAFB446348F52C9777A1EB4D1CE4CC0;454.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 22500 strings out of 492985
- 431284 string characters out of 6136283
- 504923 words of memory out of 5000000
- 25466 multiletter control sequences out of 15000+600000
- 17355 words of font info for 63 fonts, out of 8000000 for 9000
+ 22624 strings out of 492985
+ 432912 string characters out of 6136283
+ 512923 words of memory out of 5000000
+ 25495 multiletter control sequences out of 15000+600000
+ 19005 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,15n,83p,1842b,1096s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,15n,83p,1842b,1109s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/tex
 live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2017/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2017/texmf-dis
@@ -1461,10 +1545,10 @@ msy10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
 <c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texliv
 e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2017/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on pres.pdf (34 pages, 320528 bytes).
+Output written on pres.pdf (60 pages, 842544 bytes).
 PDF statistics:
- 353 PDF objects out of 1000 (max. 8388607)
- 291 compressed objects within 3 object streams
- 79 named destinations out of 1000 (max. 500000)
- 125 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 553 PDF objects out of 1000 (max. 8388607)
+ 457 compressed objects within 5 object streams
+ 131 named destinations out of 1000 (max. 500000)
+ 140 words of extra memory for PDF output out of 10000 (max. 10000000)
 

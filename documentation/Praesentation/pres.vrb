@@ -8,8 +8,8 @@ $C_{B}:= VC(B)$
 $C_{0}:= \{x \in V\ |\ x \in C_{B}\ und\ x' \in C_{B} \}$
 $V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$
 \end{lstlisting}
-\only<1>{Zeilen 1-2: $n \cdot 2m$}
+\only<1>{Zeilen 1-2: $n \cdot 2d$}
 \only<2>{Zeilen 3-4: $\sqrt{n} \cdot m$ (LEDA:mcb\_matching, Hopcroft and Karp)}
 \only<3>{Zeilen 5-6: $2n + k \cdot d$}
-\only<4>{$n \cdot 2m + \sqrt{n} \cdot m + 2n + k \cdot d$}
-\only<5>{$n \cdot 2m + \sqrt{n} \cdot m + 2n + k \cdot d \Rightarrow O(2mn)$}
+\only<4>{$n \cdot 2d + \sqrt{n} \cdot m + 2n + k \cdot d$}
+\only<5>{$n \cdot 2d + \sqrt{n} \cdot m + 2n + k \cdot d \Rightarrow O(n + \sqrt{n} \cdot m)$}
