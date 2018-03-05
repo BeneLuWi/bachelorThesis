@@ -1,10 +1,15 @@
-\frametitle{NT-Regel - Algorithmus}
-\begin{lstlisting}[mathescape = true]
-G = (V, E)
+\frametitle{NT-Regel - Laufzeit}
+\begin{lstlisting}[mathescape = true, basicstyle=\ttfamily]
+$G = (V, E)$
 Bipartiden Graphen erstellen $B = (V, V', E')$
-E':= $ \{\{x,y'\}, \{x', y\} | \{x,y\} \in E\}$
+  mit $E':= \{\{x,y'\}, \{x', y\} | \{x,y\} \in E\}$
 Maximum Matching $M$ von $B$ bestimmen
 $C_{B}:= VC(B)$
 $C_{0}:= \{x \in V\ |\ x \in C_{B}\ und\ x' \in C_{B} \}$
 $V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$
 \end{lstlisting}
+\only<1>{Zeilen 1-2: $n \cdot 2m$}
+\only<2>{Zeilen 3-4: $\sqrt{n} \cdot m$ (LEDA:mcb\_matching, Hopcroft and Karp)}
+\only<3>{Zeilen 5-6: $2n + k \cdot d$}
+\only<4>{$n \cdot 2m + \sqrt{n} \cdot m + 2n + k \cdot d$}
+\only<5>{$n \cdot 2m + \sqrt{n} \cdot m + 2n + k \cdot d \Rightarrow O(2mn)$}
