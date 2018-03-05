@@ -1,9 +1,8 @@
 \beamer@sectionintoc {1}{Knoten\IeC {\"u}berdeckungsproblem}{2}{0}{1}
-\beamer@sectionintoc {2}{Graphreduktion}{4}{0}{2}
-\beamer@sectionintoc {3}{Einfache Reduktionsregeln}{6}{0}{3}
-\beamer@sectionintoc {4}{Kronenregel}{13}{0}{4}
-\beamer@sectionintoc {5}{Nemhauser-Trotter-Regel}{37}{0}{5}
-\beamer@sectionintoc {6}{Vergleich}{54}{0}{6}
-\beamer@sectionintoc {7}{Anwendung}{56}{0}{7}
-\beamer@sectionintoc {8}{Implementierung}{58}{0}{8}
-\beamer@sectionintoc {9}{Fazit}{60}{0}{9}
+\beamer@sectionintoc {2}{Graphreduktion}{7}{0}{2}
+\beamer@sectionintoc {3}{Einfache Reduktionsregeln}{13}{0}{3}
+\beamer@sectionintoc {4}{Kronenregel}{24}{0}{4}
+\beamer@sectionintoc {5}{Nemhauser-Trotter-Regel}{62}{0}{5}
+\beamer@sectionintoc {6}{Vergleich}{80}{0}{6}
+\beamer@sectionintoc {7}{Anwendung}{82}{0}{7}
+\beamer@sectionintoc {8}{Fazit und Ausblick}{87}{0}{8}
