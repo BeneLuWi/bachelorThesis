@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.12.16)  6 MAR 2018 19:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.12.16)  6 MAR 2018 22:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1869,9 +1869,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 513.
  (./pres.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 513.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 513.
-Package rerunfilecheck Info: File `pres.out' has not changed.
-(rerunfilecheck)             Checksum: A89393AB93B633B19F3BDBF31847A06C;417.
 
+
+Package rerunfilecheck Warning: File `pres.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `pres.out':
+(rerunfilecheck)             Before: A89393AB93B633B19F3BDBF31847A06C;417
+(rerunfilecheck)             After:  4E29CCBF1D1F266B03FCAEAD5AB490D2;432.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -1880,10 +1886,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 31271 strings out of 492985
- 614115 string characters out of 6136283
- 676525 words of memory out of 5000000
- 34087 multiletter control sequences out of 15000+600000
+ 31269 strings out of 492985
+ 614079 string characters out of 6136283
+ 676592 words of memory out of 5000000
+ 34086 multiletter control sequences out of 15000+600000
  545343 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,15n,88p,10383b,1099s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1899,10 +1905,10 @@ mssi8.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2017/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2017/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on pres.pdf (82 pages, 996041 bytes).
+Output written on pres.pdf (82 pages, 995568 bytes).
 PDF statistics:
- 749 PDF objects out of 1000 (max. 8388607)
- 613 compressed objects within 7 object streams
- 191 named destinations out of 1000 (max. 500000)
+ 748 PDF objects out of 1000 (max. 8388607)
+ 612 compressed objects within 7 object streams
+ 190 named destinations out of 1000 (max. 500000)
  187 words of extra memory for PDF output out of 10000 (max. 10000000)
 

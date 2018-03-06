@@ -328,13 +328,13 @@ $C_{B}:= VC(B)$
 $C_{0}:= \{x \in V\ |\ x \in C_{B}\ und\ x' \in C_{B} \}$ 
 $V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$ 
 \end{lstlisting}
-\only<1>{Zeilen 1-2: $n \cdot 2d$}
+\only<1>{Zeilen 1-2: $n \cdot d$}
 \only<2>{Zeilen 3-4: $\sqrt{2n} \cdot 2m$ (LEDA:mcb\_matching, Hopcroft und Karp)}
-\only<3>{Zeilen 5-6: $2n + k \cdot d$}
+\only<3>{Zeilen 5-6: $2n$}
 \end{frame}
 \begin{frame}{NT-Regel - Laufzeit}
 \begin{align*}
-&\ n \cdot 2d + \sqrt{2n} \cdot 2m + 2n + k \cdot d\\ \pause
+&\ n \cdot d + \sqrt{2n} \cdot 2m + 2n\\ \pause
 \Rightarrow &\ O(n + \sqrt{n} \cdot m)
 \end{align*}
 \end{frame}
@@ -377,7 +377,7 @@ $V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$
 \end{table}
 \end{frame}
 
-\section{Anwendung}
+\section{Anwendung in Kombination}
 \begin{frame}{Kombination}
 \begin{table}[htbp]
 \caption{Anwendung kombinierter Reduktionsregeln\label{tab:kombination}}

@@ -4,5 +4,5 @@
 \beamer@sectionintoc {4}{Kronenregel}{24}{0}{4}
 \beamer@sectionintoc {5}{Nemhauser-Trotter-Regel}{48}{0}{5}
 \beamer@sectionintoc {6}{Vergleich}{61}{0}{6}
-\beamer@sectionintoc {7}{Anwendung}{63}{0}{7}
+\beamer@sectionintoc {7}{Anwendung in Kombination}{63}{0}{7}
 \beamer@sectionintoc {8}{Fazit und Ausblick}{75}{0}{8}
