@@ -27,7 +27,7 @@ int main() {
     //VC(g0,4) = {{n1,n2,n6,n7}, {n1,n4,n5,n6}, {n2,n3,n4,n7}}
 
     std::ofstream result;
-    result.open("Results/analysis20_One_Crown.csv");
+    result.open("Results/analysis1000_OneNormal_runtime.csv");
 
     //
     //Graphen einlesen
@@ -118,7 +118,7 @@ int main() {
     //
     // 1000er Graphen Einlesen
     //
-/*
+
     for (int p = 0; p < 20; p++) {
         int i = 1000;
         for (int j = i; j < 10000; j += (i / 5)) {
@@ -140,17 +140,17 @@ int main() {
             list<list<node>> allVCs;
 
 
-            //clock_t begin = clock();
+            clock_t begin = clock();
             vertex_cover(gleda, k, allVCs, result);
-            //clock_t end = clock();
-            //result << ';'<< ((double)(end-begin))/ CLOCKS_PER_SEC << "\n";
+            clock_t end = clock();
+            result << ';'<< ((double)(end-begin))/ CLOCKS_PER_SEC << "\n";
             //cout << graphcount++ << "\n";
         }
 
 
     }
-    */
 
+/*
     //
     // 20er Graphen lesen
     //
@@ -186,6 +186,7 @@ int main() {
 
     }
 
+ */
     //list<list<node>> allVCs;
     //vertex_cover(gleda, k, allVCs, result);
 

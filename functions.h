@@ -68,7 +68,7 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
 
 
 
-void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs, std::ofstream &result) {
+static void vertex_cover(ugraph& g, int& k, list<list<node>>& allVCs, std::ofstream &result) {
 // Funktion zum preprocessen und Initialisierung der Rekursion
 // nodeDegree = sortierte Liste aller Knoten und deren Grad
 // edgeCovered = info, ob die Kante im Vertexcover enthalten ist
@@ -97,7 +97,7 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs, std::ofstream &re
     // Statistiken
     //
 
-    printStatistics(g, vc, nodeDegree, coverCheck, edgeCovered);
+    //printStatistics(g, vc, nodeDegree, coverCheck, edgeCovered);
 
     //iterations==anwendungen
     int prev = -1, prev2 = -1, iterations1 = 0, iterations2 = 0, iterations3 = 0, iterations4 = 0;
@@ -108,7 +108,7 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs, std::ofstream &re
         while(prev != vc.length()) {
             prev = vc.length();
 
-            degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
+            //degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
             //buss(g, vc, nodeDegree, coverCheck, edgeCovered, k);
             //crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
             //redTrott = nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
@@ -119,7 +119,7 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs, std::ofstream &re
 
             redTrottPrev = redTrott;
 
-            degreeZero(g, vc, nodeDegree, coverCheck, edgeCovered);
+            //degreeZero(g, vc, nodeDegree, coverCheck, edgeCovered);
 
             //Falls etwas passiert ist, erhöhe Anwendungen
 
@@ -129,18 +129,18 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs, std::ofstream &re
         while(prev != vc.length()) {
             prev = vc.length();
 
-            //degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
+            degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
             //buss(g, vc, nodeDegree, coverCheck, edgeCovered, k);
-            crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
+            //crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
             //redTrott = nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
 
 
 
             degreeZero(g, vc, nodeDegree, coverCheck, edgeCovered);
 
-            if(redTrott!= redTrottPrev || prev!= vc.length()){
+            //if(redTrott!= redTrottPrev || prev!= vc.length()) {
                 iterations2++;
-            }
+            //}
 
             redTrottPrev = redTrott;
         }
@@ -154,7 +154,7 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs, std::ofstream &re
             //redTrott = nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
 
 
-            degreeZero(g, vc, nodeDegree, coverCheck, edgeCovered);
+            //degreeZero(g, vc, nodeDegree, coverCheck, edgeCovered);
 
             if(redTrott!= redTrottPrev || prev!= vc.length()){
                 iterations3++;
@@ -226,7 +226,7 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs, std::ofstream &re
 
     }
 */
-    printReductionResults(g, vc, nodeDegree, coverCheck, edgeCovered);
+    //printReductionResults(g, vc, nodeDegree, coverCheck, edgeCovered);
 
     char delim = ';';
 
@@ -237,7 +237,7 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs, std::ofstream &re
             }
         }
 
-    result << g.all_edges().length() << delim << deaktiviert << delim << iterations1<< delim << iterations2 << delim << iterations3 << delim << iterations4 << "\n";
+    result << g.all_edges().length() << delim << deaktiviert << delim << iterations1<< delim << iterations2 << delim << iterations3 << delim << iterations4;
 
     allVCs.append(vc);
 
@@ -268,7 +268,7 @@ void vertex_cover(ugraph &g, int &k, list<list<node>> &allVCs, std::ofstream &re
             }
     }
     */
-    printStatistics(g, vc, nodeDegree, coverCheck, edgeCovered);
+    //printStatistics(g, vc, nodeDegree, coverCheck, edgeCovered);
 }
 
 //
@@ -949,9 +949,9 @@ static void crownrule(ugraph& g, list<node>& vc, node_array<int>& nodeDegree, in
         int limit = 0;
         if(sumNodes != 0) {
             limit = sumDegrees / sumNodes;
-            cout << "Durchschnittsgrad: "<< limit << "\n";
+            //cout << "Durchschnittsgrad: "<< limit << "\n";
         }
-        limit = 13;
+
 
         forall_edges(e, g) {
                 if (matching1[e] == 0 && !edgeCovered[e]) {
