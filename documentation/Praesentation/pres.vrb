@@ -1,6 +1,6 @@
 \frametitle{NT-Regel - Laufzeit}
 \begin{lstlisting}[mathescape = true, basicstyle=\ttfamily]
-$G = (V, E), n:= |V|, m:=|E|, d:= maximaler\ Grad\ eines\ Knoten\ aus\ G$
+$G = (V, E), n:= |V|, m:=|E|, d:= maximaler\ Grad\ der\ Knoten\ aus\ G$
 Bipartiden Graphen erstellen $B = (V, V', E')$
   mit $E':= \{\{x,y'\}, \{x', y\} | \{x,y\} \in E\}$
 Maximum Matching $M$ von $B$ bestimmen
@@ -8,6 +8,6 @@ $C_{B}:= VC(B)$
 $C_{0}:= \{x \in V\ |\ x \in C_{B}\ und\ x' \in C_{B} \}$
 $V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$
 \end{lstlisting}
-\only<1>{Zeilen 1-2: $n \cdot 2d$}
-\only<2>{Zeilen 3-4: $\sqrt{n} \cdot m$ (LEDA:mcb\_matching, Hopcroft und Karp)}
-\only<3>{Zeilen 5-6: $2n + k \cdot d$}
+\only<1>{Zeilen 1-2: $n \cdot d$}
+\only<2>{Zeilen 3-4: $\sqrt{2n} \cdot 2m$ (LEDA:mcb\_matching, Hopcroft und Karp)}
+\only<3>{Zeilen 5-6: $2n$}

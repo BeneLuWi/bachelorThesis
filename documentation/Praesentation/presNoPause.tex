@@ -3,7 +3,7 @@
 \usetheme{metropolis}           % Use metropolis theme
 %\usetheme{CambridgeUS}
 \title{Kolloquium zur Bachelorarbeit}
-\subtitle{Untersuchung von Knotenreduktionsregeln beom Knoten{\"u}berdeckungsproblem}
+\subtitle{Untersuchung von Graphreduktionsregeln beim Knoten{\"u}berdeckungsproblem}
 \date{07. M{\"a}rz 2018}
 
 \institute{Universit{\"a}t Trier}
@@ -25,7 +25,14 @@ extendedchars=true, literate=%
     {ü}{{\"u}}1%
     {ß}{{\ss}}1%
 }
-\usepackage[skip=1pt]{caption}
+
+\usepackage[beamer,customcolors]{hf-tikz}
+
+\tikzset{hl/.style={
+    set fill color=white,
+    set border color=red!80!black,
+  },
+}
 \usepackage{graphicx}
 %Footer
 \setbeamertemplate{footline}
@@ -143,21 +150,21 @@ $Graph\ G=(V,E),\ nat\ddot{u}rliche\ Zahl\ k$
 \begin{frame}[fragile]
 \frametitle{Kronenregel - Algorithmus}
 \begin{lstlisting}[mathescape=true, escapechar = !,basicstyle=\ttfamily\scriptsize]
-$G = (V, E), n:= |V|, m:=|E|, d:= maximaler\ Grad\ eines\ Knoten\ aus\ G$ 
-$M_{1}$ := Maximal Matching von $G$ 
+$G = (V, E), n:= |V|, m:=|E|, d:= maximaler\ Grad\ eines\ Knoten\ aus\ G$
+$M_{1}$ := Maximal Matching von $G$
   $M_{1} := \emptyset$
-  $\forall e \in$ E:	 
-    $M_{1} = M_{1} \cup e$  
-    Entferne $e$ und $N(e)$ aus der weiteren Betrachtung 
-$O$ := nicht gepaarte Knoten in $M_{1}$ 
-$M_{2}$ := Maxmimum Matching von $B = (O, N(O), \{ uv| u \in O \wedge v \in N(O)\}) $ 
-$I$  := nicht gepaarte Knoten aus $O$ in $M_{2}$ 
-$I'  := \emptyset$ 
-while $I' \neq I$ 
-  $I' := I$ 
-  $H:= N(I)$ 
-  $I := I \cup \{\forall u \in O|\exists v\in H\ (uv \in M_{2})\}$ 
-Entferne $N(I)$ aus $G$ 
+  $\forall e \in$ E:
+    $M_{1} = M_{1} \cup e$
+    Entferne $e$ und $N(e)$ aus der weiteren Betrachtung
+$O$ := nicht gepaarte Knoten in $M_{1}$
+$M_{2}$ := Maxmimum Matching von $B = (O, N(O), \{ uv| u \in O \wedge v \in N(O)\}) $
+$I$  := nicht gepaarte Knoten aus $O$ in $M_{2}$
+$I'  := \emptyset$
+while $I' \neq I$
+  $I' := I$
+  $H:= N(I)$
+  $I := I \cup \{\forall u \in O|\exists v\in H\ (uv \in M_{2})\}$
+Entferne $N(I)$ aus $G$
 \end{lstlisting}
 \end{frame}
 
@@ -226,8 +233,8 @@ Entferne $N(I)$ aus $G$
 	$>$3& 0.27& 12.92 \\
 	$>$4& 0.3& 13.71 \\
 	$>$5& 0.31&13.38 \\  
-	Größte Anzahl& 0.32&13.44 \\
-	Durchschnittliche Anzahl& 0.29&12.98 \\
+	$>$Größte Anzahl& 0.32&13.44 \\
+	$>$Durchschnittliche Anzahl& 0.29&12.98 \\
 	
 \end{tabular}
 
@@ -263,8 +270,8 @@ Entferne $N(I)$ aus $G$
 	$>$3& 0.39& 16.52 \\
 	$>$4& 0.4 &15.78 \\
 	$>$5& 0.4 & 15.72\\  
-	Größte Anzahl& 0.29 &13.06 \\
-	Durchschnittliche Anzahl& 0.46&19.77 \\
+	$>$Größte Anzahl& 0.29 &13.06 \\
+	$>$Durchschnittliche Anzahl& 0.46&19.77 \\
 	
 \end{tabular}
 \egroup
@@ -299,12 +306,12 @@ $\textit{Für einen Graphen}\ G=(V,E)\textit{ können zwei disjunkte Mengen}$\\ 
 \begin{frame}[fragile]
 \frametitle{NT-Regel - Algorithmus}
 \begin{lstlisting}[mathescape = true, basicstyle=\ttfamily, escapechar = !]
-$G = (V, E), n:= |V|, m:=|E|, d:= maximaler\ Grad\ eines\ Knoten\ aus\ G$ 
+$G = (V, E), n:= |V|, m:=|E|, d:= maximaler\ Grad\ eines\ Knoten\ aus\ G$
 Bipartiden Graphen erstellen $B = (V, V', E')$
-  mit $E':= \{\{x,y'\}, \{x', y\} | \{x,y\} \in E\}$ 
-Maximum Matching $M$ von $B$ bestimmen 
-$C_{B}:= VC(B)$ 
-$C_{0}:= \{x \in V\ |\ x \in C_{B}\ und\ x' \in C_{B} \}$ 
+  mit $E':= \{\{x,y'\}, \{x', y\} | \{x,y\} \in E\}$
+Maximum Matching $M$ von $B$ bestimmen
+$C_{B}:= VC(B)$
+$C_{0}:= \{x \in V\ |\ x \in C_{B}\ und\ x' \in C_{B} \}$
 $V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$
 \end{lstlisting}
 
@@ -322,12 +329,12 @@ $C_{0}:= \{x \in V\ |\ x \in C_{B}\ und\ x' \in C_{B} \}$
 $V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$ 
 \end{lstlisting}
 \only<1>{Zeilen 1-2: $n \cdot 2d$}
-\only<2>{Zeilen 3-4: $\sqrt{n} \cdot m$ (LEDA:mcb\_matching, Hopcroft und Karp)}
+\only<2>{Zeilen 3-4: $\sqrt{2n} \cdot 2m$ (LEDA:mcb\_matching, Hopcroft und Karp)}
 \only<3>{Zeilen 5-6: $2n + k \cdot d$}
 \end{frame}
 \begin{frame}{NT-Regel - Laufzeit}
 \begin{align*}
-&\ n \cdot 2d + \sqrt{n} \cdot m + 2n + k \cdot d\\  
+&\ n \cdot 2d + \sqrt{2n} \cdot 2m + 2n + k \cdot d\\  
 \Rightarrow &\ O(n + \sqrt{n} \cdot m)
 \end{align*}
 \end{frame}
@@ -390,12 +397,12 @@ $V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$
 	\multicolumn{1}{c}{\textbf{Reduktion}} \\
 	\hline
 
-	K - G$_{1}$ & 3.63 & 4.3 & - &331.8\\
-	G$_{1}$ - K & 4.37 & 3.22 & - &331.17\\
-	K - NT & 0.8 & 0.38 & - & 68.28 \\
-	NT - K & 0.45 & 0.56 & - & 68.6\\
-	G$_{1}$ - NT & 1.33 & 0.017 & - & 99.87\\
-	NT - G$_{1}$ & 0.28 & 1.13 & - & 99.87\\
+	\tikzmarkin<2>[hl]{a1}K - G{$_{1}$} & 3.63 & 4.3 & - &331.8\\
+	\ G{$_{1}$} - K & 4.37 & 3.22 & - &331.17\tikzmarkend{a1}\\
+	\tikzmarkin<4>[hl]{c1}K - NT & 0.8 & 0.38 & - & 68.28 \\
+	\ NT - K & 0.45 & 0.56 & - & 68.6 \tikzmarkend{c1}\\
+	\tikzmarkin<3>[hl]{b1}G{$_{1}$} - NT & 1.33 & 0.017 & - & 99.87\\
+	\ NT - G{$_{1}$} & 0.28 & 1.13 & - & 99.87\tikzmarkend{b1}\\
 	\hline
 \end{tabular}
 }
@@ -416,18 +423,18 @@ $V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$
 
 	\hline
 	\multicolumn{1}{c}{\textbf{Kombination}} &
-	\multicolumn{1}{c}{\textbf{Anwendungen$_{1}$}} &
+	\multicolumn{1}{c}{\textbf{Anwendungen{$_{1}$}}} &
 	\multicolumn{1}{c}{\textbf{Anwendungen$_{2}$}} &
 	\multicolumn{1}{c}{\textbf{Anwendungen$_{3}$}} & 
 	\multicolumn{1}{c}{\textbf{Reduktion}} \\
 	\hline
 	
-	K  - G$_{1}$ - NT & 3.61 & 4.29 & 0.11 & 334.67 \\
-	K - NT - G$_{1}$ & 3.6 & 0.87 & 3.39 & 334.83 \\
-	G$_{1}$ - NT - K & 4.36 & 0.12 & 3.2 & 334.17 \\
-	G$_{1}$ - K - NT & 3.61 & 3.2 & 0.65 & 334.16 \\
-	NT - K - G$_{1}$ & 0.39 & 3.44 & 4.03 & 335.2 \\
-	NT - G$_{1}$ - K & 0.91 & 3.42 & 3.2 & 334.16 \\
+	\ K  - G{$_{1}$} - NT &\ 3.61 &\ 4.29 & 0.11 & 334.67\\ 
+	\ K - NT - G{$_{1}$} & \tikzmarkin<2>[hl]{a2}3.6 &\ 0.87\tikzmarkend{a2} & 3.39 & 334.83 \\
+	\ G{$_{1}$} - NT - K &\ 4.36 &\ 0.12 & 3.2 & 334.17 \\
+	\ G{$_{1}$} - K - NT &\ 3.61 & \tikzmarkin<2>[hl]{b2}3.2 & 0.65\tikzmarkend{b2} & 334.16 \\
+	\tikzmarkin<3>[hl]{d2}NT - K - G{$_{1}$} &\ 0.39 &\ 3.44 & 4.03 & 335.2 \tikzmarkend{d2} \\
+	\ NT - G{$_{1}$} - K & \tikzmarkin<2>[hl]{c2}0.91 &\ 3.42 & 3.2\tikzmarkend{c2} & 334.16 \\
 	\hline
 	
 \end{tabular}
@@ -448,32 +455,32 @@ $V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$
 
 \bgroup
 \def\arraystretch{1.3}%  1 is the default, change whatever you need
-\resizebox{\linewidth}{!}{
+\resizebox{.95\linewidth}{!}{
 \begin{tabular}[c]{llllll}
 	\hline
 	\multicolumn{1}{c}{\textbf{Graph}} & 
 	\multicolumn{1}{c}{\textbf{Reduktionsregeln}} & 
-	\multicolumn{1}{c}{\textbf{Anwend.$_{1}$}} &
+	\multicolumn{1}{c}{\textbf{Anwend.{$_{1}$}}} &
 	\multicolumn{1}{c}{\textbf{Anwend.$_{2}$}} &
 	\multicolumn{1}{c}{\textbf{Anwend.$_{3}$}} &
 	\multicolumn{1}{c}{\textbf{Reduktion}} \\ 
 	
 	\hline
 		
-	Graph$_{1}$ & NT - K - G$_{1}$ & 1 & 5 & 6 & 195 \\
-	& G$_{1}$ - NT - K & 6 & 0 & 5 & 195 \\
-	& Nemhauser-Trotter & 1 & - & - & 11 \\
-	& Kronenregel & 1 & - & - & 11 \\
-	& Grad$_{1}$ & 2 & - & - & 91 \\
-	& Kronenregel - Grad$_{1}$ & 6 & 5 & - & 195 \\
+	Graph{$_{1}$} &\tikzmarkin<2>[hl]{b3}NT - K - G{$_{1}$} & 1 & 5 & 6 & 195  \tikzmarkend{b3} \\
+	&\ G{$_{1}$} - NT - K & 6 & 0 & 5 & 195 \\
+	&\ Nemhauser-Trotter & 1 & - & - & 11 \\
+	&\ Kronenregel & 1 & - & - & 11 \\
+	&\ Grad{$_{1}$} & 2 & - & - & 91 \\
+	&\tikzmarkin<2>[hl]{a3}Kronenregel - Grad{$_{1}$} & 6 & 5 & - & 195 \tikzmarkend{a3}\\
 	
 	\hline
 
-	Graph$_{2}$ & NT - K - G$_{1}$ & 1 & 9 & 2 & 762 \\
-	& Nemhauser-Trotter & 0 & - & - & 0\\
-	& Kronenregel & 0 & - & - & 0\\
-	& Grad$_{1}$ & 1 & - & - & 2 \\
-	& Kronenregel - Grad$_{1}$ & 9 & 3 & - & 762\\
+	Graph$_{2}$ &\ NT - K - G{$_{1}$} & 1 & 9 & 2 & 762 \\
+	& \tikzmarkin<3>[hl]{c3}Nemhauser-Trotter & 0 & - & - & 0\\
+	&\ Kronenregel & 0 & - & - & 0\\
+	&\ Grad{$_{1}$} & 1 & - & - & 2\tikzmarkend{c3} \\
+	&\ Kronenregel - Grad{$_{1}$} & 9 & 3 & - & 762\\
 	\hline
 	
 \end{tabular}
@@ -486,16 +493,14 @@ $V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$
 
 
 \section{Fazit und Ausblick}
-\begin{frame}{Ausblick}
+\begin{frame}{Fazit und Ausblick}
 \begin{itemize}
-\item Form von randomgraphen untersuchen
-	\begin{itemize}
-	\item Welche Form hinterlassen die Reduktionsregeln
-	\item Welche Form wäre für die Nemhauser Trotter am besten
+\item Nehmhauser-Trotter-Regel, obwohl viel in der Literatur erwähnt liefert in der Praxis mäßige Ergebnisse $\Rightarrow$ Warum? 
+	 \begin{itemize}
+	\item Welche Form wäre für die Nemhauser Trotter am besten? 
 	\end{itemize}
-\item Warum ist die Nemhauser-Trotter-Regel in der Praxis so schlecht?
-\item Wie ergibt sich in bei den Reduktionen (Abbildung \ref{fig:trottCrownOne}) der Große Unterschied zwischen den Graphen im Bereich der Kantenmenge zwischen 3000 und 4600?
-\item Wieso ist das Matching M1 so wichtig für die Kronenregel?
+\item Wie ergibt sich in bei den Reduktionen mit Dreierkombination der Große Unterschied zwischen den Graphen im Bereich der Kantenmenge zwischen 3000 und 4600? 
+\item Wieso ist das Matching M1 so wichtig für die Kronenregel? 
 \end{itemize}
 \end{frame}
   \begin{frame}[allowframebreaks]

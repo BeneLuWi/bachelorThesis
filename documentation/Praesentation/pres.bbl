@@ -21,10 +21,6 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{paper:1}
-E.~C. Sewell, S.~H. Jacobson, and H.~Kaul, ``Reductions for the stable set
-  problem,'' \emph{Algorithmic Operations Research Vol.6 40–55}, 2011.
-
 \bibitem{paper:2}
 F.~N. Abu-Khzam, M.~A. Langston, P.~Shanbhag, and C.~T. Symons, ``Scalable
   parallel algorithms for fpt problems,'' \emph{Algorithmica, Volume 45, Number
