@@ -77,11 +77,11 @@ Pr{\"u}fer:  & Prof. Dr. Henning Fernau\\
 \begin{frame}{Knotenüberdeckungsproblem - Definition}
 \begin{block}{Knotenüberdeckung}
 EINGABE: $\ Graph\ G=(V,E),\ nat\ddot{u}rliche\ Zahl\ k\leq |V|$\\
-AUSGABE: $\ S\subseteq V\ mit\ |S|\leq k,$ \textit{sodass\ jede\ Kante\ aus\ E\ einen\ Endpunkt\ in\ S\ hat.}\pause
+AUSGABE: $\ S\subseteq V\ mit\ |S|\leq k,$ \textit{sodass\ jede\ Kante\ aus\ E\ einen\ Endpunkt\ in\ S\ hat.} 
 \end{block}			
 \begin{itemize}
-\item $NP-vollst\ddot{a}ndig$\pause
-\item Naive Algorithmen haben eine Laufzeit von $O(n^{k})$\pause
+\item $NP-vollst\ddot{a}ndig$ 
+\item Naive Algorithmen haben eine Laufzeit von $O(n^{k})$ 
 \item Suchbaumalgorithmen laufen in $O(2^{k})$
 \end{itemize}		
 \end{frame}
@@ -89,11 +89,11 @@ AUSGABE: $\ S\subseteq V\ mit\ |S|\leq k,$ \textit{sodass\ jede\ Kante\ aus\ E\ 
 \section{Graphreduktion}
 \begin{frame}{Graphreduktion}
 
-\begin{block}{Graphreduktion für das Knotenüberdeckungsproblem}\pause
-$Graph\ G=(V,E),\ nat\ddot{u}rliche\ Zahl\ k;\ VC(G, k)$ \pause
+\begin{block}{Graphreduktion für das Knotenüberdeckungsproblem} 
+$Graph\ G=(V,E),\ nat\ddot{u}rliche\ Zahl\ k;\ VC(G, k)$  
 \begin{itemize}
-\item Entfernen von Knoten und Kanten aus $G$\pause
-\item Verkleinerung von $k$\pause
+\item Entfernen von Knoten und Kanten aus $G$ 
+\item Verkleinerung von $k$ 
 \item Problemkern $G' = (V', E'):$ $VC(G,k) = VC(G',k') \cup VC(G\setminus G', k-k')$
 \end{itemize}
 \end{block}
@@ -101,11 +101,11 @@ $Graph\ G=(V,E),\ nat\ddot{u}rliche\ Zahl\ k;\ VC(G, k)$ \pause
   
 \section{Einfache Reduktionsregeln}
 \begin{frame}{Einfache Regeln}
-\begin{block}{Reduktionsregeln}\pause
-$Graph\ G=(V,E),\ nat\ddot{u}rliche\ Zahl\ k$\pause
+\begin{block}{Reduktionsregeln} 
+$Graph\ G=(V,E),\ nat\ddot{u}rliche\ Zahl\ k$ 
 \begin{enumerate}
-\item $v \in V$ hat keine Kanten $\Rightarrow V = V \setminus v$ (Grad$_{0}$-Regel) \pause
-\item $v \in V$ hat genau eine Kante $\Rightarrow V = V \setminus (v \cup N(v)); k = k-1 $ (Grad$_{1}$-Regel) \pause
+\item $v \in V$ hat keine Kanten $\Rightarrow V = V \setminus v$ (Grad$_{0}$-Regel)  
+\item $v \in V$ hat genau eine Kante $\Rightarrow V = V \setminus (v \cup N(v)); k = k-1 $ (Grad$_{1}$-Regel)  
 \item $v \in V$ hat mehr als $k$ Kanten $\Rightarrow V = V \setminus (v); k = k-1 $ (Buss-Regel)
 
 \end{enumerate}
@@ -113,10 +113,10 @@ $Graph\ G=(V,E),\ nat\ddot{u}rliche\ Zahl\ k$\pause
 \end{frame}
 
 \begin{frame}{Anwendung}
-\begin{block}{Testset}\pause
+\begin{block}{Testset} 
 \begin{itemize}
-\item 900 Graphen mit 1000 Knoten und bis zu 10000 Kanten\pause
-\item LEDA:random\_simple\_undirected\_graph\pause
+\item 900 Graphen mit 1000 Knoten und bis zu 10000 Kanten 
+\item LEDA:random\_simple\_undirected\_graph 
 \item Anwendung bis sich keine Änderung mehr ergibt
 \end{itemize}
 \end{block}
@@ -130,11 +130,11 @@ $Graph\ G=(V,E),\ nat\ddot{u}rliche\ Zahl\ k$\pause
 \section{Kronenregel}
 
 \begin{frame}{Kronenregel - Definitionen}
-\begin{block}{Krone}\pause
-\textit{Für einen Graphen} $G=(V,E)$ \textit{besteht eine Krone aus} $H \subseteq V\ und\ I \subseteq V\ mit\ H \cap I = \emptyset,\ sodass$ \pause
+\begin{block}{Krone} 
+\textit{Für einen Graphen} $G=(V,E)$ \textit{besteht eine Krone aus} $H \subseteq V\ und\ I \subseteq V\ mit\ H \cap I = \emptyset,\ sodass$  
 \begin{enumerate}
-\item $H = N(I),$ \pause
-\item $\forall v, w \in I\ gilt\ (vw) \notin E\ und$\pause
+\item $H = N(I),$  
+\item $\forall v, w \in I\ gilt\ (vw) \notin E\ und$ 
 \item \textit{die Kanten zwischen H und I enthalten ein Matching indem alle Knoten aus H enthalten sind.}
 \end{enumerate}
 \end{block}
@@ -143,21 +143,21 @@ $Graph\ G=(V,E),\ nat\ddot{u}rliche\ Zahl\ k$\pause
 \begin{frame}[fragile]
 \frametitle{Kronenregel - Algorithmus}
 \begin{lstlisting}[mathescape=true, escapechar = !,basicstyle=\ttfamily\scriptsize]
-$G = (V, E), n:= |V|, m:=|E|, d:= maximaler\ Grad\ eines\ Knoten\ aus\ G$!\pause!
-$M_{1}$ := Maximal Matching von $G$!\pause!
+$G = (V, E), n:= |V|, m:=|E|, d:= maximaler\ Grad\ eines\ Knoten\ aus\ G$ 
+$M_{1}$ := Maximal Matching von $G$ 
   $M_{1} := \emptyset$
-  $\forall e \in$ E:	!\pause!
-    $M_{1} = M_{1} \cup e$ !\pause!
-    Entferne $e$ und $N(e)$ aus der weiteren Betrachtung!\pause!
-$O$ := nicht gepaarte Knoten in $M_{1}$!\pause!
-$M_{2}$ := Maxmimum Matching von $B = (O, N(O), \{ uv| u \in O \wedge v \in N(O)\}) $!\pause!
-$I$  := nicht gepaarte Knoten aus $O$ in $M_{2}$!\pause!
-$I'  := \emptyset$!\pause!
-while $I' \neq I$!\pause!
-  $I' := I$!\pause!
-  $H:= N(I)$!\pause!
-  $I := I \cup \{\forall u \in O|\exists v\in H\ (uv \in M_{2})\}$!\pause!
-Entferne $N(I)$ aus $G$!\pause!
+  $\forall e \in$ E:	 
+    $M_{1} = M_{1} \cup e$  
+    Entferne $e$ und $N(e)$ aus der weiteren Betrachtung 
+$O$ := nicht gepaarte Knoten in $M_{1}$ 
+$M_{2}$ := Maxmimum Matching von $B = (O, N(O), \{ uv| u \in O \wedge v \in N(O)\}) $ 
+$I$  := nicht gepaarte Knoten aus $O$ in $M_{2}$ 
+$I'  := \emptyset$ 
+while $I' \neq I$ 
+  $I' := I$ 
+  $H:= N(I)$ 
+  $I := I \cup \{\forall u \in O|\exists v\in H\ (uv \in M_{2})\}$ 
+Entferne $N(I)$ aus $G$ 
 \end{lstlisting}
 \end{frame}
 
@@ -189,8 +189,8 @@ Entferne $N(I)$ aus $G$
 \end{frame}
 \begin{frame}{Kronenregel - Laufzeit}
 \begin{align*}
-&\ m \cdot d + n + n d/2 + \sqrt{n} \cdot m + n  + n \cdot d \\ \pause
-=&\ d (m+n) +2 n + nd/2 + \sqrt{n} \cdot m \\ \pause
+&\ m \cdot d + n + n d/2 + \sqrt{n} \cdot m + n  + n \cdot d \\  
+=&\ d (m+n) +2 n + nd/2 + \sqrt{n} \cdot m \\  
 \Rightarrow &\ O(\sqrt{n} \cdot m)
 \end{align*}
 \end{frame}
@@ -225,7 +225,7 @@ Entferne $N(I)$ aus $G$
 	$>$2&0.29 &13.22 \\
 	$>$3& 0.27& 12.92 \\
 	$>$4& 0.3& 13.71 \\
-	$>$5& 0.31&13.38 \\ \pause
+	$>$5& 0.31&13.38 \\  
 	Größte Anzahl& 0.32&13.44 \\
 	Durchschnittliche Anzahl& 0.29&12.98 \\
 	
@@ -262,7 +262,7 @@ Entferne $N(I)$ aus $G$
 	$>$2&0.41 &16.96 \\
 	$>$3& 0.39& 16.52 \\
 	$>$4& 0.4 &15.78 \\
-	$>$5& 0.4 & 15.72\\ \pause
+	$>$5& 0.4 & 15.72\\  
 	Größte Anzahl& 0.29 &13.06 \\
 	Durchschnittliche Anzahl& 0.46&19.77 \\
 	
@@ -284,12 +284,12 @@ Entferne $N(I)$ aus $G$
 	
 \begin{frame}{Nemhauser-Trotter-Regel}
 \begin{block}{Nemhauser-Trotter-Theorem}
-$\textit{Für einen Graphen}\ G=(V,E)\textit{ können zwei disjunkte Mengen}$\\ $\ C_{0}\ und\ V_{0} \textit{ gefunden werden, sodass}$\pause
+$\textit{Für einen Graphen}\ G=(V,E)\textit{ können zwei disjunkte Mengen}$\\ $\ C_{0}\ und\ V_{0} \textit{ gefunden werden, sodass}$ 
 \begin{enumerate}
 \item $C_{0}$ \textit{ in einer minimalen Knotenüberdeckung} \\
-\textit{von G enthalten ist,}\pause
+\textit{von G enthalten ist,} 
 \item \textit{der Teilgraph }$G[V_{0}]$ \textit{eine Knotenüberdeckung}\\
-\textit{der Größe} $\leq |V_{0}| / 2$ \textit{ hat,}\pause
+\textit{der Größe} $\leq |V_{0}| / 2$ \textit{ hat,} 
 \item \textit{und} $VC(G) = VC(G[V_{0}])\cup C_{0}$ \textit{ gilt.}
 \end{enumerate}
 
@@ -299,12 +299,12 @@ $\textit{Für einen Graphen}\ G=(V,E)\textit{ können zwei disjunkte Mengen}$\\ 
 \begin{frame}[fragile]
 \frametitle{NT-Regel - Algorithmus}
 \begin{lstlisting}[mathescape = true, basicstyle=\ttfamily, escapechar = !]
-$G = (V, E), n:= |V|, m:=|E|, d:= maximaler\ Grad\ eines\ Knoten\ aus\ G$!\pause!
+$G = (V, E), n:= |V|, m:=|E|, d:= maximaler\ Grad\ eines\ Knoten\ aus\ G$ 
 Bipartiden Graphen erstellen $B = (V, V', E')$
-  mit $E':= \{\{x,y'\}, \{x', y\} | \{x,y\} \in E\}$!\pause!
-Maximum Matching $M$ von $B$ bestimmen!\pause!
-$C_{B}:= VC(B)$!\pause!
-$C_{0}:= \{x \in V\ |\ x \in C_{B}\ und\ x' \in C_{B} \}$!\pause!
+  mit $E':= \{\{x,y'\}, \{x', y\} | \{x,y\} \in E\}$ 
+Maximum Matching $M$ von $B$ bestimmen 
+$C_{B}:= VC(B)$ 
+$C_{0}:= \{x \in V\ |\ x \in C_{B}\ und\ x' \in C_{B} \}$ 
 $V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$
 \end{lstlisting}
 
@@ -327,7 +327,7 @@ $V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$
 \end{frame}
 \begin{frame}{NT-Regel - Laufzeit}
 \begin{align*}
-&\ n \cdot 2d + \sqrt{n} \cdot m + 2n + k \cdot d\\ \pause
+&\ n \cdot 2d + \sqrt{n} \cdot m + 2n + k \cdot d\\  
 \Rightarrow &\ O(n + \sqrt{n} \cdot m)
 \end{align*}
 \end{frame}
