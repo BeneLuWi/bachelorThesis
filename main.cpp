@@ -27,7 +27,7 @@ int main() {
     //VC(g0,4) = {{n1,n2,n6,n7}, {n1,n4,n5,n6}, {n2,n3,n4,n7}}
 
     std::ofstream result;
-    result.open("Results/analysis1000_OneNormal_runtime.csv");
+    result.open("Results/analysis1000_Pliz.csv");
 
     //
     //Graphen einlesen
@@ -140,10 +140,10 @@ int main() {
             list<list<node>> allVCs;
 
 
-            clock_t begin = clock();
+            //clock_t begin = clock();
             vertex_cover(gleda, k, allVCs, result);
-            clock_t end = clock();
-            result << ';'<< ((double)(end-begin))/ CLOCKS_PER_SEC << "\n";
+            //clock_t end = clock();
+            //result << ';'<< ((double)(end-begin))/ CLOCKS_PER_SEC << "\n";
             //cout << graphcount++ << "\n";
         }
 

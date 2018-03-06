@@ -111,7 +111,7 @@ static void vertex_cover(ugraph& g, int& k, list<list<node>>& allVCs, std::ofstr
             //degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
             //buss(g, vc, nodeDegree, coverCheck, edgeCovered, k);
             //crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
-            //redTrott = nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
+            redTrott = nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
 
             if(redTrott!= redTrottPrev || prev!= vc.length()){
                 iterations1++;
@@ -129,9 +129,9 @@ static void vertex_cover(ugraph& g, int& k, list<list<node>>& allVCs, std::ofstr
         while(prev != vc.length()) {
             prev = vc.length();
 
-            degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
+            //degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
             //buss(g, vc, nodeDegree, coverCheck, edgeCovered, k);
-            //crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
+            crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
             //redTrott = nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
 
 
@@ -148,7 +148,7 @@ static void vertex_cover(ugraph& g, int& k, list<list<node>>& allVCs, std::ofstr
         while(prev != vc.length()) {
             prev = vc.length();
 
-            //degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
+            degreeOne(g, vc, nodeDegree, coverCheck, edgeCovered);
             //buss(g, vc, nodeDegree, coverCheck, edgeCovered, k);
             //crownrule(g, vc, nodeDegree, coverCheck, edgeCovered);
             //redTrott = nemTrott(g, vc, nodeDegree, coverCheck, edgeCovered);
@@ -237,7 +237,7 @@ static void vertex_cover(ugraph& g, int& k, list<list<node>>& allVCs, std::ofstr
             }
         }
 
-    result << g.all_edges().length() << delim << deaktiviert << delim << iterations1<< delim << iterations2 << delim << iterations3 << delim << iterations4;
+    result << g.all_edges().length() << delim << deaktiviert << delim << iterations1<< delim << iterations2 << delim << iterations3 << delim << iterations4<<"\n";
 
     allVCs.append(vc);
 
