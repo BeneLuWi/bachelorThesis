@@ -14,6 +14,43 @@ Beschreibung der verschiedenen Reduktionsregeln und wie funktionieren. Mit graph
 \label{ch:Grundlagen:sec:Knotenüberdeckung}
 
 ...
+%% ==============================
+\section{Einfache Reduktionsregeln}
+%% ==============================
+\label{ch:Grundlagen:sec:Einfache Reduktionsregeln}
+
+Hierfür bieten sich einige einfache Beobachtungen, die über einen Graphen getroffen werden können an. Auf das Stromnetzproblem mit einem Netz mit maximal \emph{k} Generatoren bezogen bedeuten diese: 
+\begin{enumerate}
+\item Häuser, die isoliert stehen und keine Leitungen haben, können aus dem Netz entfernt werden
+\item Bei Häusern, die genau eine Leitung, beziehungsweise genau ein Nachbarhaus haben, bekommt entsprechende Nachbarhaus automatisch einen Stromgenerator (Grad$_{1}$-Regel)
+\item Häuser, die $k+1$ Leitungen zu anderen Häusern haben, erhalten einen Generator, da sonst alle Nachbarnhäuser versorgt würden und somit mehr Generatoren, als verfügbar verteilt werden müssten (Buss-Regel)
+\end{enumerate}
+Angewandt an eine Probleminstanz bedeutet das Einsetzen einer der Regeln, dass die entsprechenden Häuser und Leitungen von einer weiterführenden Betrachtung ausgeschlossen sind. Es entsteht ein äquivalenter, kleinerer Problemkern. Dies geschieht durch die meißten Regeln in polinomieller Zeit, um dann im Nachhinein einen langsameren Algorithmus für das Lösen des Problems zu benutzen \cite{param}. Das Beispiel in Abbildung \ref{fig:vc} kann durch die wiederholte Anwendung der Regeln sogar gelöst werden:
+\begin{enumerate}
+\item Es stehen 4 Generatoren zur Verfügung, allerdings hat Haus B 5 ausgehende Leitungen $\Rightarrow$ Buss-Regel: B erhält einen Generator und dessen Leitungen haben Strom.
+\item Drei disjunkte Mengen von Häusern (\{E, G, F\}, \{D, C\} und \{A, H\}) bleiben übrig, wo jeweils einmal die Grad$_{1}$-Regel angewandt werden kann. Die 3 restlichen Generatoren werden verteilt, wobei sich bei jeder der Häusergruppen mehrere Möglichkeiten bieten.
+\item Es steht kein Generator mehr zur Verfügung und aus der Restmenge {E, G, F} bleibt ein Haus ohne stromlose Leitungen zurück $\Rightarrow$ das Haus wird aus der Betrachtung entfernt und das Problem ist gelöst.
+\end{enumerate}
+Nach der wiederholten Anwendung der Buss-Regel haben alle Häuser mit mehr als \emph{k} Leitungen einen Generator und sind von der weiteren Betrachtung ausgeschlossen. Jeder übrige Haushalt kann also maximal \emph{k} stromlose Leitungen haben. Wenn nun noch mehr als $k^{2}$ Leitungen zu versorgen sind, kann es keine Lösung dieser Probleminstanz geben, da lediglich \emph{k} Stromgeneratoren zur Verfügung stehen und, verteilt auf die Häuser, somit nur maximal $k^{2}$ Leitungen unter Strom setzen können. Es bleiben höchstens $2 k^{2}$ Häuser ohne Generator (mit mindestens einer Leitung), bei denen noch nicht alle Leitungen Strom haben übrig\cite{param}, da jede der Leitungen an 2 Häusern angeschlossen ist. Wird nun die Grad$_{1}$-Regel angewandt bis sie nicht mehr greift, sind höchstens $k^{2} + k$ Häuser übrig, da jedes dieser Häuser jetzt zwischen 2 und \emph{k} stromlose Leitungen hat.
+
+
+Um ein Haus unter den \emph{n} Häusern mit mehr als \emph{k} Leitungen zu finden, werden im schlimmsten Fall $k \cdot n$ Schritte benötigt, da für jedes Haus alle Leitungen gezählt werden müssen. Falls alle Häuser \emph{k} Leitungen haben, wird die Buss-Regel nicht ausgelöst. Ansonsten wird das gefundene Haus mit all seinen Leitungen aus dem Netz entfernt, was wiederum $d \geq k$(wobei $d$ der größte Grad unter den Knoten aus $G$ ist) Schritte benötigt. Die Grad$_{1}$-Regel benötigt im schlimmsten Fall $2 \cdot n$ Schritte um das Häusernetz einmal zu durchlaufen, da die Betrachtung eines Hauses abgebrochen werden kann, sobald es mehr als eine Leitung hat, das es dann für diese Regel uninteressant ist. Wird ein Haus gefunden, kann dessen Nachbar und alle von diesem ausgehenden Leitungen entfernt werden, also $d$. Wird die Buss-Regel wurde vor der Grad$_{1}$-Regel angewandt, bedeutet das, dass maximal \emph{k} Schritte gebraucht werden. Um alle Häuser ohne Leitungen zu entfernen, muss lediglich für jedes Haus überprüft werden, ob es Leitungen hat, also \emph{n} Schritte.
+
+
+
+
+In \emph{O}-Notation ergibt sich daraus eine Laufzeitabschätzung eines Durchlaufs von
+\begin{align}
+\text{Worst Case}:\ & kn + p + p + 1\\
+\Rightarrow\ & O(kn + p)\\
+\Rightarrow\ & O(kn)
+\end{align}
+
+Um größere Instanzen weiter zu vereinfachen stehen allerdings auch weiteaus komplexere Reduktionsregeln zur Verfügung. In dieser Arbeit werden das Nemhauser-Trotter-Theorem, beziehungsweise die dazugehörige Reduktionsregel und die Kronenregel betrachet.
+
+
+Eine schnelle Laufzeit, um eine Knotenüberdeckung in einem gegebenen Graphen \emph{G}, Parameter \emph{k} und einer Knontenmenge \emph{n} zu finden wird von Chen et al \cite{paper:4} mit $O(kn + 1.271^{k}k^{2})$ vorgeschlagen; die schnellste bekannte Methode, alle Knotenüberdeckungen eines Graphen zu zählen von Mölle et al \cite{paper:5} mit einer Laufzeit von $O(1.3803^{k})$.
+
 
 %% ==============================
 \section{Nemhauser-Trotter Reduktionsregeln}
@@ -29,12 +66,7 @@ Beschreibung der verschiedenen Reduktionsregeln und wie funktionieren. Mit graph
 
 ...
 
-%% ==============================
-\section{Einfache Reduktionsregeln}
-%% ==============================
-\label{ch:Grundlagen:sec:Einfache Reduktionsregeln}
 
-...
 
 
 %%% Local Variables: 
