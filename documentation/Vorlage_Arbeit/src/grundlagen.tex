@@ -13,19 +13,20 @@ Beschreibung der verschiedenen Reduktionsregeln und wie funktionieren. Mit graph
 %% ==============================
 \label{ch:Grundlagen:sec:Knotenüberdeckung}
 
-...
+Eine schnelle Laufzeit, um eine Knotenüberdeckung in einem gegebenen Graphen \emph{G}, Parameter \emph{k} und einer Knontenmenge \emph{n} zu finden wird von Chen et al \cite{paper:4} mit $O(kn + 1.271^{k}k^{2})$ vorgeschlagen; die schnellste bekannte Methode, alle Knotenüberdeckungen eines Graphen zu zählen von Mölle et al \cite{paper:5} mit einer Laufzeit von $O(1.3803^{k})$.
+
 %% ==============================
 \section{Einfache Reduktionsregeln}
 %% ==============================
 \label{ch:Grundlagen:sec:Einfache Reduktionsregeln}
-
-Hierfür bieten sich einige einfache Beobachtungen, die über einen Graphen getroffen werden können an. Auf das Stromnetzproblem mit einem Netz mit maximal \emph{k} Generatoren bezogen bedeuten diese: 
+Aus einfachen Beobachtungen über den Problemgraphen lassen sich für einen Graphen $G=(V,K)$ und der natürlichen Zahl $k$ einige Reduktionsregelen ableiten.
 \begin{enumerate}
-\item Häuser, die isoliert stehen und keine Leitungen haben, können aus dem Netz entfernt werden
-\item Bei Häusern, die genau eine Leitung, beziehungsweise genau ein Nachbarhaus haben, bekommt entsprechende Nachbarhaus automatisch einen Stromgenerator (Grad$_{1}$-Regel)
-\item Häuser, die $k+1$ Leitungen zu anderen Häusern haben, erhalten einen Generator, da sonst alle Nachbarnhäuser versorgt würden und somit mehr Generatoren, als verfügbar verteilt werden müssten (Buss-Regel)
+\item Knoten, die isoliert stehen und keine Kanten haben, können aus dem Graphen entfernt werden, da sie nicht zu einer minimalen Knotenüberdeckung gehören können (Grad$_{0}$-Regel)
+\item Bei Knoten, die genau eine Kante, beziehungsweise genau einen Nachbarknoten haben, wird der  entsprechende Nachbarknoten automatisch in die Lösungsmenge aufgenommen, da einer der beiden Knoten in der Knotenüberdeckung vorkommt und der Nachbarknoten mindestens den Grad 1 hat, also möglicherweise mehr Kanten abdeckt (Grad$_{1}$-Regel)
+\item Knoten mit $k+1$ Kanten, werden der Knotenüberdeckung hinzugefügt, da sonst alle Nachbarknoten aufgenommen werden und somit mehr, als $k$ Knoten in der Lösungsmenge wären (Buss-Regel)
 \end{enumerate}
-Angewandt an eine Probleminstanz bedeutet das Einsetzen einer der Regeln, dass die entsprechenden Häuser und Leitungen von einer weiterführenden Betrachtung ausgeschlossen sind. Es entsteht ein äquivalenter, kleinerer Problemkern. Dies geschieht durch die meißten Regeln in polinomieller Zeit, um dann im Nachhinein einen langsameren Algorithmus für das Lösen des Problems zu benutzen \cite{param}. Das Beispiel in Abbildung \ref{fig:vc} kann durch die wiederholte Anwendung der Regeln sogar gelöst werden:
+Angewandt an eine Probleminstanz bedeutet das Einsetzen einer der Regeln, dass die entsprechenden Knoten und Kanten von einer weiterführenden Betrachtung ausgeschlossen sind. Buss-Regel und Grad$_{1}$-Regel unterscheiden sich von der Grad$_{0}$-Regel dahingehend, dass das Auslösen einer dieser Regeln auch den Parameter $k$ verringert, da ein Knoten in die Überdeckung aufgenommen wird.
+ Das Beispiel in Abbildung \ref{fig:vc} kann durch die wiederholte Anwendung der Regeln sogar gelöst werden:
 \begin{enumerate}
 \item Es stehen 4 Generatoren zur Verfügung, allerdings hat Haus B 5 ausgehende Leitungen $\Rightarrow$ Buss-Regel: B erhält einen Generator und dessen Leitungen haben Strom.
 \item Drei disjunkte Mengen von Häusern (\{E, G, F\}, \{D, C\} und \{A, H\}) bleiben übrig, wo jeweils einmal die Grad$_{1}$-Regel angewandt werden kann. Die 3 restlichen Generatoren werden verteilt, wobei sich bei jeder der Häusergruppen mehrere Möglichkeiten bieten.
@@ -49,24 +50,60 @@ In \emph{O}-Notation ergibt sich daraus eine Laufzeitabschätzung eines Durchlau
 Um größere Instanzen weiter zu vereinfachen stehen allerdings auch weiteaus komplexere Reduktionsregeln zur Verfügung. In dieser Arbeit werden das Nemhauser-Trotter-Theorem, beziehungsweise die dazugehörige Reduktionsregel und die Kronenregel betrachet.
 
 
-Eine schnelle Laufzeit, um eine Knotenüberdeckung in einem gegebenen Graphen \emph{G}, Parameter \emph{k} und einer Knontenmenge \emph{n} zu finden wird von Chen et al \cite{paper:4} mit $O(kn + 1.271^{k}k^{2})$ vorgeschlagen; die schnellste bekannte Methode, alle Knotenüberdeckungen eines Graphen zu zählen von Mölle et al \cite{paper:5} mit einer Laufzeit von $O(1.3803^{k})$.
 
 
 %% ==============================
 \section{Nemhauser-Trotter Reduktionsregeln}
 %% ==============================
 \label{ch:Grundlagen:sec:Nemhauser-Trotter Reduktionsregeln}
+$\textit{Für einen Graphen}\ G=(V,E)\textit{ können zwei disjunkte Mengen}$\\ $\ C_{0}\ und\ V_{0} \textit{ gefunden werden, sodass}$
+\begin{enumerate}
+\item $C_{0}$ \textit{ in einer minimalen Knotenüberdeckung} \\
+\textit{von G enthalten ist,}
+\item \textit{der Teilgraph }$G[V_{0}]$ \textit{eine Knotenüberdeckung}\\
+\textit{der Größe} $\leq |V_{0}| / 2$ \textit{ hat,}
+\item \textit{und} $VC(G) = VC(G[V_{0}])\cup C_{0}$ \textit{ gilt.}
+\end{enumerate}
 
-...
-
+\begin{lstlisting}[mathescape = true, basicstyle=\ttfamily]
+$G = (V, E), n:= |V|, m:=|E|, d:= maximaler\ Grad\ der\ Knoten\ aus\ G$
+Bipartiden Graphen erstellen $B = (V, V', E')$ 
+  mit $E':= \{\{x,y'\}, \{x', y\} | \{x,y\} \in E\}$ 
+Maximum Matching $M$ von $B$ bestimmen 
+$C_{B}:= VC(B)$ 
+$C_{0}:= \{x \in V\ |\ x \in C_{B}\ und\ x' \in C_{B} \}$ 
+$V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$ 
+\end{lstlisting}
 %% ==============================
 \section{Kronenregel}
 %% ==============================
 \label{ch:Grundlagen:sec:Kronenregel}
 
-...
+\textit{Für einen Graphen} $G=(V,E)$ \textit{besteht eine Krone aus} $H \subseteq V\ und\ I \subseteq V\ mit\ H \cap I = \emptyset,\ sodass$ 
+\begin{enumerate}
+\item $H = N(I),$ 
+\item $\forall v, w \in I\ gilt\ (vw) \notin E\ und$
+\item \textit{die Kanten zwischen H und I enthalten ein Matching in dem alle Knoten aus H enthalten sind.}
+\end{enumerate}
 
 
+\begin{lstlisting}[mathescape=true, escapechar = !,basicstyle=\ttfamily]
+$G = (V, E), n:= |V|, m:=|E|, d:= maximaler\ Grad\ der\ Knoten\ aus\ G$
+$M_{1}$ := Maximal Matching von $G$
+  $M_{1} := \emptyset$
+  $\forall e \in$ E:
+    $M_{1} = M_{1} \cup e$
+    Entferne $e$ und $N(e)$ aus der weiteren Betrachtung
+$O$ := nicht gepaarte Knoten in $M_{1}$
+$M_{2}$ := Maximum Matching von $B = (O, N(O), \{ uv| u \in O \wedge v \in N(O)\}) $
+$I$  := nicht gepaarte Knoten aus $O$ in $M_{2}$
+$I'  := \emptyset$
+while $I' \neq I$
+  $I' := I$
+  $H:= N(I)$
+  $I := I \cup \{\forall u \in O|\exists v\in H\ (uv \in M_{2})\}$
+Entferne $N(I)$ aus $G$
+\end{lstlisting}
 
 
 %%% Local Variables: 

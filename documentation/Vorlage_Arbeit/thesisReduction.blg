@@ -16,52 +16,55 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: thesis.bib
+I was expecting an "="---line 36 of file thesis.bib
+ : year 
+ :      {1975},
+I'm skipping whatever remains of this entry
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
-Name 1 in "aniel M{\"o}lle, Stefan Richter, and Peter Rossmanith" has a comma at the end for entry paper:5
-while executing---line 2403 of file ieeetran.bst
+Warning--empty year in trott
 
 Done.
-You've used 13 entries,
+You've used 15 entries,
             4087 wiz_defined-function locations,
-            890 strings with 9169 characters,
-and the built_in function-call counts, 5166 in all, are:
-= -- 354
-> -- 125
+            899 strings with 9404 characters,
+and the built_in function-call counts, 5915 in all, are:
+= -- 410
+> -- 142
 < -- 0
-+ -- 58
-- -- 29
-* -- 205
-:= -- 887
-add.period$ -- 26
-call.type$ -- 13
-change.case$ -- 5
++ -- 66
+- -- 33
+* -- 237
+:= -- 1022
+add.period$ -- 30
+call.type$ -- 15
+change.case$ -- 7
 chr.to.int$ -- 0
-cite$ -- 13
-duplicate$ -- 422
-empty$ -- 576
-format.name$ -- 38
-if$ -- 1183
+cite$ -- 16
+duplicate$ -- 492
+empty$ -- 649
+format.name$ -- 43
+if$ -- 1349
 int.to.chr$ -- 0
-int.to.str$ -- 13
-missing$ -- 81
-newline$ -- 62
-num.names$ -- 13
-pop$ -- 250
+int.to.str$ -- 15
+missing$ -- 93
+newline$ -- 68
+num.names$ -- 15
+pop$ -- 285
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 416
+skip$ -- 472
 stack$ -- 0
-substring$ -- 5
-swap$ -- 225
+substring$ -- 7
+swap$ -- 260
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 13
-warning$ -- 0
-while$ -- 13
-width$ -- 15
-write$ -- 118
+type$ -- 15
+warning$ -- 1
+while$ -- 15
+width$ -- 17
+write$ -- 133
 (There was 1 error message)

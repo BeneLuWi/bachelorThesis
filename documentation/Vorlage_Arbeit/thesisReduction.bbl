@@ -30,27 +30,33 @@ M.~R. Garey and D.~S. Johnson, \emph{Computers and Intractability : a guide to
 G.~Valiente, \emph{Algorithms on Trees and Graphs}.\hskip 1em plus 0.5em minus
   0.4em\relax Springer, Berlin, Heidelberg, 2002.
 
-\bibitem{param}
-M.~Cygan, \emph{Parameterized algorithms}.\hskip 1em plus 0.5em minus
-  0.4em\relax Springer Cham, 2015.
+\bibitem{paper:3}
+F.~Abu-Khzam, R.~Collins, M.~Fellows, M.~Langston, and W.~S.~C. Symons,
+  ``Kernelization algorithms for the vertex cover problem: Theory and
+  experiments,'' \emph{Proceedings of the 6th Workshop on Algorithm Engineering
+  and Experiments (ALENEX), ACM/SIAM, Proc. Applied Mathematics 115}, 2004.
+
+\bibitem{manual}
+K.~Mehlhorn and S.~N{\"a}her, \emph{LEDA: A Platform for Combinatorial and
+  Geometric Computing}.\hskip 1em plus 0.5em minus 0.4em\relax Cambridge
+  University Press, 2006.
 
 \bibitem{paper:4}
 J.~Chen, I.~A. Kanj, and W.~Jia, ``Vertex cover: further observations and
   further improvements,'' \emph{Journal of Algorithms 41, 280 - 301}, 2001.
 
 \bibitem{paper:5}
-S.~R. aniel M{\"o}lle and P.~Rossmanith, ``Enumerate and expand: New runtime
-  bounds for vertex cover variants,'' \emph{Computing and Combinatorics.
-  Lecture Notes in Computer Science, vol 4112, 265-273}, 2006.
+D.~M{\"o}lle, S.~Richter, and P.~Rossmanith, ``Enumerate and expand: New
+  runtime bounds for vertex cover variants,'' \emph{Computing and
+  Combinatorics. Lecture Notes in Computer Science, vol 4112, 265-273}, 2006.
+
+\bibitem{param}
+M.~Cygan, \emph{Parameterized algorithms}.\hskip 1em plus 0.5em minus
+  0.4em\relax Springer Cham, 2015.
 
 \bibitem{fixed}
 R.~Niedermeier, \emph{Invitation to Fixed-Parameter Algorithms}.\hskip 1em plus
   0.5em minus 0.4em\relax Oxford University Press, 2006.
-
-\bibitem{manual}
-K.~Mehlhorn and S.~N{\"a}her, \emph{LEDA: A Platform for Combinatorial and
-  Geometric Computing}.\hskip 1em plus 0.5em minus 0.4em\relax Cambridge
-  University Press, 2006.
 
 \bibitem{paper:1}
 E.~C. Sewell, S.~H. Jacobson, and H.~Kaul, ``Reductions for the stable set
@@ -61,11 +67,13 @@ F.~N. Abu-Khzam, M.~A. Langston, P.~Shanbhag, and C.~T. Symons, ``Scalable
   parallel algorithms for fpt problems,'' \emph{Algorithmica, Volume 45, Number
   3, 269-284}, 2006.
 
-\bibitem{paper:3}
-F.~Abu-Khzam, R.~Collins, M.~Fellows, M.~Langston, and W.~S.~C. Symons,
-  ``Kernelization algorithms for the vertex cover problem: Theory and
-  experiments,'' \emph{Proceedings of the 6th Workshop on Algorithm Engineering
-  and Experiments (ALENEX), ACM/SIAM, Proc. Applied Mathematics 115}, 2004.
+\bibitem{trott}
+G.~Nemhauser and L.~E. Trotter, ``Vertex packings: Structural properties and
+  algorithms,'' \emph{Mathematical Programming 8, 232-248}.
+
+\bibitem{karp}
+R.~M. Karp, ``Reducibility among combinatorial problems,'' \emph{Complexity of
+  Computer Computations, 85-103}, 1972.
 
 \bibitem{exakt}
 F.~Gurski, \emph{Exakte Algorithmen für schwere Graphenprobleme}.\hskip 1em

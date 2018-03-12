@@ -3,20 +3,20 @@
 \contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Problemstellung}{3}{section.1.2}
 \contentsline {section}{\numberline {1.3}Zielsetzung}{3}{section.1.3}
-\contentsline {section}{\numberline {1.4}Gliederung/Aufbau der Arbeit}{3}{section.1.4}
-\contentsline {chapter}{\numberline {2}Grundlagen}{4}{chapter.2}
-\contentsline {section}{\numberline {2.1}Knoten\IeC {\"u}berdeckung}{4}{section.2.1}
-\contentsline {section}{\numberline {2.2}Einfache Reduktionsregeln}{4}{section.2.2}
-\contentsline {section}{\numberline {2.3}Nemhauser-Trotter Reduktionsregeln}{5}{section.2.3}
-\contentsline {section}{\numberline {2.4}Kronenregel}{6}{section.2.4}
-\contentsline {chapter}{\numberline {3}Analyse}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}Anforderungen}{7}{section.3.1}
-\contentsline {section}{\numberline {3.2}Bewertung der Reduktionsregeln}{7}{section.3.2}
-\contentsline {section}{\numberline {3.3}Anwendung der Reduktionsregeln}{8}{section.3.3}
-\contentsline {section}{\numberline {3.4}Interpretation der Ergebnisse}{13}{section.3.4}
-\contentsline {section}{\numberline {3.5}Zusammenfassung}{13}{section.3.5}
-\contentsline {chapter}{\numberline {4}Implementierung}{17}{chapter.4}
-\contentsline {section}{\numberline {4.1}Kronenregel}{17}{section.4.1}
-\contentsline {section}{\numberline {4.2}Nemhauser-Trotter-Regel}{17}{section.4.2}
-\contentsline {chapter}{\numberline {5}Diskussion und Ausblick}{19}{chapter.5}
-\contentsline {chapter}{Literaturverzeichnis}{20}{section*.5}
+\contentsline {section}{\numberline {1.4}Gliederung der Arbeit}{4}{section.1.4}
+\contentsline {chapter}{\numberline {2}Grundlagen}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}Knoten\IeC {\"u}berdeckung}{5}{section.2.1}
+\contentsline {section}{\numberline {2.2}Einfache Reduktionsregeln}{5}{section.2.2}
+\contentsline {section}{\numberline {2.3}Nemhauser-Trotter Reduktionsregeln}{6}{section.2.3}
+\contentsline {section}{\numberline {2.4}Kronenregel}{7}{section.2.4}
+\contentsline {chapter}{\numberline {3}Analyse}{8}{chapter.3}
+\contentsline {section}{\numberline {3.1}Anforderungen}{8}{section.3.1}
+\contentsline {section}{\numberline {3.2}Bewertung der Reduktionsregeln}{8}{section.3.2}
+\contentsline {section}{\numberline {3.3}Anwendung der Reduktionsregeln}{9}{section.3.3}
+\contentsline {section}{\numberline {3.4}Interpretation der Ergebnisse}{14}{section.3.4}
+\contentsline {section}{\numberline {3.5}Zusammenfassung}{14}{section.3.5}
+\contentsline {chapter}{\numberline {4}Implementierung}{18}{chapter.4}
+\contentsline {section}{\numberline {4.1}Kronenregel}{18}{section.4.1}
+\contentsline {section}{\numberline {4.2}Nemhauser-Trotter-Regel}{18}{section.4.2}
+\contentsline {chapter}{\numberline {5}Diskussion und Ausblick}{20}{chapter.5}
+\contentsline {chapter}{Literaturverzeichnis}{21}{section*.5}
