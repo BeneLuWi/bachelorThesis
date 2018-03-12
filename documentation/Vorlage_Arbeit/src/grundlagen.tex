@@ -5,16 +5,13 @@
 \chapter{Grundlagen}
 \label{ch:Grundlagen}
 %% ==============================
-Beschreibung der verschiedenen Reduktionsregeln und wie funktionieren. Mit graphischen Beispielen und Pseudocode?
-
+Wie zuvor erwähnt wird unter den in dieser Arbeit verwendeten Reduktionsregeln zwischen einfacheren und komplexeren Regeln unterschieden. Die komplexeren Nemhauser-Trotter und Kronenregel erstellen während der Anwendung weitere Subgraphen für den Problemgraphen, während Grad$_{0}$-, Grad$_{1}$- und Buss-Regel lediglich den Grad einzelner Knoten betrachtet. Darüber hinaus können die Regeln weiter unterschieden werden. All die zu zuvor genannten Regeln entfernen induzierte Teilgraphen aus dem Graphen, an dem sie angewandt werden. Die Folding-Regel \cite{paper:4} (oder Grad$_{2}$-Regeln) zum Beispiel nicht. Hier werden die Nachbarn $u$ und $v$ eines Knoten $x$ des Grades 2 verschmolzen, vorausgesetzt, es gibt keine Kante zwischen diesen Knoten. Es wird ein neuer Knoten $x'$ mit $N(x') = N(u) \cup N(v) \setminus \{x,u,v\}$ eingesetzt un $k$ verringert. Diese Konstruktion muss dann nach dem Durchlaufen des Algorithmus' wieder entpackt werden, da sonst nach der Reduktion kein äquivalenter Problemgraph entsteht. 
+Eine schnelle Laufzeit, um zu entscheiden, ob eine Knotenüberdeckung in einem gegebenen Graphen \emph{G}, Parameter \emph{k} und einer Knontenmenge \emph{n} zu finden ist, wird von Chen et al \cite{paper:4} mit $O(kn + 1.271^{k}k^{2})$ vorgeschlagen, welche allerdings unter anderem die Folding-Regel verwendet; die schnellste bekannte Methode, alle Knotenüberdeckungen eines Graphen zu zählen von Mölle et al \cite{paper:5} mit einer Laufzeit von $O(1.3803^{k})$.
 
 %% ==============================
 \section{Knotenüberdeckung}
 %% ==============================
 \label{ch:Grundlagen:sec:Knotenüberdeckung}
-
-Eine schnelle Laufzeit, um eine Knotenüberdeckung in einem gegebenen Graphen \emph{G}, Parameter \emph{k} und einer Knontenmenge \emph{n} zu finden wird von Chen et al \cite{paper:4} mit $O(kn + 1.271^{k}k^{2})$ vorgeschlagen; die schnellste bekannte Methode, alle Knotenüberdeckungen eines Graphen zu zählen von Mölle et al \cite{paper:5} mit einer Laufzeit von $O(1.3803^{k})$.
-
 %% ==============================
 \section{Einfache Reduktionsregeln}
 %% ==============================
@@ -32,39 +29,21 @@ Angewandt an eine Probleminstanz bedeutet das Einsetzen einer der Regeln, dass d
 \item Drei disjunkte Mengen von Häusern (\{E, G, F\}, \{D, C\} und \{A, H\}) bleiben übrig, wo jeweils einmal die Grad$_{1}$-Regel angewandt werden kann. Die 3 restlichen Generatoren werden verteilt, wobei sich bei jeder der Häusergruppen mehrere Möglichkeiten bieten.
 \item Es steht kein Generator mehr zur Verfügung und aus der Restmenge {E, G, F} bleibt ein Haus ohne stromlose Leitungen zurück $\Rightarrow$ das Haus wird aus der Betrachtung entfernt und das Problem ist gelöst.
 \end{enumerate}
-Nach der wiederholten Anwendung der Buss-Regel haben alle Häuser mit mehr als \emph{k} Leitungen einen Generator und sind von der weiteren Betrachtung ausgeschlossen. Jeder übrige Haushalt kann also maximal \emph{k} stromlose Leitungen haben. Wenn nun noch mehr als $k^{2}$ Leitungen zu versorgen sind, kann es keine Lösung dieser Probleminstanz geben, da lediglich \emph{k} Stromgeneratoren zur Verfügung stehen und, verteilt auf die Häuser, somit nur maximal $k^{2}$ Leitungen unter Strom setzen können. Es bleiben höchstens $2 k^{2}$ Häuser ohne Generator (mit mindestens einer Leitung), bei denen noch nicht alle Leitungen Strom haben übrig\cite{param}, da jede der Leitungen an 2 Häusern angeschlossen ist. Wird nun die Grad$_{1}$-Regel angewandt bis sie nicht mehr greift, sind höchstens $k^{2} + k$ Häuser übrig, da jedes dieser Häuser jetzt zwischen 2 und \emph{k} stromlose Leitungen hat.
-
-
-Um ein Haus unter den \emph{n} Häusern mit mehr als \emph{k} Leitungen zu finden, werden im schlimmsten Fall $k \cdot n$ Schritte benötigt, da für jedes Haus alle Leitungen gezählt werden müssen. Falls alle Häuser \emph{k} Leitungen haben, wird die Buss-Regel nicht ausgelöst. Ansonsten wird das gefundene Haus mit all seinen Leitungen aus dem Netz entfernt, was wiederum $d \geq k$(wobei $d$ der größte Grad unter den Knoten aus $G$ ist) Schritte benötigt. Die Grad$_{1}$-Regel benötigt im schlimmsten Fall $2 \cdot n$ Schritte um das Häusernetz einmal zu durchlaufen, da die Betrachtung eines Hauses abgebrochen werden kann, sobald es mehr als eine Leitung hat, das es dann für diese Regel uninteressant ist. Wird ein Haus gefunden, kann dessen Nachbar und alle von diesem ausgehenden Leitungen entfernt werden, also $d$. Wird die Buss-Regel wurde vor der Grad$_{1}$-Regel angewandt, bedeutet das, dass maximal \emph{k} Schritte gebraucht werden. Um alle Häuser ohne Leitungen zu entfernen, muss lediglich für jedes Haus überprüft werden, ob es Leitungen hat, also \emph{n} Schritte.
-
-
-
-
-In \emph{O}-Notation ergibt sich daraus eine Laufzeitabschätzung eines Durchlaufs von
-\begin{align}
-\text{Worst Case}:\ & kn + p + p + 1\\
-\Rightarrow\ & O(kn + p)\\
-\Rightarrow\ & O(kn)
-\end{align}
-
-Um größere Instanzen weiter zu vereinfachen stehen allerdings auch weiteaus komplexere Reduktionsregeln zur Verfügung. In dieser Arbeit werden das Nemhauser-Trotter-Theorem, beziehungsweise die dazugehörige Reduktionsregel und die Kronenregel betrachet.
-
-
-
+Nach der wiederholten Anwendung der Buss-Regel sind alle Knoten mit mehr als \emph{k} Kanten in der Überdeckung und sind von der weiteren Betrachtung ausgeschlossen und quasi aus dem Graphen entfernt. Jeder übrige Knoten kann also maximal \emph{k} Kanten haben. Wenn nun noch mehr als $k^{2}$ Kanten nicht indiziert sind, kann es keine Lösung dieser Probleminstanz geben, da lediglich \emph{k} Knoten in der Lösungsmenge sein dürfen und somit nur maximal $k^{2}$ Kanten  abdecken. Es bleiben höchstens $2 k^{2}$ Knoten (mit mindestens einer Kante), bei denen noch nicht alle Kanten abgedeckt sind übrig\cite{param}, da jede der Kanten an 2 Knoten hat. Wird nun die Grad$_{1}$-Regel angewandt bis sie nicht mehr greift, sind höchstens $k^{2} + k$ Knoten übrig, da jeder dieser Knoten jetzt zwischen 2 und \emph{k} Kanten hat.
+Um einen Knoten aus der Knotenmenge $V$ mit mehr als \emph{k} Kanten zu finden, werden im schlimmsten Fall $k \cdot n (n=|V|)$ Schritte benötigt, da jeder Knoten überprüft werden muss. Falls alle Knoten den Grad \emph{k} haben, wird die Buss-Regel nicht ausgelöst. Ansonsten wird der gefundene Knoten mit all seinen Kanten aus dem Graphen entfernt, was wiederum $d \geq k$(wobei $d$ der größte Grad unter den Knoten aus $G$ ist) Schritte benötigt. Die Grad$_{1}$-Regel benötigt im schlimmsten Fall $2 \cdot n$ Schritte um den Graphen einmal zu durchlaufen, da die Betrachtung eines Knoten abgebrochen werden kann, sobald er mehr als eine oder keine Kante hat, da sie dann für diese Regel uninteressant ist. Wird eine Kante gefunden, kann dessen Nachbarknoten und damit alle von diesem ausgehenden Kanten entfernt werden, also im schlimmsten Fall $d$. Wurde die Buss-Regel vor der Grad$_{1}$-Regel angewandt, bedeutet das, dass maximal \emph{k} Schritte gebraucht werden. Um alle Häuser ohne Leitungen zu entfernen, muss lediglich für jedes Haus überprüft werden, ob es Leitungen hat, also \emph{n} Schritte.
 
 %% ==============================
 \section{Nemhauser-Trotter Reduktionsregeln}
 %% ==============================
 \label{ch:Grundlagen:sec:Nemhauser-Trotter Reduktionsregeln}
-$\textit{Für einen Graphen}\ G=(V,E)\textit{ können zwei disjunkte Mengen}$\\ $\ C_{0}\ und\ V_{0} \textit{ gefunden werden, sodass}$
+Der Nemhauser-Trotter-Regel liegt das Nemhauser-Trotter-Theorem zugrunde \cite{trott}:
+\textit{Für einen Graphen} $G=(V,E)$ \textit{können zwei disjunkte Mengen}\ $C_{0}\ und\ V_{0}$ \textit{gefunden werden, sodass}
 \begin{enumerate}
-\item $C_{0}$ \textit{ in einer minimalen Knotenüberdeckung} \\
-\textit{von G enthalten ist,}
-\item \textit{der Teilgraph }$G[V_{0}]$ \textit{eine Knotenüberdeckung}\\
-\textit{der Größe} $\leq |V_{0}| / 2$ \textit{ hat,}
+\item $C_{0}$ \textit{ in einer minimalen Knotenüberdeckung von G enthalten ist,}
+\item \textit{der Teilgraph }$G[V_{0}]$ \textit{eine Knotenüberdeckung} \textit{der Größe} $\leq |V_{0}| / 2$ \textit{ hat,}
 \item \textit{und} $VC(G) = VC(G[V_{0}])\cup C_{0}$ \textit{ gilt.}
 \end{enumerate}
-
+Nach dem Satz von König und unter Verwendung des Algorithmus' von Hopcroft und Karp \cite{paper:6} können diese Mengen mithilfe des Erstellens eines auf dem Problemgraphen basierenden bipartiden Graphen in Polinomialzeit gefunden werden. Der im Zuge dieser Arbeit verwendete Algorithmus ist wie folgt:
 \begin{lstlisting}[mathescape = true, basicstyle=\ttfamily]
 $G = (V, E), n:= |V|, m:=|E|, d:= maximaler\ Grad\ der\ Knoten\ aus\ G$
 Bipartiden Graphen erstellen $B = (V, V', E')$ 
@@ -74,6 +53,14 @@ $C_{B}:= VC(B)$
 $C_{0}:= \{x \in V\ |\ x \in C_{B}\ und\ x' \in C_{B} \}$ 
 $V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$ 
 \end{lstlisting}
+Das Erstellen des Bipartiden Graphen in den Zeilen 1-2 benötigt $n \cdot d$, da der Graph kopiert und jede Kante doppelt eingetragen wird. Zeilen 3-4 brauchen mit dem verdoppelten Graphen durch die Verwendung des Algorithmus' von Hopcroft und Karp $\sqrt{2n} \cdot 2m$ Schritte. Um die Zugehörigkeit der einzelnen Knoten in den Zeilen 5-6 zu bestimmen muss der Graph jeweils lediglich einmal durchgegangen werden, also $2n$ Schritte. Insgesamt ergibt das:
+\begin{align}
+&\ n \cdot d + \sqrt{2n} \cdot 2m + 2n\\
+\Rightarrow &\ O(n + \sqrt{n} \cdot m)
+\end{align}
+Die Laufzeitabschätzung von  $O(n + \sqrt{n} \cdot m)$ entsteht, wenn $d$ als Konstante betrachetet wird. Man sieht, dass die Laufzeit des Algorithmus' hauptsächlich vom Finden des Matchings dominiert wird.
+Ein wichtiger Teil des Algorithmus' ist das Finden eines Maxmimum Matchings. Im Allgemeinen ist ein Matching oder eine Paarung für einen Graphen $G=(V,E)$ eine Menge von Kanten $S \subset E$, für die gilt, dass keine zwei Kanten aus $S$ einen gemeinsamen Knoten haben. Ein Maximal Matching $M$ wiederum ist ein Matching, für das gilt, dass $M$ keine weitere Kante aus $E$ hinzugefügt werden kann, ohne die Matchingeigenschaft zu zerstören. Maximum Matchings erfüllen die Eigenschaften eines Maximal Matchings und enthalten außerdem die Größte Anzahl an Kanten, im Vergleich zu anderen Matchings.\\
+Mit der Nemhauser-Trotter-Regel ist es theoretisch möglich, den Problemgraphen auf einen Problemkern von $2k$ zu reduzieren, allerdings sorgt die Verwendung dieser Regel dafür, dass nicht alle Knotenüberdeckungen in einem Graphen gefunden werden können, sondern lediglich mindestens eine \cite{fixed}.
 %% ==============================
 \section{Kronenregel}
 %% ==============================
@@ -86,7 +73,8 @@ $V_{0}:= \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$
 \item \textit{die Kanten zwischen H und I enthalten ein Matching in dem alle Knoten aus H enthalten sind.}
 \end{enumerate}
 
-
+Maximal matching, weil maximum zu teuer ist. (vielleicht vergleich?)
+Erklärung maximum und maximal matching
 \begin{lstlisting}[mathescape=true, escapechar = !,basicstyle=\ttfamily]
 $G = (V, E), n:= |V|, m:=|E|, d:= maximaler\ Grad\ der\ Knoten\ aus\ G$
 $M_{1}$ := Maximal Matching von $G$

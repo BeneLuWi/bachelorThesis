@@ -87,30 +87,6 @@ Um die verwendeten Reduktionsregeln zu bewerten, beziehungsweise zu vergleichen,
 \end{table}
 
 In Tabelle \ref{tab:liste} stehen die Laufzeiten in der $O$-Notation und erwartete Größe der reduzierten Problemkerns der Nemhauser-Trotter-Regel \cite[S67]{fixed}, der Kronenregel \cite[S71]{fixed} \cite{manual}, die der Buss Regel \cite[S67]{fixed} und von einfachen Reduktionsregeln (Grad 0 und Grad 1) gegenüber. Die Laufzeiten der einfachen Reduktionsregeln ergeben sich folgt:
-\begin{proof}
- $Sei\ Graph\ G = (V,E)$
-	\begin{align*}
-  		Grad\ 0-Reduktion\\
-  		\underline{1.Fall:}\ |E|=0&\\
-  		&jeder\ Knoten\ aus\ V\ muss\ betrachtet\ werden.\\
-  		&\Rightarrow\ Laufzeit:\ O(|V|)\\  		
-  		\underline{2.Fall:}\ |E|>0&\\
-  		&Sobald\ bei\ der\ Iteration\ ein\ Knoten\ mit\ Grad(v)>0\ (v\in V)\ \\
-  		&ausgew\ddot{a}hlt\ wird,\ k\ddot{o}nnen\ alle\ Nachbarn\ ignoriert\ werden.\\
-  		&\Rightarrow\ Laufzeit:\ O(x|V|)\ mit\ (x<1)\\
-	\end{align*}
-\end{proof}
-\begin{proof}
-$Sei\ Graph\ G = (V,E)$
-	\begin{align*}
-  		Grad\ 1-Reduktion\\
-  		&Sobald\ bei\ der\ Iteration\ ein\ Knoten\ mit\ Grad(v)=1\ (v\in V)\ \\
-  		&ausgew\ddot{a}hlt\ wird,\ wird\ der\ Nachbar\ in\ die\ Knotenüberdeckung\\
-  		&aufgenommen.\\
-  		&\Rightarrow\ Laufzeit:\ O(x|V|)\ mit\ (x<1)\\
-	\end{align*}
-\end{proof}
-
 TODO was bringt die Bewertung?
 
 %% ==============================

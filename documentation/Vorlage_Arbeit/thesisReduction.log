@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.12.16)  12 MAR 2018 12:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.12.16)  12 MAR 2018 16:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1040,25 +1040,30 @@ has been already used, duplicate ignored
 l.24 
       <./img/vertexcoverBsp.pdf>]
 Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 76.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 76.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 76.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 76.
+ [2pdfTeX warning (ext4): destination with the same identifier (name{table.1.1}
+) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.76 
+     ]
+Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 79.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 79.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 84.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 84.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 84.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 84.
- [2]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 86.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 86.
 LaTeX Font Info:    Try loading font information for OMS+aer on input line 93.
-
-(c:/texlive/2017/texmf-dist/tex/latex/ae/omsaer.fd
+ (c:/texlive/2017/texmf-dist/tex/latex/ae/omsaer.fd
 File: omsaer.fd 1999/12/27
 )
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <12> not available
@@ -1081,13 +1086,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 108.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 108.
-[3pdfTeX warning (ext4): destination with the same identifier (name{table.1.1})
- has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.108 
-      ])
+[3])
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 120.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1110,44 +1109,52 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 12.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 19.
+(babel)             in language  on input line 16.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 19.
+(babel)             in language  on input line 16.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 33.
+(babel)             in language  on input line 27.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 33.
+(babel)             in language  on input line 27.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 33.
+(babel)             in language  on input line 27.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 33.
+(babel)             in language  on input line 27.
 [5
 
 
 
 ]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 56.
+(babel)             in language  on input line 36.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 56.
+(babel)             in language  on input line 36.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 63.
+(babel)             in language  on input line 44.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 63.
+(babel)             in language  on input line 44.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 63.
+(babel)             in language  on input line 44.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 63.
+(babel)             in language  on input line 44.
  [6]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 68.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 47.
  (c:/texlive/2017/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 78.
+(babel)             in language  on input line 65.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 78.
-)
+(babel)             in language  on input line 65.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 74.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 74.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 74.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 74.
+ [7])
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 121.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1156,7 +1163,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 121.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 121.
- [7]
+ [8]
 \openout2 = `src/analyse.aux'.
 
 
@@ -1187,7 +1194,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 101.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 101.
-[8
+[9
 
 
 
@@ -1223,8 +1230,8 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 126.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 126.
-[9pdfTeX warning (ext4): destination with the same identifier (name{table.3.1})
- has been already used, duplicate ignored
+[10pdfTeX warning (ext4): destination with the same identifier (name{table.3.1}
+) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -1233,7 +1240,7 @@ l.126
 
 pdfTeX warning: pdflatex.exe (file ./img/crownRest.pdf): PDF inclusion: found P
 DF version <1.7>, but at most version <1.5> allowed
-<img/crownRest.pdf, id=329, 481.12248pt x 415.42703pt>
+<img/crownRest.pdf, id=338, 481.12248pt x 415.42703pt>
 File: img/crownRest.pdf Graphic file (type pdf)
 <use img/crownRest.pdf>
 Package pdftex.def Info: img/crownRest.pdf  used on input line 166.
@@ -1246,7 +1253,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 170.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 170.
-[10pdfTeX warning (ext4): destination with the same identifier (name{table.3.2}
+[11pdfTeX warning (ext4): destination with the same identifier (name{table.3.2}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1256,7 +1263,7 @@ l.170
 
 pdfTeX warning: pdflatex.exe (file ./img/analysisCrown.pdf): PDF inclusion: fou
 nd PDF version <1.7>, but at most version <1.5> allowed
-<img/analysisCrown.pdf, id=336, 753.1829pt x 300.64018pt>
+<img/analysisCrown.pdf, id=345, 753.1829pt x 300.64018pt>
 File: img/analysisCrown.pdf Graphic file (type pdf)
 <use img/analysisCrown.pdf>
 Package pdftex.def Info: img/analysisCrown.pdf  used on input line 173.
@@ -1270,7 +1277,7 @@ Overfull \hbox (14.61246pt too wide) in paragraph at lines 187--230
 
 pdfTeX warning: pdflatex.exe (file ./img/restkrone.pdf): PDF inclusion: found P
 DF version <1.7>, but at most version <1.5> allowed
-<img/restkrone.pdf, id=338, 261.47388pt x 153.91702pt>
+<img/restkrone.pdf, id=347, 261.47388pt x 153.91702pt>
 File: img/restkrone.pdf Graphic file (type pdf)
 <use img/restkrone.pdf>
 Package pdftex.def Info: img/restkrone.pdf  used on input line 238.
@@ -1299,7 +1306,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 247.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 247.
-[11pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1
+[12pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1314,7 +1321,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 247.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 247.
- [12pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+ [13pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1335,7 +1342,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 247.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 247.
- [13pdfTeX warning (ext4): destination with the same identifier (name{table.3.3
+ [14pdfTeX warning (ext4): destination with the same identifier (name{table.3.3
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1345,7 +1352,7 @@ l.247
 
 pdfTeX warning: pdflatex.exe (file ./img/analysisTrott_Crown_One.pdf): PDF incl
 usion: found PDF version <1.7>, but at most version <1.5> allowed
-<img/analysisTrott_Crown_One.pdf, id=374, 747.90819pt x 290.09076pt>
+<img/analysisTrott_Crown_One.pdf, id=384, 747.90819pt x 290.09076pt>
 File: img/analysisTrott_Crown_One.pdf Graphic file (type pdf)
 <use img/analysisTrott_Crown_One.pdf>
 Package pdftex.def Info: img/analysisTrott_Crown_One.pdf  used on input line 25
@@ -1383,7 +1390,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 122.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 122.
- [14]
+ [15]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 122.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1392,7 +1399,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 122.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 122.
- [15pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+ [16pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1415,7 +1422,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 122.
 
-[16pdfTeX warning (ext4): destination with the same identifier (name{table.3.5}
+[17pdfTeX warning (ext4): destination with the same identifier (name{table.3.5}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1430,7 +1437,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 122.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 122.
- [17pdfTeX warning (ext4): destination with the same identifier (name{table.3.6
+ [18pdfTeX warning (ext4): destination with the same identifier (name{table.3.6
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1462,7 +1469,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 124.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 124.
- [18
+ [19
 
 
 
@@ -1475,7 +1482,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 124.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 124.
- [19pdfTeX warning (ext4): destination with the same identifier (name{table.4.1
+ [20pdfTeX warning (ext4): destination with the same identifier (name{table.4.1
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1506,7 +1513,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 126.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 126.
- [20
+ [21
 
 
 
@@ -1517,14 +1524,14 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 144.
  (./thesisReduction.bbl
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 90.
+(babel)             in language  on input line 91.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 90.
+(babel)             in language  on input line 91.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 90.
+(babel)             in language  on input line 91.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 90.
- [21
+(babel)             in language  on input line 91.
+ [22
 
 
 
@@ -1537,7 +1544,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 162.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 162.
- [22]
+ [23]
 No file thesisReduction.ind.
 \openout2 = `src/erklaerung.aux'.
 
@@ -1550,7 +1557,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 18.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 18.
- [23
+ [24
 
 
 
@@ -1568,13 +1575,13 @@ Package rerunfilecheck Info: File `thesisReduction.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 170.
  ) 
 Here is how much of TeX's memory you used:
- 10827 strings out of 492985
- 146637 string characters out of 6136283
- 274166 words of memory out of 5000000
- 13952 multiletter control sequences out of 15000+600000
+ 10831 strings out of 492985
+ 146687 string characters out of 6136283
+ 274184 words of memory out of 5000000
+ 13955 multiletter control sequences out of 15000+600000
  53146 words of font info for 101 fonts, out of 8000000 for 9000
  1146 hyphenation exceptions out of 8191
- 41i,16n,45p,3040b,1020s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,16n,47p,3040b,1020s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/tex
 live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2017
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2017/texmf-di
@@ -1591,10 +1598,10 @@ ublic/amsfonts/cm/cmsy10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsy8.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mti10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
 ><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on thesisReduction.pdf (28 pages, 493295 bytes).
+Output written on thesisReduction.pdf (29 pages, 498027 bytes).
 PDF statistics:
- 530 PDF objects out of 1000 (max. 8388607)
- 453 compressed objects within 5 object streams
- 128 named destinations out of 1000 (max. 500000)
+ 538 PDF objects out of 1000 (max. 8388607)
+ 460 compressed objects within 5 object streams
+ 129 named destinations out of 1000 (max. 500000)
  202 words of extra memory for PDF output out of 10000 (max. 10000000)
 

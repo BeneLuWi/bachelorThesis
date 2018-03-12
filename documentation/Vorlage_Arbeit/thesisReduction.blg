@@ -16,7 +16,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: thesis.bib
-I was expecting an "="---line 36 of file thesis.bib
+I was expecting an "="---line 42 of file thesis.bib
  : year 
  :      {1975},
 I'm skipping whatever remains of this entry
@@ -26,45 +26,45 @@ I'm skipping whatever remains of this entry
 Warning--empty year in trott
 
 Done.
-You've used 15 entries,
+You've used 16 entries,
             4087 wiz_defined-function locations,
-            899 strings with 9404 characters,
-and the built_in function-call counts, 5915 in all, are:
-= -- 410
-> -- 142
+            904 strings with 9565 characters,
+and the built_in function-call counts, 6309 in all, are:
+= -- 442
+> -- 151
 < -- 0
-+ -- 66
-- -- 33
-* -- 237
-:= -- 1022
-add.period$ -- 30
-call.type$ -- 15
-change.case$ -- 7
++ -- 70
+- -- 35
+* -- 253
+:= -- 1094
+add.period$ -- 32
+call.type$ -- 16
+change.case$ -- 8
 chr.to.int$ -- 0
-cite$ -- 16
-duplicate$ -- 492
-empty$ -- 649
-format.name$ -- 43
-if$ -- 1349
+cite$ -- 17
+duplicate$ -- 528
+empty$ -- 686
+format.name$ -- 46
+if$ -- 1437
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 93
-newline$ -- 68
-num.names$ -- 15
-pop$ -- 285
+int.to.str$ -- 16
+missing$ -- 99
+newline$ -- 71
+num.names$ -- 16
+pop$ -- 302
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 472
+skip$ -- 503
 stack$ -- 0
-substring$ -- 7
-swap$ -- 260
+substring$ -- 8
+swap$ -- 279
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 15
+type$ -- 16
 warning$ -- 1
-while$ -- 15
-width$ -- 17
-write$ -- 133
+while$ -- 16
+width$ -- 18
+write$ -- 141
 (There was 1 error message)
