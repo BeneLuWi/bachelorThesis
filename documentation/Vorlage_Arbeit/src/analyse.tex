@@ -38,7 +38,7 @@ Dann wird die Anwendung und der Effekt der Regeln auf das eigens erstellte Tests
 %% ==============================
 \label{ch:Analyse:sec:Berwertung}
 
-Um die verwendeten Reduktionsregeln zu bewerten, beziehungsweise zu vergleichen, betrachten wir auf der einen Seite die theoretisch mögliche Reduktion und auf der anderen, wie sich der implementierte Algortihmus verhält. 
+Um die verwendeten Reduktionsregeln zu bewerten, beziehungsweise zu vergleichen, betrachten wir auf der einen Seite die theoretisch mögliche Reduktion und auf der anderen, wie sich der implementierte Algortihmus verhält. Für jede Regel wird vorausgesetzt, dass zusätlich alle Kanten des Grades 0 aus dem Graphen entfernt werden, da die Knotenmenge der reduzierten Instanz ansonsten nicht durch $k$ abgeschätzt werden kann.
 
 %\begin{figure}[htb]
 %\centering
@@ -58,21 +58,18 @@ Um die verwendeten Reduktionsregeln zu bewerten, beziehungsweise zu vergleichen,
 
 \begin{threeparttable}
 
-\begin{tabular}[c]{l|l|c}
-	
-	\multicolumn{1}{c|}{\textbf{Reduktionsregel}} & 
-	\multicolumn{1}{c|}{\textbf{Laufzeit}} & 
+\begin{tabular}[c]{lll}
+	\hline
+	\multicolumn{1}{c}{\textbf{Reduktionsregel}} & 
+	\multicolumn{1}{c}{\textbf{Laufzeit}} & 
 	\multicolumn{1}{c}{\textbf{Reduktion}} \\ 
 	
 	\hline
 
-	Nemhauser-Trotter&$O(k^{3})$&  $\leq 2k$\\
-	Kronenregel&$O(\sqrt{|V|}|E|)$ & $\leq 3k$\\
-	Buss&$O(k|V|)$  & $\leq k^{2}$\\
-	Grad 0&$O(|V|)$& \tnote{*} \\
-	Grad 1&$O(|V|)$& \tnote{*} \\
-	%Grad 2&$O(n|V|)\ mit\ n\leq1$&\\
-	
+	Nemhauser-Trotter&$O(\sqrt{n} \cdot m)$&  $\leq 2k$\\
+	Kronenregel&$O(\sqrt{n} \cdot m)$ & $\leq 3k$\\
+	Buss&$O(k \cdot n)$  & $\leq k^{2}$\\
+	\hline
 \end{tabular}
 
 \begin{tablenotes}\footnotesize
@@ -86,9 +83,7 @@ Um die verwendeten Reduktionsregeln zu bewerten, beziehungsweise zu vergleichen,
 
 \end{table}
 
-In Tabelle \ref{tab:liste} stehen die Laufzeiten in der $O$-Notation und erwartete Größe der reduzierten Problemkerns der Nemhauser-Trotter-Regel \cite[S67]{fixed}, der Kronenregel \cite[S71]{fixed} \cite{manual}, die der Buss Regel \cite[S67]{fixed} und von einfachen Reduktionsregeln (Grad 0 und Grad 1) gegenüber. Die Laufzeiten der einfachen Reduktionsregeln ergeben sich folgt:
-TODO was bringt die Bewertung?
-
+In Tabelle \ref{tab:liste} stehen die Laufzeiten in der $O$-Notation und erwartete Knotenanzahl der reduzierten Problemkerns der Nemhauser-Trotter-Regel \cite{fixed}, der Kronenregel \cite{fixed} \cite{manual} und die der Buss Regel \cite{fixed} gegenüber.
 %% ==============================
 \section{Anwendung der Reduktionsregeln}
 %% ==============================
@@ -110,11 +105,11 @@ Tabelle \ref{tab:anwendung} spiegelt die erwarteten Werte (\ref{tab:liste}) in s
 
 \begin{threeparttable}
 
-\begin{tabular}[c]{l|l|l|l}
-	
-	\multicolumn{1}{c|}{\textbf{Reduktionsregel}} & 
-	\multicolumn{1}{c|}{\textbf{Anwendungen}} & 
-	\multicolumn{1}{c|}{\textbf{Reduktion}} & 
+\begin{tabular}[c]{llll}
+	\hline
+	\multicolumn{1}{c}{\textbf{Reduktionsregel}} & 
+	\multicolumn{1}{c}{\textbf{Anwendungen}} & 
+	\multicolumn{1}{c}{\textbf{Reduktion}} & 
 	\multicolumn{1}{c}{\textbf{CPU-Zeit }} \\ 
 	
 	\hline
@@ -123,11 +118,11 @@ Tabelle \ref{tab:anwendung} spiegelt die erwarteten Werte (\ref{tab:liste}) in s
 	Kronenregel& 0.46 & 19.77 & 0.005s\\
 	Grad 1&1.32 & 99.06 & 0.001s\\
 	%Grad 2&$O(n|V|)\ mit\ n\leq1$&\\
-	
+	\hline
 \end{tabular}
 
 \begin{tablenotes}\footnotesize
-\item EINFÜGEN
+\item Pro Zeile sieht man die jeweilige Reduktionsregel und den Durchschnitt pro Graph im Testset. \emph{Anwendungen} beschreibt, wie oft nach einem Durchlauf mindestens ein Knoten entfernt wurde; \emph{Reduktion}, wie viele Knoten insgesamt pro Graph; \emph{CPU-Zeit} in Sekunden wielange ein Durchlauf im Schnitt pro Graph gedauert hat.
 \end{tablenotes}
 
 \end{threeparttable}
@@ -161,12 +156,12 @@ Bei allen drei Graphen führte die Anwendung der Nemhauser-Trotter-Regel zu kein
 
 \begin{threeparttable}
 
-\begin{tabular}[c]{l|l|l|l|l}
-	
-	\multicolumn{1}{c|}{\textbf{Graph}} & 
-	\multicolumn{1}{c|}{\textbf{Reduktionsregeln}} & 
-	\multicolumn{1}{c|}{\textbf{Anwendungen$_{1}$}} &
-	\multicolumn{1}{c|}{\textbf{Anwendungen$_{2}$}} &
+\begin{tabular}[c]{lllll}
+	\hline
+	\multicolumn{1}{c}{\textbf{Graph}} & 
+	\multicolumn{1}{c}{\textbf{Reduktionsregeln}} & 
+	\multicolumn{1}{c}{\textbf{Anwendungen$_{1}$}} &
+	\multicolumn{1}{c}{\textbf{Anwendungen$_{2}$}} &
 	\multicolumn{1}{c}{\textbf{Reduktion}} \\ 
 	
 	\hline
@@ -193,13 +188,13 @@ Bei allen drei Graphen führte die Anwendung der Nemhauser-Trotter-Regel zu kein
 	& Grad$_{1}$-Kronenregel & 18 & 11 & 990\\
 	& Kronenregel - Grad$_{1}$ & 15 & 9 & 971\\
 	
-
+	\hline
 
 	
 	
 \end{tabular}
 \begin{tablenotes}\footnotesize
-\item EINFÜGEN
+\item Für die besonderen Graphen der Kronenregel-Reduktion, werden die Anzahl der Anwendungen der Kombinationen der Regeln und die Summe der entfernten Knoten gezeigt
 \end{tablenotes}
 
 \end{threeparttable}
@@ -240,12 +235,12 @@ Werden Nemhauser-Trotter-Regel, Kronenregel und Grad$_{1}$-Regel in dieser Reihe
 
 \begin{threeparttable}
 
-\begin{tabular}[c]{l|l|l|l|l}
-	
-	\multicolumn{1}{c|}{\textbf{Kombination}} &
-	\multicolumn{1}{c|}{\textbf{Anwendungen$_{1}$}} &
-	\multicolumn{1}{c|}{\textbf{Anwendungen$_{2}$}} &
-	\multicolumn{1}{c|}{\textbf{Anwendungen$_{3}$}} & 
+\begin{tabular}[c]{l l l l l}
+	\hline
+	\multicolumn{1}{c}{\textbf{Kombination}} &
+	\multicolumn{1}{c}{\textbf{Anwendungen$_{1}$}} &
+	\multicolumn{1}{c}{\textbf{Anwendungen$_{2}$}} &
+	\multicolumn{1}{c}{\textbf{Anwendungen$_{3}$}} & 
 	\multicolumn{1}{c}{\textbf{Reduktion}} \\
 	\hline
 
@@ -261,12 +256,12 @@ Werden Nemhauser-Trotter-Regel, Kronenregel und Grad$_{1}$-Regel in dieser Reihe
 	G$_{1}$ - K - NT & 3.61 & 3.2 & 0.65 & 334.16 \\
 	NT - K - G$_{1}$ & 0.39 & 3.44 & 4.03 & 335.2 \\
 	NT - G$_{1}$ - K & 0.91 & 3.42 & 3.2 & 334.16 \\
-
+	\hline
 	
 \end{tabular}
 
 \begin{tablenotes}\footnotesize
-\item EINFÜGEN
+\item  Für die verschiedenen Kombinationen von Regeln, werden die durchschnittliche Anzahl der Anwendungen der Regeln und der Durchschnitt der entfernten Knoten pro Graph gezeigt
 \end{tablenotes}
 
 \end{threeparttable}
@@ -286,13 +281,14 @@ Werden Nemhauser-Trotter-Regel, Kronenregel und Grad$_{1}$-Regel in dieser Reihe
 
 \begin{threeparttable}
 
-\begin{tabular}[c]{l|l|l|l|l|l}
+\begin{tabular}[c]{llllll}
 	
-	\multicolumn{1}{c|}{\textbf{Graph}} & 
-	\multicolumn{1}{c|}{\textbf{Reduktionsregeln}} & 
-	\multicolumn{1}{c|}{\textbf{Anwend.$_{1}$}} &
-	\multicolumn{1}{c|}{\textbf{Anwend.$_{2}$}} &
-	\multicolumn{1}{c|}{\textbf{Anwend.$_{3}$}} &
+	\hline
+	\multicolumn{1}{c}{\textbf{Graph}} & 
+	\multicolumn{1}{c}{\textbf{Reduktionsregeln}} & 
+	\multicolumn{1}{c}{\textbf{Anwend.$_{1}$}} &
+	\multicolumn{1}{c}{\textbf{Anwend.$_{2}$}} &
+	\multicolumn{1}{c}{\textbf{Anwend.$_{3}$}} &
 	\multicolumn{1}{c}{\textbf{Reduktion}} \\ 
 	
 	\hline
@@ -311,11 +307,11 @@ Werden Nemhauser-Trotter-Regel, Kronenregel und Grad$_{1}$-Regel in dieser Reihe
 	& Kronenregel & 0 & - & - & 0\\
 	& Grad$_{1}$ & 1 & - & - & 2 \\
 	& Kronenregel - Grad$_{1}$ & 9 & 3 & - & 762\\
-	
+	\hline
 	
 \end{tabular}
 \begin{tablenotes}\footnotesize
-\item EINFÜGEN
+\item  Für die besonderen Graphen der Nemhauser-Trotter - Kronenregel - Grad$_{1}$ - Reduktion, werden die Anzahl der Anwendungen der Kombinationen der Regeln und die Summe der entfernten Knoten gezeigt
 \end{tablenotes}
 
 \end{threeparttable}
@@ -327,62 +323,7 @@ Werden Nemhauser-Trotter-Regel, Kronenregel und Grad$_{1}$-Regel in dieser Reihe
 
 
 
-\begin{table}[htb]
-\caption{Statistiken über Graph$_{5}$\label{tab:graph4}}
-\vspace*{1em}
-\centering
 
-\bgroup
-\def\arraystretch{1.3}%  1 is the default, change whatever you need
-
-\begin{threeparttable}
-
-\begin{tabular}[c]{ l | l | l | | l | l}
-	
-	\multicolumn{1}{c|}{\textbf{Status}} & 
-	\multicolumn{1}{c|}{\textbf{Grad der Knoten}} & 
-	\multicolumn{1}{c||}{\textbf{Knoten}} &
-	\multicolumn{1}{c|}{\textbf{Grad der Knoten}} & 
-	\multicolumn{1}{c}{\textbf{Knoten}}\\
-	
-	\hline
-		
-	Vor der Reduktion & 0 & 0 &15  & 106 \\
-	& 1 & 1 & 16&99 \\
-	& 2 & 1 & 17& 84\\
-	& 3 & 0 & 18& 66\\
-	& 4 & 1 & 19& 39\\
-	& 5 & 3 & 20& 27\\
-	& 6 & 12 & 21& 16\\
-	& 7 & 13 & 22& 18\\
-	&  8& 17 & 23& 6\\
-	&  9& 37 & 24& 3\\
-	&  10& 65 & 25& 4\\
-	&  11& 59 & 26& 5\\
-	&  12& 101 & 27& 3\\
-	&  13& 99 & 28& 1\\
-	&  14& 114 & & \\
-	
-	\hline
-
-	Nach der Reduktion & 0 & 0 & 6 & 18 \\
-	& 1 & 0 & 7 & 11 \\
-	& 2 & 55 & 8 & 8 \\
-	& 3 & 59 & 9 & 0 \\
-	& 4 & 46 & 10 & 0 \\
-	& 5 & 41 & 11 & 1 \\
-	
-	
-\end{tabular}
-\begin{tablenotes}\footnotesize
-\item EINFÜGEN
-\end{tablenotes}
-
-\end{threeparttable}
-
-\egroup
-
-\end{table}
 
 %% ==============================
 \section{Interpretation der Ergebnisse}

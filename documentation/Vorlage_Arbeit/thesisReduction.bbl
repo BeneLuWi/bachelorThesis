@@ -58,9 +58,27 @@ D.~M{\"o}lle, S.~Richter, and P.~Rossmanith, ``Enumerate and expand: New
 M.~Cygan, \emph{Parameterized algorithms}.\hskip 1em plus 0.5em minus
   0.4em\relax Springer Cham, 2015.
 
+\bibitem{trott}
+G.~Nemhauser and L.~E. Trotter, ``Vertex packings: Structural properties and
+  algorithms,'' \emph{Mathematical Programming 8, 232-248}.
+
+\bibitem{paper:6}
+J.~E. Hopcroft and R.~M. Karp, ``An $n^{5/2} $ algorithm for maximum matchings
+  in bipartite graphs,'' \emph{SIAM Journal on Computing, vol. 2, No. 4,
+  225-231}, 1973.
+
 \bibitem{fixed}
 R.~Niedermeier, \emph{Invitation to Fixed-Parameter Algorithms}.\hskip 1em plus
   0.5em minus 0.4em\relax Oxford University Press, 2006.
+
+\bibitem{paper:7}
+F.~N. Abu-Khzam, M.~R. Fellows, M.~A. Langston, and W.~H. Suters, ``Crown
+  structures for vertex cover kernelization,'' \emph{Theory of Computing
+  Systems, vol 41, Issue 3, 411–430}, 2007.
+
+\bibitem{paper:8}
+N.~Blum, ``A new approach to maximum matching in general graphs,'' \emph{ICALP:
+  Automata, Languages and Programming, 586-597}, 1990.
 
 \bibitem{paper:1}
 E.~C. Sewell, S.~H. Jacobson, and H.~Kaul, ``Reductions for the stable set
@@ -70,15 +88,6 @@ E.~C. Sewell, S.~H. Jacobson, and H.~Kaul, ``Reductions for the stable set
 F.~N. Abu-Khzam, M.~A. Langston, P.~Shanbhag, and C.~T. Symons, ``Scalable
   parallel algorithms for fpt problems,'' \emph{Algorithmica, Volume 45, Number
   3, 269-284}, 2006.
-
-\bibitem{paper:6}
-J.~E. Hopcroft and R.~M. Karp, ``An $n^{5/2} $ algorithm for maximum matchings
-  in bipartite graphs,'' \emph{SIAM Journal on Computing, vol. 2, No. 4,
-  225-231}, 1973.
-
-\bibitem{trott}
-G.~Nemhauser and L.~E. Trotter, ``Vertex packings: Structural properties and
-  algorithms,'' \emph{Mathematical Programming 8, 232-248}.
 
 \bibitem{exakt}
 F.~Gurski, \emph{Exakte Algorithmen für schwere Graphenprobleme}.\hskip 1em

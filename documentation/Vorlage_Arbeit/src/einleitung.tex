@@ -31,8 +31,8 @@ AUSGABE: &\ S\subseteq V\ mit\ |S|\leq k,\\
 Zum Anderen das Entscheidungsproblem, ob es eine Knotenüberdeckung einer Größe $\leq k$ gibt:
 \begin{align*}
 EINGABE: &\ Graph\ G=(V,E),\ positive\ Integer\ k\leq |V|\\
-AUSGABE: &\textit{Existiert ein}\ S\subseteq V\ mit\ |S|\leq k,\\
-&\ sodass\ jede\ Kante\ aus\ E\ einen\ Endpunkt\ in\ S\ hat.
+AUSGABE: &\textit{ Existiert ein}\ S\subseteq V\ mit\ |S|\leq k,\\
+&\ sodass\ jede\ Kante\ aus\ E\ einen\ Endpunkt\ in\ S\ hat?
 \end{align*}
 Letzteres ist in der Liste von Karps 21 NP-vollständigen Problemen zu finden \cite{karp}.
 Es existieren weitere reale Probleme, für die das Knotenüberdeckungsproblem anwendbar ist. Abu-Khzam et al \cite{paper:3} schlagen eine Anwendung in der Bioinformatik vor.
@@ -49,9 +49,9 @@ Ein nichtdeterministischer Algorithmus kann jede vermeintliche Lösungskombinati
 
 \begin{threeparttable}
 
-\begin{tabular}[c]{ l | l }
-	
-	\multicolumn{1}{c|}{\textbf{Eingabegröße}} & 
+\begin{tabular}[c]{l l}
+	\hline
+	\multicolumn{1}{c}{\textbf{Eingabegröße}} & 
 	\multicolumn{1}{c}{\textbf{Laufzeit}} \\ 
 	
 	\hline
@@ -59,11 +59,11 @@ Ein nichtdeterministischer Algorithmus kann jede vermeintliche Lösungskombinati
 	$2^{1}$& 0.00002s\\
 	$2^{10}$& 0.02s\\
 	$2^{100}$& ca. $ 2 \cdot 10^{14} $ Jahrtausende \\
-	
+	\hline
 \end{tabular}
 
 \begin{tablenotes}\footnotesize
-\item EINFÜGEN
+\item Beispiel für die Laufzeit einen Algorithmus' mit eine Laufzeit von $O(2^{n})$
 \end{tablenotes}
 
 \end{threeparttable}

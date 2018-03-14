@@ -14,12 +14,15 @@ Die Regeln wurden in der Programmiersprache \emph{C++} unter Verwendung der Bibl
 %% ==============================
 \label{ch:Implementierung:sec:Kronenregel}
 
-Beim Austesten der Kronenregel hat sich gezeigt, dass die Auswahl des Matchings $M_{1}$ im in Kapitel \ref{ch:Grundlagen:sec:Kronenregel} dargestellten Algorithmus das Ergebnis der Reduktion in großem Maße beeinflusst. Wenn also beim Finden von $M_{1}$ zunächst Kanten mit Knoten höheren Grades betrachtet werden, können bessere Ergebnisse in der darauf folgenden Reduktion erzielt werden. Daraufhin wurde untersucht, wie die höhergradigen Knoten, beziehungsweise die dazugehörigen Kanten ausgewählt werden müssen. Zum einen (Tabelle \ref{tab:degreeOR}) wurden Kanten betrachtet, bei denen das Auswahlkriterium auf mindestens einen der Knoten zutrifft, auf der anderen Seite Kanten, bei denen beide Knoten die Bedingung erfüllen (Tabelle \ref{tab:degreeAND}). \emph{Größte Anzahl} und \emph{Durchschnittliche Anzahl} ergeben sich jeweils aus der Menge an Knoten eines bestimmtes Grades. Bei ersterem werden Knoten, deren Grad im aktuellen Graphen am häufigsten vorkommt bevorzugt. Bei letzterem dementsprechend Knoten, deren Grad im aktuellen Graphen dem Durchschnitt entspricht. Diese Werte werden bei jeder Iteration des Algorithmus neu berechnet und passen sich dadurch während der Laufzeit an den Graphen an.\\ 
+Beim Austesten der Kronenregel hat sich gezeigt, dass die Auswahl des Matchings $M_{1}$ im in Kapitel \ref{ch:Grundlagen:sec:Kronenregel} dargestellten Algorithmus das Ergebnis der Reduktion in großem Maße beeinflusst, was bereits bei der Implementierung der Kronenregel aufgefallen ist \cite{paper:7}. Dies ist bei der Implementierung für diese Arbeit dadurch aufgefallen, dass beim Anwenden an einem für die Kronenregel gut geeigneten Testgraphen zunächst keine Reduktion stattgefunden hat. Dieser ist in Abbildung \ref{fig:crown1} zu sehen. Um zu funktionieren, müssen die Kanten $(A,C), (D,E), (J,K), (L,B)$ für das Matching $M_{1}$ ausgewählt werden, da ansonsten zum Beispiel $K$ und $L$ nicht korrekt als Kopf der Krone, beziehungsweise nicht als der Menge $H$ zugehörig identifiziert werden.
+\begin{figure}[htb]
+\centering
+  	{\includegraphics[width=.9\textwidth]{crown1Crop.pdf}}
+	\caption{Beispielgraph für die Anwendung der Kronenregel\label{fig:crown1}}
+\centering
+\end{figure}
+Wenn nun beim Finden von $M_{1}$ zunächst bevorzugt Kanten mit Knoten höheren Grades vor den anderen betrachtet werden, können bessere Ergebnisse in der darauf folgenden Reduktion erzielt werden und die richtigen Kanten werden getroffen. Daraufhin wurde untersucht, wie die höhergradigen Knoten, beziehungsweise die dazugehörigen Kanten ausgewählt werden müssen. Zum einen (Tabelle \ref{tab:degreeOR}) wurden Kanten betrachtet, bei denen das Auswahlkriterium auf mindestens einen der Knoten zutrifft, auf der anderen Seite Kanten, bei denen beide Knoten die Bedingung erfüllen (Tabelle \ref{tab:degreeAND}). \emph{Größte Anzahl} und \emph{Durchschnittliche Anzahl} ergeben sich jeweils aus der Menge an Knoten eines bestimmtes Grades. Bei Ersterem werden Knoten, deren Grad im aktuellen Graphen am häufigsten vorkommt bevorzugt. Bei Letzterem dementsprechend Knoten, deren Grad im aktuellen Graphen dem Durchschnitt entspricht. Diese Werte werden bei jeder Iteration des Algorithmus neu berechnet und passen sich dadurch während der Laufzeit an den Graphen an.\\ 
 Generell wird eine bessere (größere) Reduktion mit der Kronenregel erreicht, wenn beim Machting $M_{1}$ zunächst Kanten betrachtet werden, bei denen die Einschränkung auf beide Knoten zutrifft. Die Reduktionsmenge bei Knoten mit $Grad>2$ erzeugt im Vergleich mit anderen statischen Werten das beste Ergebnis. Dies könnte damit zusammenhängen, dass bei den Graphen, bei denen diese Regel sehr effektiv ist, der durchschnittliche Grad der Knoten 2 ist. Vermutlich erzielt die Bevorzugung des durchschnittlichen Grades das beste Ergebnis, da sich dieser Wert mit jedem Durchlauf verändert.
-
-
-
-Wie verhält sich der durchschnittliche Grade der Knoten im Laufe der Iteration?
 
 \begin{table}[htb]
 \caption{Mindestens ein Knoten mit Einschränkung\label{tab:degreeOR}}
@@ -31,10 +34,10 @@ Wie verhält sich der durchschnittliche Grade der Knoten im Laufe der Iteration?
 
 \begin{threeparttable}
 
-\begin{tabular}[c]{l|l|l}
-	
-	\multicolumn{1}{c|}{\textbf{Grad der Knoten}} & 
-	\multicolumn{1}{c|}{\textbf{Anwendungen}} & 
+\begin{tabular}[c]{lll}
+	\hline
+	\multicolumn{1}{c}{\textbf{Grad der Knoten}} & 
+	\multicolumn{1}{c}{\textbf{Anwendungen}} & 
 	\multicolumn{1}{c}{\textbf{Reduktion}} \\ 
 	
 	\hline
@@ -45,9 +48,9 @@ Wie verhält sich der durchschnittliche Grade der Knoten im Laufe der Iteration?
 	>3& 0.27& 12.92 \\
 	>4& 0.3& 13.71 \\
 	>5& 0.31&13.38 \\
-	Größte Anzahl& 0.32&13.44 \\
-	Durchschnittliche Anzahl& 0.29&12.98 \\
-	
+	>Größte Anzahl& 0.32&13.44 \\
+	>Durchschnittliche Anzahl& 0.29&12.98 \\
+	\hline
 \end{tabular}
 \begin{tablenotes}\footnotesize
 \item \emph{Grad der Knoten} bezieht sich auf die Bedingung für die bevorzugte Auswahl der Kanten für $M_{1}$, bzw. dessen Knoten. \emph{Anwendung} und \emph{Reduktion} stellen jeweils den Durchschnittswert beim gesamten Testset dar.
@@ -69,10 +72,10 @@ Wie verhält sich der durchschnittliche Grade der Knoten im Laufe der Iteration?
 
 \begin{threeparttable}
 
-\begin{tabular}[c]{l|l|l}
-	
-	\multicolumn{1}{c|}{\textbf{Grad der Knoten}} & 
-	\multicolumn{1}{c|}{\textbf{Anwendungen}} & 
+\begin{tabular}[c]{lll}
+	\hline
+	\multicolumn{1}{c}{\textbf{Grad der Knoten}} & 
+	\multicolumn{1}{c}{\textbf{Anwendungen}} & 
 	\multicolumn{1}{c}{\textbf{Reduktion}} \\ 
 	
 	\hline
@@ -83,9 +86,9 @@ Wie verhält sich der durchschnittliche Grade der Knoten im Laufe der Iteration?
 	>3& 0.39& 16.52 \\
 	>4& 0.4 &15.78 \\
 	>5& 0.4 & 15.72\\
-	Größte Anzahl& 0.29 &13.06 \\
-	Durchschnittliche Anzahl& 0.46&19.77 \\
-	
+	>Größte Anzahl& 0.29 &13.06 \\
+	>Durchschnittliche Anzahl& 0.46&19.77 \\
+	\hline
 \end{tabular}
 \begin{tablenotes}\footnotesize
 \item \emph{Grad der Knoten} bezieht sich auf die Bedingung für die bevorzugte Auswahl der Kanten für $M_{1}$, bzw. dessen Knoten. \emph{Anwendung} und \emph{Reduktion} stellen jeweils den Durchschnittswert beim gesamten Testset dar.
@@ -97,11 +100,38 @@ Wie verhält sich der durchschnittliche Grade der Knoten im Laufe der Iteration?
 
 \end{table}
 
+Das Problem bei diesem Vorgehen ist, dass einfache Kronen ignoriert werden können, weshalb die Kombination mit der Grad$_{1}$-Regel vermutlich so gute Ergebnisse erziehlt, wie in Kapitel \ref{ch:Analyse:sec:Anwendung} zu sehen ist.
+
+
+
+
+
 %% ==============================
 \section{Nemhauser-Trotter-Regel}
 %% ==============================
 \label{ch:Implementierung:sec:Trott}
 
+Bei der Umsetzung des Algrorithmus' der Nemhauser-Trotter-Regel sind keine Besonderheiten aufgefallen, wie es bei der Kronenregel der Fall war. Für das Erstellen des bipartiten Graphen $B$ wurden zwei Referenzarrays angelegt, sodass für jeden Knoten aus $G$ das entsprechende Paar in $B$ gefunden werden konnte und anders herum, also für jeden Knoten aus $B$ das entsprechende Urbild aufgerufen werden konnte. Die weiteren Berechnungen konnten dann mithilfe der LEDA-Funktion MAX\_CARD\_BIPARTITE\_MATCHING aus mcb\_matching.h und LEDA-Iteratoren angestellt werden. Um zu überprüfen, ob der erstelle Graph $B$ tatsächlich bipartit ist und bei der Erstellung kein Fehler unterlaufen ist, wurde eigens eine entsprechende Funktion geschrieben, da LEDA eine solche nicht bereitstellt. In dieser Funktion wird versucht, die Knoten des Graphen in zwei Farb einzufärben, sodass keine zwei benachbarten Knoten die gleiche Farbe haben. Der Algorithmus funktioniert, wie folgt:
+\begin{algorithm}[caption={Bipartit-Check}, label={alg4}]
+Eingabe: Graph $G=(V,E)$ 
+foreach $ v \in V$ do
+  if Farbe[$v$]=leer then do
+    Farbe[$v$] $\leftarrow$ Farbe$_{1}$    
+    Queue.push($v$)
+    while Queue.isNotEmpty do
+      $v$ $\leftarrow$ Queue.pop
+      if Farbe[$N(v)$]=leer oder Farbe[$N(v)$]=$\neg$Farbe[$v$] then do
+        Farbe[$N(v)$] $\leftarrow$ $\neg$Farbe[$v$]
+        Queue.push($N(v)$)
+      else do
+        return $G$ is nicht bipartit
+      od 
+    od
+  od  
+od
+return $G$ ist bipartit
+\end{algorithm}
+Die Alles umschließende Schleife (Zeile 1), sorgt dafür, dass auch nicht verbundene Teile auf Bipartition überprüft werden. Genau genommen, überprüft der Algorithmus, ob in jedem nicht miteinander verbundenen Teil des Eingabegraphen eine Bipartition herrscht.
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "thesis"
