@@ -112,6 +112,7 @@ Das Problem bei diesem Vorgehen ist, dass einfache Kronen ignoriert werden könn
 \label{ch:Implementierung:sec:Trott}
 
 Bei der Umsetzung des Algrorithmus' der Nemhauser-Trotter-Regel sind keine Besonderheiten aufgefallen, wie es bei der Kronenregel der Fall war. Für das Erstellen des bipartiten Graphen $B$ wurden zwei Referenzarrays angelegt, sodass für jeden Knoten aus $G$ das entsprechende Paar in $B$ gefunden werden konnte und anders herum, also für jeden Knoten aus $B$ das entsprechende Urbild aufgerufen werden konnte. Die weiteren Berechnungen konnten dann mithilfe der LEDA-Funktion MAX\_CARD\_BIPARTITE\_MATCHING aus mcb\_matching.h und LEDA-Iteratoren angestellt werden. Um zu überprüfen, ob der erstelle Graph $B$ tatsächlich bipartit ist und bei der Erstellung kein Fehler unterlaufen ist, wurde eigens eine entsprechende Funktion geschrieben, da LEDA eine solche nicht bereitstellt. In dieser Funktion wird versucht, die Knoten des Graphen in zwei Farb einzufärben, sodass keine zwei benachbarten Knoten die gleiche Farbe haben. Der Algorithmus funktioniert, wie folgt:
+\begin{singlespace}
 \begin{algorithm}[caption={Bipartit-Check}, label={alg4}]
 Eingabe: Graph $G=(V,E)$ 
 foreach $ v \in V$ do
@@ -131,7 +132,35 @@ foreach $ v \in V$ do
 od
 return $G$ ist bipartit
 \end{algorithm}
+\end{singlespace}
 Die Alles umschließende Schleife (Zeile 1), sorgt dafür, dass auch nicht verbundene Teile auf Bipartition überprüft werden. Genau genommen, überprüft der Algorithmus, ob in jedem nicht miteinander verbundenen Teil des Eingabegraphen eine Bipartition herrscht.
+
+%% ==============================
+\section{Sonstige Algorithmen}
+%% ==============================
+\label{ch:Implementierung:sec:Algo}
+Des weiteren wurden einige Hilfsalgorithmen implementiert:
+
+
+Um Informationen über den aktuellen Graphen zu sammeln, wurde eine recht einfache Methode umgesetzt, um einen Graphen auf Regularität zu überprüfen:
+\begin{singlespace}
+\begin{algorithm}[caption={Regulär-Check}, label={alg5}]
+Eingabe: Graph $G=(V,E)$ 
+p $\leftarrow$ zufälliger $v \in V$
+foreach $v \in V$ do
+  if Grad($v$) $\neq$ p do 
+    return $G$ ist nicht regulär
+  od
+od
+return $G$ ist regulär
+\end{algorithm}
+\end{singlespace}
+
+\begin{singlespace}
+\begin{algorithm}[caption={Regulär-Check}, label={alg4}]
+\end{algorithm}
+\end{singlespace}
+
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "thesis"

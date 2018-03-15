@@ -61,9 +61,9 @@ $V_{0} \leftarrow \{x \in V\ |\ entweder\ x \in C_{B}\ oder\ x' \in C_{B} \}$
 Das Erstellen des Bipartiten Graphen in den Zeilen 1-2 benötigt $n \cdot d$, da der Graph kopiert und jede Kante doppelt eingetragen wird. Zeilen 3-4 brauchen mit dem verdoppelten Graphen durch die Verwendung des Algorithmus' von Hopcroft und Karp $\sqrt{2n} \cdot 2m$ Schritte. Um die Zugehörigkeit der einzelnen Knoten in den Zeilen 5-6 zu bestimmen muss der Graph jeweils lediglich einmal durchgegangen werden, also $2n$ Schritte. Insgesamt ergibt das:
 \begin{align}
 &\ n \cdot d + \sqrt{2n} \cdot 2m + 2n\\
-\Rightarrow &\ O(n + \sqrt{n} \cdot m)
+\Rightarrow &\ O(\sqrt{n} \cdot m)
 \end{align}
-Die Laufzeitabschätzung von  $O(n + \sqrt{n} \cdot m)$ entsteht, wenn $d$ als Konstante betrachetet wird. Man sieht, dass die Laufzeit des Algorithmus' hauptsächlich vom Finden des Matchings dominiert wird, der Algorithmus eignet sich also für eine Vorverarbeitung des Graphen in Polynomialzeit.
+Die Laufzeitabschätzung von  $O(\sqrt{n} \cdot m)$ entsteht, wenn $d$ als Konstante betrachetet wird. Man sieht, dass die Laufzeit des Algorithmus' hauptsächlich vom Finden des Matchings dominiert wird, der Algorithmus eignet sich also für eine Vorverarbeitung des Graphen in Polynomialzeit.
 Ein wichtiger Teil des Algorithmus' ist das Finden eines Maxmimum Matchings. Im Allgemeinen ist ein Matching oder eine Paarung für einen Graphen $G=(V,E)$ eine Menge von Kanten $S \subset E$, für die gilt, dass keine zwei Kanten aus $S$ einen gemeinsamen Knoten haben. Ein Maximal Matching $M$ wiederum ist ein Matching, für das gilt, dass $M$ keine weitere Kante aus $E$ hinzugefügt werden kann, ohne die Matchingeigenschaft zu zerstören. Maximum Matchings erfüllen die Eigenschaften eines Maximal Matchings und enthalten außerdem die Größte Anzahl an Kanten, im Vergleich zu anderen Matchings.\\
 Mit der Nemhauser-Trotter-Regel ist es theoretisch möglich, den Problemgraphen auf einen Problemkern von $2k$ zu reduzieren, allerdings sorgt die Verwendung dieser Regel dafür, dass nicht alle Knotenüberdeckungen in einem Graphen gefunden werden können, sondern lediglich mindestens eine \cite{fixed}.
 \begin{figure}[htb]
@@ -71,7 +71,7 @@ Mit der Nemhauser-Trotter-Regel ist es theoretisch möglich, den Problemgraphen 
   	{\includegraphics[width=0.7\textwidth]{trottTimeCrop.pdf}}
 	\caption{Laufzeit der Nemhauser-Trotter-Regel am Testset\label{fig:trottTime}}
 \centering
-\end{figure}Wie in Abbildung \ref{fig:trottTime} zu sehen ist, verhält sich die Laufzeit des implementierten Algorithmus' entsprechend der Abschätzung linear zur Eingabe.
+\end{figure}Wie in Abbildung \ref{fig:trottTime} zu sehen ist, verhält sich die Laufzeit des implementierten Algorithmus' entsprechend der Abschätzung linear zur Eingabe. Jeder Punkt repräsentiert einen Graphen, für den auf der X-Achse die entsprechende Kantenanzahl und auf der Y-Achse die Zeit, wielange ein Durchlauf der Nemhauser-Trotter-Regel im Schnitt für diesen Graphen gebraucht hat in Sekunden an. Selbiges gilt für die Abblidung \ref{fig:crownTime}, allerdings für die Kronenregel.
 %% ==============================
 \section{Kronenregel}
 %% ==============================
@@ -84,7 +84,7 @@ Ziel der Kronenregel ist, im Problemgraphen eine Krone zu finden, welche sich fo
 \item \textit{die Kanten zwischen H und I enthalten ein Matching in dem alle Knoten aus H enthalten sind.}
 \end{enumerate}
 Ist eine solche Krone gefunden, kann davon die Menge $H$ in eine Knotenüberdeckung für $G$ hinzugefügt werden, um den Graphen um $H$ und $I$ zu reduzieren. Dies ist für das Knotenüberdeckungsproblem sinnvoll, da $I$ ein Independent Set ist und damit keine Kanten untereinander hat. Werden also nur die Nachbarknoten, beziehungsweise $H$ in die Überdeckung aufgenommen, kann man sicher sein, dass keine Kanten vernachlässigt werden. Für die Untersuchung wurde der folgende Algortihmus implementiert:
-
+\begin{singlespace}
 \begin{algorithm}[caption={Kronenregel.}, label={alg2}]
 $G = (V, E), n:= |V|, m:=|E|, d:= maximaler\ Grad\ der\ Knoten\ aus\ G$
 //$M_{1}$ = Maximal Matching von $G$
@@ -104,7 +104,7 @@ while $I' \neq I$ do
 od
 return $I$
 \end{algorithm}
-
+\end{singlespace}
 Um das Maxmimal Matching $M_{1}$ zu erstellen werden im schlimmsten Fall $m \cdot d$ Schritte benötigt, da dann $d$ Nachbarkanten deaktiviert werden. Ist $d = 1$, so wird jede Kante aus $E$ betrachtet, beziehungsweise in $M_{1}$ aufgenommen. Gilt $|M_{1}| > 2k$, so kann für den Graphen keine Knotenüberdeckung  $ \leq k$ gefunden werden. Das Finden der in $M_{1}$ nicht gepaarten Knoten aus $V$ kostet $n$ Schritte. $B$ kann in etwas weniger als $\frac{nd}{2}$ erstellt werden, da $n$ bis zu $k$ kleiner ist, allerdings fällt dies für die Worst Case Abschätzung nicht sehr schwer ins Gewicht. Um das Matching in diesem bipartiten Graphen zu finden, werden wie bei der Nemhauser-Trotter-Regel  $\sqrt{n} \cdot m$ Schritte benötigt. Ist das Matching $M_{2} > k$, so kann für den Graphen keine Knotenüberdeckung  $ \leq k$ gefunden werden. Die Zeilen 8 bis 13 kosten maximal $n \cdot d$, da die Knoten aus $O$ und deren Nachbarknoten überprüft werden müssen. Insgesamt ergibt das eine Abschätzung von:
 \begin{align}
 &\ m \cdot d + n + \frac{nd}{2} + \sqrt{n} \cdot m + n  + n \cdot d \\

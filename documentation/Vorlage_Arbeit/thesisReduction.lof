@@ -3,13 +3,14 @@
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Graph eines Stromnetzes \relax }}{1}{figure.caption.5}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Laufzeit der Nemhauser-Trotter-Regel am Testset\relax }}{8}{figure.caption.8}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Laufzeit der Kronenregel am Testset\relax }}{9}{figure.caption.9}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Laufzeit der Kronenregel am Testset\relax }}{10}{figure.caption.9}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Graph$_{3}$ nach Anwendung von Grad$_{1}$-Regel und Kronenregel.\relax }}{13}{figure.caption.14}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Anwendung der Kronenregel.\relax }}{13}{figure.caption.15}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Einfache Krone\relax }}{13}{figure.caption.18}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Anwendung von Nemhauser-Trotter-Regel, Kronenregel und Grad$_{1}$-Regel.\relax }}{16}{figure.caption.19}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Graph$_{3}$ nach Anwendung von Grad$_{1}$-Regel und Kronenregel.\relax }}{14}{figure.caption.14}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Anwendung der Kronenregel.\relax }}{15}{figure.caption.15}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Einfache Krone\relax }}{15}{figure.caption.18}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Anwendung von Nemhauser-Trotter-Regel, Kronenregel und Grad$_{1}$-Regel.\relax }}{18}{figure.caption.19}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Beispielgraph f\IeC {\"u}r die Anwendung der Kronenregel\relax }}{18}{figure.caption.24}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Beispielgraph f\IeC {\"u}r die Anwendung der Kronenregel\relax }}{20}{figure.caption.24}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Anwendung der Kronenregel.\relax }}{26}{figure.caption.31}

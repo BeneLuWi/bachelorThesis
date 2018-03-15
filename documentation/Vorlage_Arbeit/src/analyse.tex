@@ -18,7 +18,6 @@ Zunächst werden die Regeln anhand der folgenden Kriterien beurteilt:
 \begin{itemize}
 	\item Laufzeit
 	\item Erwartete Reduktion
-	\item Ressourcenverbrauch
 	%\item Wie gut ist das Ergebnis im Vergleich zu anderen Algorithmen?	
 \end{itemize}
 Dann wird die Anwendung und der Effekt der Regeln auf das eigens erstellte Testset untersucht, um folgende Fragen zu beantworten:
@@ -38,21 +37,14 @@ Dann wird die Anwendung und der Effekt der Regeln auf das eigens erstellte Tests
 %% ==============================
 \label{ch:Analyse:sec:Berwertung}
 
-Um die verwendeten Reduktionsregeln zu bewerten, beziehungsweise zu vergleichen, betrachten wir auf der einen Seite die theoretisch mögliche Reduktion und auf der anderen, wie sich der implementierte Algortihmus verhält. Für jede Regel wird vorausgesetzt, dass zusätlich alle Kanten des Grades 0 aus dem Graphen entfernt werden, da die Knotenmenge der reduzierten Instanz ansonsten nicht durch $k$ abgeschätzt werden kann.
-
-%\begin{figure}[htb]
-%\centering
- % 	{\includegraphics[width=.3\textwidth]{Logo-Uni-Trier.jpg}}
-%	\caption{Logo der Universität Trier.\label{fig:grafik1}}
-%\centering
-%\end{figure}
-
+Für jede Regel wird vorausgesetzt, dass zusätlich zur Regeln selbst alle Kanten des Grades 0 aus dem Graphen entfernt werden. Ist dies nicht der Fall, werden zum Beispiel von der Buss-Regel beliebig viele Knoten mit Grad 0 übrig bleiben und die Knotenmenge der reduzierten Instanz kann nicht durch $k$ abgeschätzt werden .
+In Tabelle \ref{tab:liste} stehen die Laufzeiten in der $O$-Notation und die erwartete obere Grenze der Knotenanzahl der reduzierten Problemkerns der Nemhauser-Trotter-Regel, der Kronenregel und die der Buss Regel gegenüber. Zwar zeigte sich bei der Analyse der Laufzeit der Algorithmen, dass die Laufzeit der Nemhauser-Trotter-Regel um einige ganzzahlige Faktoren länger ist, als die der Kronenregel, allerdings hängt diese bei beiden überwiegend vom Finden von Matchings ab. 
+Im folgenden Abschnitt wird betrachtet, wie sich die Reduktionsregeln in der Praxis verhalten. Zu erwarten ist, dass die Nemahuser-Trotter-Regel mehr Knoten aus den Graphen entfernt, als die Kronenregel, wobei sich in den eher dünnen Graphen des Testsets womöglich viele einfache Kronen finden lassen. 
 
 \begin{table}[htb]
 \caption{Bewertung der Reduktionsregeln\label{tab:liste}}
 \vspace*{1em}
 \centering
-
 \bgroup
 \def\arraystretch{1.3}%  1 is the default, change whatever you need
 
@@ -73,8 +65,8 @@ Um die verwendeten Reduktionsregeln zu bewerten, beziehungsweise zu vergleichen,
 \end{tabular}
 
 \begin{tablenotes}\footnotesize
-\item[*] Die Reduktion dieser Regeln hängt stark von der Struktur des Graphen ab. Eine formale Bestimmung der zu erwartenden Reduktion steht noch aus.
-\item \emph{k} beschreibt jeweils den Eingabeparameter der Knotenüberdeckung für einen Graphen $G=(V,E)$
+\item Für einen Problemgraphen $G=(V,E)$ ist \emph{k} die obere Schranke für die Größe einer Knotenüberdeckung, $n=|V|$ und $m=|E|$
+\item \emph{Reduktion} bezieht sich hier auf den übrig bleibenden Problemkern nach der Reduktion
 \end{tablenotes}
 
 \end{threeparttable}
@@ -83,7 +75,7 @@ Um die verwendeten Reduktionsregeln zu bewerten, beziehungsweise zu vergleichen,
 
 \end{table}
 
-In Tabelle \ref{tab:liste} stehen die Laufzeiten in der $O$-Notation und erwartete Knotenanzahl der reduzierten Problemkerns der Nemhauser-Trotter-Regel \cite{fixed}, der Kronenregel \cite{fixed} \cite{manual} und die der Buss Regel \cite{fixed} gegenüber.
+
 %% ==============================
 \section{Anwendung der Reduktionsregeln}
 %% ==============================
@@ -320,24 +312,11 @@ Werden Nemhauser-Trotter-Regel, Kronenregel und Grad$_{1}$-Regel in dieser Reihe
 
 \end{table}
 
-%% ==============================
-\section{Interpretation der Ergebnisse}
-%% ==============================
-\label{ch:Analyse:sec:Interpretation}
-%% ==============================
-
-\begin{itemize}
-\item Gegenüberstellung der Reduktionsergebnisse: Einzeln, wie in der Theorie, Kombination sehr anders und Abhängig von der Reduktionsregel
-\item Wie zu erwarten, keine großen Reduktionen bei dern dichten Graphen. Graphen werden dichter $\Rightarrow$ \emph{k} erhöht sich $\Rightarrow$ Keine Reduktion mehr erfolgreich 
-\end{itemize}
-
-
 \section{Zusammenfassung}
 %% ==============================
-\label{ch:Analyse:sec:zusammenfassung}
+\label{ch:Analyse:sec:Zusammenfassung}
 
-Am Ende sollten ggf. die wichtigsten Ergebnisse nochmal in \emph{einem}
-kurzen Absatz zusammengefasst werden.
+Es hat sich gezeigt, dass die Regeln in der Einzelanwendung bei der Größe der Reduktion im Vergleich zueineander den Erwartungen aus Tabelle \ref{tab:liste} entsprechen. Allerdings wurde festgestellt, dass die Anwendbarkeit der Regeln nicht ausschließlich von der Dichte eines Graphen abhängt, sondern stark von dessen Stuktur, wie am Beispiel von Graph$_{5}$ zu sehen ist, wo genau 2 Knoten entfernt werden mussten, um die Anwendung der Kronenregel zu ermöglichen. Wie erwartet, nimmt die Anzahl der reduzierten Knoten pro Graph mit wachsender dichte ab. Im schlimmsten Fall, zum Beispiel bei einer Clique, also einem (Teil-)Graphen, bei dem jeder Knoten eine Kante zu jedem anderen Knoten der Clique hat, ist keine Reduktion mehr möglich, da sich dann auch die Größe der kleinsten Knotenüberdeckung für diesen Graphen der Knotenmenge annähert.
 
 %%% Local Variables: 
 %%% mode: latex
