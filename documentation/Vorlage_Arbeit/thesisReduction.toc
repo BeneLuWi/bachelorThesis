@@ -8,16 +8,16 @@
 \contentsline {section}{\numberline {2.1}Knoten\IeC {\"u}berdeckung}{5}{section.2.1}
 \contentsline {section}{\numberline {2.2}Einfache Reduktionsregeln}{5}{section.2.2}
 \contentsline {section}{\numberline {2.3}Nemhauser-Trotter Reduktionsregeln}{7}{section.2.3}
-\contentsline {section}{\numberline {2.4}Kronenregel}{9}{section.2.4}
+\contentsline {section}{\numberline {2.4}Kronenregel}{8}{section.2.4}
 \contentsline {chapter}{\numberline {3}Analyse}{11}{chapter.3}
 \contentsline {section}{\numberline {3.1}Anforderungen}{11}{section.3.1}
 \contentsline {section}{\numberline {3.2}Bewertung der Reduktionsregeln}{11}{section.3.2}
-\contentsline {section}{\numberline {3.3}Anwendung der Reduktionsregeln}{12}{section.3.3}
-\contentsline {section}{\numberline {3.4}Zusammenfassung}{19}{section.3.4}
+\contentsline {section}{\numberline {3.3}Methodik}{12}{section.3.3}
+\contentsline {section}{\numberline {3.4}Anwendung der Reduktionsregeln}{13}{section.3.4}
+\contentsline {section}{\numberline {3.5}Zusammenfassung}{18}{section.3.5}
 \contentsline {chapter}{\numberline {4}Implementierung}{20}{chapter.4}
 \contentsline {section}{\numberline {4.1}Kronenregel}{20}{section.4.1}
 \contentsline {section}{\numberline {4.2}Nemhauser-Trotter-Regel}{21}{section.4.2}
-\contentsline {section}{\numberline {4.3}Sonstige Algorithmen}{23}{section.4.3}
 \contentsline {chapter}{\numberline {5}Diskussion und Ausblick}{24}{chapter.5}
 \contentsline {chapter}{\numberline {6}Anhang}{25}{chapter.6}
 \contentsline {chapter}{Literaturverzeichnis}{27}{section*.32}
