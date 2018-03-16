@@ -59,7 +59,8 @@ Beim Austesten der Kronenregel hat sich gezeigt, dass die Auswahl des Matchings 
 
 \end{table}
 
-\begin{table}[htb]
+
+\begin{table}[h]
 \caption{Beide Knoten mit Einschränkung\label{tab:degreeAND}}
 \vspace*{1em}
 \centering
@@ -68,7 +69,6 @@ Beim Austesten der Kronenregel hat sich gezeigt, dass die Auswahl des Matchings 
 \def\arraystretch{1.3}%  1 is the default, change whatever you need
 
 \begin{threeparttable}
-
 \begin{tabular}[c]{lll}
 	\hline
 	\multicolumn{1}{c}{\textbf{Grad der Knoten}} & 
@@ -96,10 +96,11 @@ Beim Austesten der Kronenregel hat sich gezeigt, dass die Auswahl des Matchings 
 \egroup
 
 \end{table}
+
 Wenn nun beim Finden von $M_{1}$ zunächst bevorzugt Kanten mit Knoten höheren Grades vor den anderen betrachtet werden, können bessere Ergebnisse in der darauf folgenden Reduktion erzielt werden und die richtigen Kanten werden getroffen. Daraufhin wurde untersucht, wie die höhergradigen Knoten, beziehungsweise die dazugehörigen Kanten ausgewählt werden müssen. Auf der einen Seite (Tabelle \ref{tab:degreeOR}) wurden Kanten betrachtet, bei denen das Auswahlkriterium auf mindestens einen der Knoten zutrifft, auf der anderen Seite Kanten, bei denen beide Knoten die Bedingung erfüllen (Tabelle \ref{tab:degreeAND}). Die Einschränkungen \emph{Größte Anzahl} und \emph{Durchschnittliche Anzahl} ergeben sich jeweils aus der Menge an Knoten eines bestimmtes Grades. Bei Ersterem werden Knoten, deren Grad größer ist, als der, der im aktuellen Graphen am häufigsten vorkommt bevorzugt. Bei Letzterem dementsprechend Knoten mit einem deren Grad, größer als, der der im aktuellen Graphen dem Durchschnitt entspricht. Diese Werte werden bei jeder Iteration des Algorithmus neu berechnet und passen sich dadurch während der Laufzeit an den Graphen an.\\ 
 Generell wird eine bessere (größere) Reduktion mit der Kronenregel erreicht, wenn beim Matching $M_{1}$ zunächst Kanten betrachtet werden, bei denen die Einschränkung auf beide Knoten zutrifft. Die Reduktionsmenge bei Knoten mit $Grad>2$ erzeugt im Vergleich mit anderen statischen Werten das beste Ergebnis. Dies könnte damit zusammenhängen, dass bei den Graphen, bei denen diese Regel sehr effektiv ist, der durchschnittliche Grad der Knoten 2 ist und es sich damit um einen eher dünnen Graphen handelt. Vermutlich erzielt die Bevorzugung des durchschnittlichen Grades das beste Ergebnis, da sich dieser Wert mit jedem Durchlauf verändert.
 Das Problem bei diesem Vorgehen ist, dass einfache Kronen ignoriert werden können, weshalb die Kombination mit der Grad$_{1}$-Regel vermutlich so gute Ergebnisse erzielt, wie in Kapitel \ref{ch:Analyse:sec:Anwendung} zu sehen ist.
-
+\newpage
 
 
 

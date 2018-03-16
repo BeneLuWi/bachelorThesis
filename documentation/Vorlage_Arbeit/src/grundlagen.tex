@@ -61,7 +61,7 @@ Das Erstellen des Bipartiten Graphen in den Zeilen 1-2 benötigt $n \cdot d$, da
 &\ n \cdot d + \sqrt{2n} \cdot 2m + 2n\\
 \Rightarrow &\ O(\sqrt{n} \cdot m)
 \end{align}
-Die Laufzeitabschätzung von  $O(\sqrt{n} \cdot m)$ entsteht, wenn $d$ als Konstante betrachtet wird. Man sieht, dass die Laufzeit des Algorithmus' hauptsächlich vom Finden des Matchings dominiert wird. Der Algorithmus eignet sich also für eine Vorverarbeitung des Graphen in Polynomialzeit.
+Die Laufzeitabschätzung von  $O(\sqrt{n} \cdot m)$ entsteht, wenn $d$ als Konstante betrachtet wird. Die Laufzeit des Algorithmus' wird hauptsächlich vom Finden des Matchings dominiert. Der Algorithmus eignet sich also für eine Vorverarbeitung des Graphen in Polynomialzeit.
 Ein wichtiger Teil des Algorithmus' ist das Finden eines Maximum Matchings. Im Allgemeinen ist ein Matching oder eine Paarung für einen Graphen $G=(V,E)$ eine Menge von Kanten $S \subseteq E$, für die gilt, dass keine zwei Kanten aus $S$ einen gemeinsamen Knoten haben. Ein Maximal Matching $M$ wiederum ist ein Matching, für das gilt, dass $M$ keine weitere Kante aus $E$ hinzugefügt werden kann, ohne die Matchingeigenschaft zu zerstören. Maximum Matchings erfüllen die Eigenschaften eines Maximal Matchings und enthalten außerdem die Größte Anzahl an Kanten, im Vergleich zu anderen Matchings.\\
 Mit der Nemhauser-Trotter-Regel ist es theoretisch möglich, den Problemgraphen auf einen Problemkern von $2k$ zu reduzieren, allerdings sorgt die Verwendung dieser Regel dafür, dass nicht alle Knotenüberdeckungen in einem Graphen gefunden werden können, sondern lediglich mindestens eine \cite{fixed}.
 \begin{figure}[htb]
@@ -81,7 +81,7 @@ Ziel der Kronenregel ist, im Problemgraphen eine Krone zu finden, welche sich fo
 \item $\textit{I ein Indipendent Set ist, was bedeutet: }\forall v, w \in I\ gilt\ (vw) \notin E\ und$
 \item \textit{die Kanten zwischen H und I enthalten ein Matching in dem alle Knoten aus H enthalten sind.}
 \end{enumerate}
-Ist eine solche Krone gefunden, kann davon die Menge $H$ in eine Knotenüberdeckung für $G$ hinzugefügt werden, um den Graphen um $H$ und $I$ zu reduzieren. Dies ist für das Knotenüberdeckungsproblem sinnvoll, da $I$ ein Independent Set ist und damit innerhalb der Menge keine Kanten existieren. Werden also nur die Nachbarknoten, beziehungsweise $H$ in die Überdeckung aufgenommen, kann man sicher sein, dass keine Kanten vernachlässigt sind. Für die Untersuchung wurde der folgende Algorithmus implementiert:
+Ist eine solche Krone gefunden, kann davon die Menge $H$ in eine Knotenüberdeckung für $G$ hinzugefügt werden, um den Graphen um $H$ und $I$ zu reduzieren. Dies ist für das Knotenüberdeckungsproblem sinnvoll, da $I$ ein Independent Set ist und damit innerhalb der Menge keine Kanten existieren. Werden also nur die Nachbarknoten, beziehungsweise $H$ in die Überdeckung aufgenommen, ist sichergestellt, dass keine Kanten vernachlässigt sind. Für die Untersuchung wurde der folgende Algorithmus implementiert:
 \begin{singlespace}
 \begin{algorithm}[caption={Kronenregel.}, label={alg2}]
 $G = (V, E), n:= |V|, m:=|E|, d:= maximaler\ Grad\ der\ Knoten\ aus\ G$
@@ -109,7 +109,7 @@ Um das Maximal Matching $M_{1}$ zu erstellen werden im schlimmsten Fall $m \cdot
 =&\ d (m+n) +2 n + \frac{nd}{2} + \sqrt{n} \cdot m \\
 \Rightarrow &\ O(\sqrt{n} \cdot m)
 \end{align}
-Wieder erhält man $O(\sqrt{n} \cdot m)$, wird $d$ als Kontsante betrachtet, der Algorithmus eignet sich also für eine Vorverarbeitung des Graphen in Polynomialzeit. Für das Matching $M_{1}$ wird ein Maximal Matching vermutlich wegen der schnelleren Laufzeit, als das Finden eines Maximum Matchings in einem allgemeinen Graph verwendet. Allerdeings gibt es nach Blum \cite{paper:8} einen Algorithmus, der ein Maxmimum Matching in einem allgemeinen Graphen in $O(\sqrt{n} \cdot m)$ findet, was die Gesamtlaufzeit der Kronenregel zwar um den Faktor 2 verschlechtern, allerdings eventuell das Ergebnis der Reduktion verbessern würde. Abu-Khzam et al. \cite{paper:7} vermutet, dass das Matching $M_{1}$ einen großen Einfluss auf das Ergebnis der Reduktion hat, geht aber in seinem Artikel nicht weiter darauf ein. Insgesamt kann mit der Kronenregel ein Problemkern mit einer Knotenmenge von bis zu $3k$ erreicht werden.
+Für die Laufzeitabschätzung ergibt sich $O(\sqrt{n} \cdot m)$, wird $d$ als Kontsante betrachtet, der Algorithmus eignet sich also für eine Vorverarbeitung des Graphen in Polynomialzeit. Für das Matching $M_{1}$ wird ein Maximal Matching vermutlich wegen der schnelleren Laufzeit, als das Finden eines Maximum Matchings in einem allgemeinen Graph verwendet. Allerdeings gibt es nach Blum \cite{paper:8} einen Algorithmus, der ein Maxmimum Matching in einem allgemeinen Graphen in $O(\sqrt{n} \cdot m)$ findet, was die Gesamtlaufzeit der Kronenregel zwar um den Faktor 2 verschlechtern, allerdings eventuell das Ergebnis der Reduktion verbessern würde. Abu-Khzam et al. \cite{paper:7} vermutet, dass das Matching $M_{1}$ einen großen Einfluss auf das Ergebnis der Reduktion hat, geht aber in seinem Artikel nicht weiter darauf ein. Insgesamt kann mit der Kronenregel ein Problemkern mit einer Knotenmenge von bis zu $3k$ erreicht werden.
 \begin{figure}[htb]
 \centering
   	{\includegraphics[width=0.7\textwidth]{crownTimeCrop.pdf}}
