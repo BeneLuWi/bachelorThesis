@@ -14,26 +14,26 @@ Das \emph{Knotenüberdeckungsproblem}, oder englisch Vertex Cover, ist ein nachg
 \begin{figure}[htb]
 \centering
   	{\includegraphics[width=.5\textwidth]{vertexcoverBsp.pdf}}
-	\caption{Graph eines Stromnetzes \label{fig:vc}}
+	\caption{Graph eines Stromnetzes mit Häusern und Leitungen \label{fig:vc}}
 \centering
 \end{figure}
-Ein Bespiel für eine solche Probleminstanz ist in Abbildung \ref{fig:vc}\footnote{Icons in der Graphik von https://www.flaticon.com/} zu sehen. Die Haushalte sind jeweils mit einem Buchstaben gekennzeichnet; jede Linie, beziehungsweise Kante stellt eine Leitung zum Nachbarhaus dar. Hier ist es möglich eine Lösung für \emph{k} = 4 zu finden, also 4 Häuser mit Generatoren auszustatten, sodass alle Leitungen versorgt sind. Bei einem kleinen Beispiel, wie hier ist durch ausprobieren leicht zu sehen, dass es keine Lösung mit weniger Häusern, beziehungsweise Generatoren gibt. Um eine Problemlösung mit 4 Häusern zu finden, könnten alle Möglichkeiten ausprobiert werden. Ein solcher naiver Algorithmus würde eine Laufzeit von $O(n^{k} \cdot m)$ ($m$ = Anzahl der Leitungen) brauchen, da für jede $k$ große Kombination aus Häusern, die Versorgung der Leitungen überprüft werden muss.\\
-Mit einem einfachen Suchbaumalgorithmus wird jede Leitung nur einmal betrachtet und es muss entschieden werden, welches der beiden Häuser mit einem Generator versorgt werden soll, da mindestens eins der beiden Häuser in der Lösungsmenge sein muss. Dadurch ergibt sich für jede Entscheidung eine Verzweigung im Suchbaum. Nach $k$ Verzweigungen sind dann $k$ Generatoren verteilt und es muss überprüft werden, ob jede Leitung versorgt ist, was wiederum in $m$ Schritten gemacht werden kann. Es ergibt sich eine Laufzeit von $O(2^{k}) \cdot m$.
-Nach der Verwendung eines dieser Algorithmen, finden sich die Lösungen, dass wenn die Haushalte F, B, A und C oder F, B, A und D mit einem Generator ausgestattet werden, durch alle Leitungen Strom fließt. Für eine Problemgröße wie sie hier geschildert wird, bieten diese Methoden eine Lösung. Für eine Häusermenge \emph{n} = 2000 mit entsprechend vielen Leitungen bedeutet das ungefähr $1.148 \cdot 10^{602}$ mögliche Kombinationen.
+Ein Bespiel für eine solche Probleminstanz ist in Abbildung \ref{fig:vc}\footnote{Icons in der Graphik von https://www.flaticon.com/} zu sehen. Die Haushalte sind jeweils mit einem Buchstaben gekennzeichnet; jede Linie, beziehungsweise Kante stellt eine Leitung zum Nachbarhaus dar. Hier ist es möglich, eine Lösung für \emph{k} = 4 zu finden, also 4 Häuser mit Generatoren auszustatten, sodass alle Leitungen versorgt sind. Bei einem kleinen Beispiel wie hier, ist durch ausprobieren leicht zu sehen, dass es keine Lösung mit weniger Häusern, beziehungsweise Generatoren gibt. Um eine Problemlösung mit 4 Häusern zu finden, könnten alle Möglichkeiten ausprobiert werden. Ein solcher naiver Algorithmus würde eine Laufzeit von $O(n^{k} \cdot m)$ ($m$ = Anzahl der Leitungen) brauchen, da für jede $k$ große Kombination aus Häusern die Versorgung der Leitungen überprüft werden muss.\\
+Mit einem einfachen Suchbaumalgorithmus wird jede Leitung nur einmal betrachtet und es muss entschieden werden, welches der beiden Häuser mit einem Generator versorgt werden soll, da mindestens eins der beiden Häuser in der Lösungsmenge enthalten sein muss. Dadurch ergibt sich für jede Entscheidung eine Verzweigung im Suchbaum. Nach $k$ Verzweigungen sind dann $k$ Generatoren verteilt und es muss überprüft werden, ob jede Leitung versorgt ist, was wiederum in $m$ Schritten gemacht werden kann. Es ergibt sich eine Laufzeit von $O(2^{k} \cdot m)$. 
+Nach der Verwendung einer dieser Algorithmen, finden sich die Lösungen, dass wenn die Haushalte F, B, A und C oder F, B, A und D mit einem Generator ausgestattet werden, durch alle Leitungen Strom fließt. Für eine Problemgröße, wie sie hier geschildert wird, bieten diese Methoden eine Lösung. Für eine Häusermenge \emph{n} = 2000 mit entsprechend vielen Leitungen bedeutet das ungefähr $1.148 \cdot 10^{602}$ mögliche Kombinationen.
 Es ist leicht zu sehen, dass sich das Stromnetzproblem, werden die Häuser durch Knoten eines Graphen und die Leitungen durch dessen Kanten ersetzt, zum Knotenüberdeckungsproblem transformieren lässt. Zu diesem Problem lassen sich zwei Fragestellungen unterscheiden: Zum einen das Finden einer minimalen Knotenüberdeckung \cite{trees}:
 \begin{align*}
 EINGABE: &\ Graph\ G=(V,E),\ positive\ Integer\ k\leq |V|\\
 AUSGABE: &\ S\subseteq V\ mit\ |S|\leq k,\\
 &\ sodass\ jede\ Kante\ aus\ E\ einen\ Endpunkt\ in\ S\ hat.
 \end{align*}
-Zum anderen das Entscheidungsproblem, ob es eine Knotenüberdeckung einer Größe $\leq k$ gibt:
+Zum anderen das Entscheidungsproblem \cite{exakt}, ob es eine Knotenüberdeckung einer Größe $\leq k$ gibt:
 \begin{align*}
 EINGABE: &\ Graph\ G=(V,E),\ positive\ Integer\ k\leq |V|\\
 AUSGABE: &\textit{ Existiert ein}\ S\subseteq V\ mit\ |S|\leq k,\\
 &\ sodass\ jede\ Kante\ aus\ E\ einen\ Endpunkt\ in\ S\ hat?
 \end{align*}
 Letzteres ist in der Liste von Karps 21 NP-vollständigen Problemen zu finden \cite{karp}.
-Es existieren weitere reale Probleme, für die das Knotenüberdeckungsproblem anwendbar ist. Abu-Khzam et al \cite{paper:3} schlagen eine Anwendung in der Bioinformatik vor.
+Es existieren weitere reale Probleme, für die das Knotenüberdeckungsproblem anwendbar ist. Abu-Khzam et al \cite{paper:3} schlagen zum Beispiel eine Anwendung in der Bioinformatik vor.
 Ein nichtdeterministischer Algorithmus kann jede vermeintliche Lösungskombination aus Knoten, beziehzungsweise Haushalten in Polynomialzeit testen \cite{intract}, da lediglich überprüft werden muss, ob die Größe der Lösungsmenge den Wert von \emph{k} überschreitet und ob alle Kanten abgedeckt (Leitungen versorgt) sind.
  Allerdings würde ein naiver Algorithmus für große Eingaben in der Realität nicht in absehbarer Zeit terminieren, wie beispielhaft in Tabelle \ref{tab:exponential} zu sehen ist.
  \begin{table}[htb]
@@ -69,7 +69,7 @@ Ein nichtdeterministischer Algorithmus kann jede vermeintliche Lösungskombinati
 
 \end{table}
 Es ist also sinnvoll, die Eingabe möglichst klein zu halten oder auf einen Problemkern zu reduzieren, indem einfache Teile des Graphen durch Vorverarbeitung, englisch \emph{Preprocessing}, entfernt werden und gegebenenfalls in die Lösungsmenge aufgenommen werden. Dies sollte in Polynomialzeit geschehen, um die gesamte Laufzeit zu verringern. Das Ziel der in dieser Arbeit verwendeten Reduktionsregeln ist, für einen gegebenen Graphen $G=(V,E)$, einer natürlichen Zahl $k$ und der Problemstellung $VC(G,k)$ das Finden und Entfernen eines induzierten Teilgraphen $G' \subseteq G$ und Verkleinerung von $k$,
-sodass für den Problemkern $G'' = G \setminus G'$ gilt, dass $VC(G,k) = VC(G'',k'') \cup C\ mit\ C=VC(G', k'')$, wobei $C=VC(G', k'')$ in Polynomialzeit durch die Regeln berechnen lässt. Für den Suchbaumalgorithmus (mit $O(2^{k} \cdot m)$) bedeutet jede Reduzierung von $k$ eine Verdoppelung der Geschwindigkeit. 
+sodass für den Problemkern $G'' = G \setminus G'$ gilt, dass $VC(G,k) = VC(G'',k'') \cup C\ mit\ C=VC(G', k'')$, wobei $C=VC(G', k'')$ in Polynomialzeit durch die Regeln berechnen lässt \cite{fundamentals}. Für den Suchbaumalgorithmus (mit $O(2^{k} \cdot m)$) bedeutet jede Reduzierung von $k$ eine Verdoppelung der Geschwindigkeit. 
 
 
 %% ==============================
@@ -77,7 +77,7 @@ sodass für den Problemkern $G'' = G \setminus G'$ gilt, dass $VC(G,k) = VC(G'',
 %% ==============================
 \label{ch:Einleitung:sec:Problemstellung}
 
-Das Knotenüberdeckungsproblem ist in der Literatur viel vertreten und es wurden verschiedene Möglichkeiten, eine Probleminstanz zu reduzieren entdeckt. In dieser Arbeit werden einfachere Reduktionsregeln, genauer gesagt die Grad$_{0}$-, Grad$_{1}$- und Buss-Regel betrachtet, als auch Nemhauser-Trotter-Regel und Kronenregel, welche sich weitaus komplexer gestalten. Jede Regel greift an verschiedenen Stellen eines Graphen und es scheint, dass die Reihenfolge, in der verschiedene Regeln auf einen Graphen angewandt werden einen Einfluss auf die insgesamt erreichte Reduktion hat. In dieser Arbeit wird untersucht, wie sich verschiedene Regeln in der Praxis verhalten, sowohl einzeln als auch in Kombination, um dann verglichen zu werden. 
+Das Knotenüberdeckungsproblem ist in der Literatur viel vertreten und es wurden verschiedene Möglichkeiten, eine Probleminstanz zu reduzieren, entdeckt. In dieser Arbeit werden einfachere Reduktionsregeln, genauer gesagt die Grad$_{0}$-, Grad$_{1}$- und Buss-Regel betrachtet, als auch Nemhauser-Trotter-Regel und Kronenregel, welche sich weitaus komplexer gestalten. Jede dieser Regeln wird an verschiedenen Stellen eines Graphen ausgeslöst und es scheint, dass die Reihenfolge, in die Regeln auf einen Graphen angewandt werden, einen Einfluss auf die insgesamt erreichte Reduktion hat. In dieser Arbeit wird untersucht, wie sich die oben genannten Regeln in der Praxis verhalten, sowohl einzeln als auch in Kombination, um dann verglichen zu werden. 
 
 %% ==============================
 \section{Zielsetzung}
