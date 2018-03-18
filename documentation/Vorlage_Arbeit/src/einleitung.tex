@@ -34,7 +34,7 @@ AUSGABE: &\textit{ Existiert ein}\ S\subseteq V\ mit\ |S|\leq k,\\
 \end{align*}
 Letzteres ist in der Liste von Karps 21 NP-vollständigen Problemen zu finden \cite{karp}.
 Es existieren weitere reale Probleme, für die das Knotenüberdeckungsproblem anwendbar ist. Abu-Khzam et al \cite{paper:3} schlagen zum Beispiel eine Anwendung in der Bioinformatik vor.
-Ein nichtdeterministischer Algorithmus kann jede vermeintliche Lösungskombination aus Knoten, beziehzungsweise Haushalten in Polynomialzeit testen \cite{intract}, da lediglich überprüft werden muss, ob die Größe der Lösungsmenge den Wert von \emph{k} überschreitet und ob alle Kanten abgedeckt (Leitungen versorgt) sind.
+Ein nichtdeterministischer Algorithmus kann jede vermeintliche Lösungskombination aus Knoten, beziehungsweise Haushalten in Polynomialzeit testen \cite{intract}, da lediglich überprüft werden muss, ob die Größe der Lösungsmenge den Wert von \emph{k} überschreitet und ob alle Kanten abgedeckt (Leitungen versorgt) sind.
  Allerdings würde ein naiver Algorithmus für große Eingaben in der Realität nicht in absehbarer Zeit terminieren, wie beispielhaft in Tabelle \ref{tab:exponential} zu sehen ist.
  \begin{table}[htb]
 \caption{Exponentielle Laufzeit \label{tab:exponential}}
@@ -87,7 +87,7 @@ Das Knotenüberdeckungsproblem ist in der Literatur viel vertreten und es wurden
 Ein Großteil der Behandlung von Reduktionsregeln in der Literatur findet ausschließlich theoretisch statt.
 Ziel dieser Arbeit ist, herauszufinden, wie sich die Regeln in der Praxis verhalten, wenn sie einzeln oder in Kombination miteinander angewandt werden. Hierzu wurden die Regeln mithilfe der\emph{C++}-Library LEDA \cite{manual} implementiert, welche Algorithmen und eigene Datentypen bereitstellt. Unter anderem liefert LEDA Datenstrukturen und Algorithmen für Graphen, wie zum Beispiel eine Funktion, mit der ein Maximum-Bipartite-Matching in einem Graphen gefunden und ausgegeben werden kann. Durch die Vielzahl an Funktionen eignet sich die Library für diese Arbeit. Jede der  Regeln wird dann unter verschiedenen Aspekten untersucht:
 \begin{itemize}
-\item Wie verhält sich die die theoretische Laufzeit im Vergleich zur Praxisanwendung?
+\item Wie verhält sich die theoretische Laufzeit im Vergleich zur Praxisanwendung?
 \item Passt die theoretisch erwartete Reduktion zum Ergebnis am Testset?
 \item Wie gut ist das Ergebnis der Reduktion im Vergleich zu anderen Regeln?
 \item Welche Kombination von Regeln liefert eine hohe/niedrige Reduktion? Warum?
@@ -100,7 +100,7 @@ Ziel dieser Arbeit ist, herauszufinden, wie sich die Regeln in der Praxis verhal
 %% ==============================
 \label{ch:Einleitung:sec:Gliederung}
 
-Zunächst werden einige Grundlagen geschaffen, um auf gewisse Begrifflichkeiten in späteren Kapiteln zurückgreifen zu können und die entsprechenden Algorithmen vorzustellen. Kapitel \ref{ch:Analyse} beschäftigt sich mit der Analyse der Praxisanwendung der Regeln und zeigt mögliche Gründe für die gefundenen Ergebnisse. Im Folgenden wird auf Besonderheiten in der Implementierung und Umsetzung der Reduktionsregeln eingegangen, um abschließend im Fazit einen Ausblick auf mögliche zukünftige Problemstellungen zu geben.
+Zunächst werden einige Grundlagen geschaffen, um auf gewisse Begrifflichkeiten in späteren Kapiteln zurückgreifen zu können und die entsprechenden Algorithmen vorzustellen. Kapitel \ref{ch:Analyse} beschäftigt sich mit der Analyse der Praxisanwendung der Regeln und zeigt mögliche Gründe für die gefundenen Ergebnisse. Im Folgenden wird auf Besonderheiten in der Implementierung und Umsetzung der Reduktionsregeln eingegangen, um abschließend ein Fazit mit einen Ausblick auf mögliche zukünftige Problemstellungen zu geben.
 
 
 %%% Local Variables: 

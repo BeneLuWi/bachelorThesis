@@ -14,7 +14,7 @@ Die Regeln wurden in der Programmiersprache \emph{C++} unter Verwendung der Bibl
 %% ==============================
 \label{ch:Implementierung:sec:Kronenregel}
 
-Beim Austesten der Kronenregel hat sich gezeigt, dass die Auswahl des Matchings $M_{1}$ im in Kapitel \ref{ch:Grundlagen:sec:Kronenregel} dargestellten Algorithmus das Ergebnis der Reduktion in großem Maße beeinflusst, was bereits zuvor aufgefallen ist \cite{paper:7}. Dies ist bei der Implementierung für diese Arbeit dadurch aufgefallen, dass beim Anwenden an einem für die Kronenregel gut geeigneten Testgraphen zunächst keine Reduktion stattgefunden hat. Dieser ist in Abbildung \ref{fig:crown1} zu sehen. Um zu funktionieren, müssen die Kanten $(A,C), (D,E), (J,K), (L,B)$ für das Matching $M_{1}$ ausgewählt werden, da ansonsten zum Beispiel $K$ und $L$ nicht korrekt als Kopf der Krone, beziehungsweise nicht als der Menge $H$ zugehörig identifiziert werden.
+Beim Austesten der Kronenregel hat sich gezeigt, dass die Auswahl des Matchings $M_{1}$ im in Kapitel \ref{ch:Grundlagen:sec:Kronenregel} dargestellten Algorithmus das Ergebnis der Reduktion in großem Maße beeinflusst, was bereits zuvor aufgefallen ist \cite{paper:7}. Dies ist bei der Implementierung für diese Arbeit dadurch aufgefallen, dass beim Anwenden an einem für die Kronenregel gut geeigneten Testgraphen, entnommen aus  zunächst keine Reduktion stattgefunden hat. Dieser ist in Abbildung \ref{fig:crown1} zu sehen. Um zu funktionieren, müssen die Kanten $(A,C), (D,E), (J,K), (L,B)$ für das Matching $M_{1}$ ausgewählt werden, da ansonsten zum Beispiel $K$ und $L$ nicht korrekt als Kopf der Krone, beziehungsweise nicht als der Menge $H$ zugehörig identifiziert werden.
 \begin{figure}[htb]
 \centering
   	{\includegraphics[width=.9\textwidth]{crown1Crop.pdf}}
@@ -110,7 +110,7 @@ Das Problem bei diesem Vorgehen ist, dass einfache Kronen ignoriert werden könn
 %% ==============================
 \label{ch:Implementierung:sec:Trott}
 
-Bei der Umsetzung des Algorithmus' der Nemhauser-Trotter-Regel sind keine Besonderheiten aufgefallen, wie es bei der Kronenregel der Fall war. Für das Erstellen des bipartiten Graphen $B$ wurden zwei Referenzarrays angelegt, sodass für jeden Knoten aus $G$ das entsprechende Paar in $B$ gefunden werden konnte und anders herum, also für jeden Knoten aus $B$ das entsprechende Urbild aufgerufen werden konnte. Die weiteren Berechnungen konnten dann mithilfe der LEDA-Funktion MAX\_CARD\_BIPARTITE\_MATCHING aus mcb\_matching.h und LEDA-Iteratoren angestellt werden. Um zu überprüfen, ob der erstelle Graph $B$ tatsächlich bipartit ist und bei der Erstellung kein Fehler unterlaufen ist, wurde eigens eine entsprechende Funktion geschrieben, da LEDA eine solche nicht bereitstellt. In dieser Funktion wird getestet ob es möglich ist, die Knoten des Graphen in zwei Farben einzufärben, sodass keine zwei benachbarten Knoten die gleiche Farbe haben. Der Algorithmus funktioniert, wie folgt:
+Bei der Umsetzung des Algorithmus' der Nemhauser-Trotter-Regel sind keine Besonderheiten aufgefallen, wie es bei der Kronenregel der Fall war. Für das Erstellen des bipartiten Graphen $B$ wurden zwei Referenzarrays angelegt, sodass für jeden Knoten aus $G$ das entsprechende Paar in $B$ gefunden werden konnte und anders herum, also für jeden Knoten aus $B$ das entsprechende Urbild aufgerufen werden konnte. Die weiteren Berechnungen konnten dann mithilfe der LEDA-Funktion MAX\_CARD\_BIPARTITE\_MATCHING aus mcb\_matching.h und LEDA-Iteratoren angestellt werden. Um zu überprüfen, ob der erstellte Graph $B$ tatsächlich bipartit ist und bei der Erstellung kein Fehler unterlaufen ist, wurde eigens eine entsprechende Funktion geschrieben, da LEDA eine solche nicht bereitstellt. In dieser Funktion wird getestet ob es möglich ist, die Knoten des Graphen in zwei Farben einzufärben, sodass keine zwei benachbarten Knoten die gleiche Farbe haben. Der Algorithmus funktioniert, wie folgt:
 \begin{singlespace}
 \begin{algorithm}[caption={Bipartit-Check}, label={alg4}]
 Eingabe: Graph $G=(V,E)$ 
@@ -132,7 +132,7 @@ od
 return $G$ ist bipartit
 \end{algorithm}
 \end{singlespace}
-Die alles umschließende Schleife (Zeile 1) sorgt dafür, dass auch nicht verbundene Teile auf Bipartition überprüft werden. Genau genommen, überprüft der Algorithmus, ob in jedem nicht miteinander verbundenen Teil des Eingabegraphen eine Bipartition herrscht.
+Die alles umschließende Schleife (Zeile 1) sorgt dafür, dass auch nicht verbundene Teile auf Bipartition überprüft werden. Genau genommen überprüft der Algorithmus, ob in jedem nicht miteinander verbundenen Teil des Eingabegraphen eine Bipartition herrscht.
 
 %% ==============================
 %\section{Sonstige Algorithmen}
